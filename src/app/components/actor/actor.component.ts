@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Actor } from '../../models/Actor.model';
 
 @Component({
-  selector: 'app-item',
-  templateUrl: './item.component.html',
-  styleUrls: ['./item.component.scss']
+  selector: 'app-actor',
+  templateUrl: './actor.component.html',
+  styleUrls: ['./actor.component.scss']
 })
-export class ItemComponent implements OnInit {
+export class ActorComponent implements OnInit {
 
   actors: Array<Actor>;
 
