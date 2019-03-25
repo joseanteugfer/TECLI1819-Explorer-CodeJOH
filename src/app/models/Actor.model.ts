@@ -1,18 +1,19 @@
-import { Entity } from './Entity.model';
-import { Finder } from './Finder.model';
+
+import { Entity } from './entity.model';
+import { Finder } from './finder.model';
 
 export class Actor extends Entity{
-    name: String;
-    surname: String;
-    email: String;
-    password: String;
-    preferredLanguage: String;
-    phone: String;
-    address: String;
-    role: String;
-    validated: Boolean;
-    banned: Boolean;
-    customToken: String;
+    name: string;
+    surname: string;
+    email: string;
+    password: string;
+    preferredLanguage: string;
+    phone: string;
+    address: string;
+    role: string;
+    validated: boolean;
+    banned: boolean;
+    customToken: string;
     created: Date;
     finder: Finder;
 }

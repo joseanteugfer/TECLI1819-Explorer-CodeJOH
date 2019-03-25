@@ -1,7 +1,7 @@
-import { Entity } from './Entity.model';
+import { Entity } from './entity.model';
 
 export class Finder extends Entity{
-    keyword: String;
+    keyword: string;
     priceRangeMin: number;
     priceRangeMax: number;
     dateRangeStart: Date;

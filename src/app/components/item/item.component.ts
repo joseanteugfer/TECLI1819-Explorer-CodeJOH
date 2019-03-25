@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Actor } from '../../models/Actor.model';
+import { Actor } from '../../models/actor.model';
 
 @Component({
   selector: 'app-item',
