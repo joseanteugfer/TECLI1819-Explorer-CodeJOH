@@ -4,19 +4,18 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ActorComponent } from './components/actor/actor.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { TripComponent } from './components/trip/trip.component';
 import { OrderedTripComponent } from './components/ordered-trip/ordered-trip.component';
 import { LoginComponent } from './components/security/login/login.component';
 import { RegisterComponent } from './components/security/register/register.component';
-import { HeaderComponent } from './components/master/header/header.component';
 import { FooterComponent } from './components/master/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
 import { AuthService } from './services/auth.service';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from './shared/shared.module'
 
 export const firebaseConfig = {
     apiKey: "AIzaSyBDPPdxUsnYcPMc4yUs2ZRQfkXXW0wZFKE",
@@ -35,17 +34,16 @@ export const firebaseConfig = {
     OrderedTripComponent,
     LoginComponent,
     RegisterComponent,
-    HeaderComponent,
     FooterComponent
   ],
   imports: [
-    HttpClientModule,
+    SharedModule,
     BrowserModule,
     AppRoutingModule,
-    NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    
   ],
   providers: [
     AuthService,
