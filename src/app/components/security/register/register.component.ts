@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 
@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
 
   createForm() {
     this.registrationForm = this.fb.group({
-      name: [''],
+      name: new FormControl(''),
       surname: [''],
       email: [''],
       password: [''],

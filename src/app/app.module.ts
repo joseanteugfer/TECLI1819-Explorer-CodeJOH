@@ -12,6 +12,20 @@ import { RegisterComponent } from './components/security/register/register.compo
 import { HeaderComponent } from './components/master/header/header.component';
 import { FooterComponent } from './components/master/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularFireModule } from 'angularfire2';
+import { AuthService } from './services/auth.service';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { HttpClientModule } from '@angular/common/http';
+
+export const firebaseConfig = {
+    apiKey: "AIzaSyBDPPdxUsnYcPMc4yUs2ZRQfkXXW0wZFKE",
+    authDomain: "acme-explorer-code-joh.firebaseapp.com",
+    databaseURL: "https://acme-explorer-code-joh.firebaseio.com",
+    projectId: "acme-explorer-code-joh",
+    storageBucket: "acme-explorer-code-joh.appspot.com",
+    messagingSenderId: "513136153151"
+}
 
 @NgModule({
   declarations: [
@@ -25,13 +39,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FooterComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    AngularFireAuth
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
