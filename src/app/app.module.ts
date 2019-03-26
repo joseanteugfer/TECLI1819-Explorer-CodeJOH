@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ActorComponent } from './components/actor/actor.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { TripComponent } from './components/trip/trip.component';
 import { OrderedTripComponent } from './components/ordered-trip/ordered-trip.component';
 import { LoginComponent } from './components/security/login/login.component';
@@ -16,7 +16,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AuthService } from './services/auth.service';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { HttpClientModule } from '@angular/common/http';
+import { MyNavComponent } from './components/master/my-nav/my-nav.component';
+import { SharedModule } from './shared/shared.module'
 
 export const firebaseConfig = {
     apiKey: "AIzaSyBDPPdxUsnYcPMc4yUs2ZRQfkXXW0wZFKE",
@@ -36,16 +37,17 @@ export const firebaseConfig = {
     LoginComponent,
     RegisterComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    MyNavComponent
   ],
   imports: [
-    HttpClientModule,
+    SharedModule,
     BrowserModule,
     AppRoutingModule,
-    NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    
   ],
   providers: [
     AuthService,
