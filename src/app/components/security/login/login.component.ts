@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +10,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  loginForm: FormGroup;
+
+  constructor(private authService: AuthService,
+              private fb: FormBuilder,
+              private router: Router) {
+  }
 
   ngOnInit() {
+    this.createForm();
+  }
+
+  createForm() {
+    this.loginForm = this.fb.group({
+      email: [''],
+      password: ['']
+    });
+  }
+
+  onRegister() {
+    this.authService.registerUser(this.loginForm.value)
+      .then(res => {
+        console.log(res);
+        this.router.navigate(['login']);
+      }, err => {
+        console.log(err);
+      });
   }
 
 }

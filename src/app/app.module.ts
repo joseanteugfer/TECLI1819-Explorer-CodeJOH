@@ -9,8 +9,8 @@ import { TripComponent } from './components/trip/trip.component';
 import { OrderedTripComponent } from './components/ordered-trip/ordered-trip.component';
 import { LoginComponent } from './components/security/login/login.component';
 import { RegisterComponent } from './components/security/register/register.component';
-import { HeaderComponent } from './master/header/header.component';
-import { FooterComponent } from './master/footer/footer.component';
+import { HeaderComponent } from './components/master/header/header.component';
+import { FooterComponent } from './components/master/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({

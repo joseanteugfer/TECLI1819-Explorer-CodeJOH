@@ -1,3 +1,21 @@
-<p>
-  login works!
-</p>
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+  <fieldset>
+    <legend>Login</legend>
+    
+    <div class="form-group has-danger">
+      <label for="email" class="form-control-label">Email:</label>
+      <input id="email" type="text" fromControlName="email" class="form-control">
+    </div>
+
+    <div class="form-group has-danger">
+      <label for="password" class="form-control-label">Password:</label>
+      <input id="password" type="text" fromControlName="password" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+      Login
+    </button>
+
+  </fieldset>
+</form>
+
