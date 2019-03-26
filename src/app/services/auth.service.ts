@@ -53,6 +53,7 @@ export class AuthService {
                 this.fireAuth.auth.currentUser.getIdToken()
                   .then(
                     (token: string) => {
+                      localStorage.setItem('token',token);
                       //res.idToken = token;
                       //this.setCurrentActor(res);
                       resolve(token);
