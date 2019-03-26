@@ -9,14 +9,12 @@ import { TripComponent } from './components/trip/trip.component';
 import { OrderedTripComponent } from './components/ordered-trip/ordered-trip.component';
 import { LoginComponent } from './components/security/login/login.component';
 import { RegisterComponent } from './components/security/register/register.component';
-import { HeaderComponent } from './components/master/header/header.component';
 import { FooterComponent } from './components/master/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from 'angularfire2';
 import { AuthService } from './services/auth.service';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { MyNavComponent } from './components/master/my-nav/my-nav.component';
 import { SharedModule } from './shared/shared.module'
 
 export const firebaseConfig = {
@@ -36,9 +34,7 @@ export const firebaseConfig = {
     OrderedTripComponent,
     LoginComponent,
     RegisterComponent,
-    HeaderComponent,
-    FooterComponent,
-    MyNavComponent
+    FooterComponent
   ],
   imports: [
     SharedModule,
