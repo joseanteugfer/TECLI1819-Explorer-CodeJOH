@@ -28,8 +28,8 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onRegister() {
-    this.authService.registerUser(this.loginForm.value)
+  onLogin() {
+    this.authService.login(this.loginForm.value.email, this.loginForm.value.password)
       .then(res => {
         console.log(res);
         this.router.navigate(['login']);
