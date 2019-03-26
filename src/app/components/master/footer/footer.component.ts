@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
+  today: number;
   constructor() { }
 
   ngOnInit() {
+    this.today = Date.now();
   }
 
 }
