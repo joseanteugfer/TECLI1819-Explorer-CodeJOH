@@ -18,6 +18,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import { SharedModule } from './shared/shared.module';
+import { HeaderComponent } from './components/master/header/header.component';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyBDPPdxUsnYcPMc4yUs2ZRQfkXXW0wZFKE",
@@ -41,7 +43,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     OrderedTripComponent,
     LoginComponent,
     RegisterComponent,
-    FooterComponent
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     SharedModule,
@@ -50,9 +53,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
-<<<<<<< HEAD
-    
-=======
     TranslateModule.forRoot({
       loader: {
           provide: TranslateLoader,
@@ -60,7 +60,6 @@ export function HttpLoaderFactory(http: HttpClient) {
           deps: [HttpClient]
       }
   })
->>>>>>> 66cd565b8f43fb0953172e7088bde802f0c63cdc
   ],
   providers: [
     AuthService,

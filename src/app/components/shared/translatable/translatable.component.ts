@@ -14,7 +14,7 @@ export class TranslatableComponent implements OnInit {
     if(lang === 'null'){
       lang = this.translate.getBrowserLang();
     }
-    translate.setDefaultLang(lang);
+    this.translate.setDefaultLang(lang);
     this.changeLanguage(lang);
   }
 
