@@ -1,0 +1,31 @@
+{
+    "MANAGER": "GESTOR",
+    "ADMINISTRATOR": "ADMINISTRADOR",
+    "EXPLORER": "VIAJERO",
+    "SPONSOR": "PATROCINADOR",
+    "shared": {
+        "register": "Registrar",
+        "login": "Empezar"
+    },
+    "actor":{
+        "email": "Correo electrónico",
+        "password": "Contraseña",
+        "login": "Entrar",
+        "name": "Nombre",
+        "surname": "Apellido",
+        "phone": "Teléfono",
+        "address": "Dirección",
+        "role": "Rol"
+    },
+    "login": {
+        "header": "Iniciar sesión"
+    },
+    "header": {
+        "search": "Buscar",
+        "logout": "Salir"
+    },
+    "register": {
+        "header": "Registrar un nuevo actor",
+        "alreadyRegistered": "Ya estás registrado?"
+    }
+}

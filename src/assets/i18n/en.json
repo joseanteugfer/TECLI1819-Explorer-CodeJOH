@@ -1,0 +1,30 @@
+{
+    "MANAGER": "MANAGER",
+    "ADMINISTRATOR": "ADMINISTRATOR",
+    "EXPLORER": "EXPLORER",
+    "SPONSOR": "SPONSOR",
+    "shared": {
+        "register": "Register",
+        "login": "Login"
+    },
+    "actor":{
+        "email": "Email",
+        "password": "Password",
+        "name": "Name",
+        "surname": "Surname",
+        "phone": "Phone",
+        "address": "Address",
+        "role": "Role"
+    },
+    "login":{
+        "header": "Start new session"
+    },
+    "header": {
+        "search": "Search",
+        "logout": "Logout"
+    },
+    "register": {
+        "header": "Register new actor",
+        "alreadyRegistered": "Already registered?"
+    }
+}

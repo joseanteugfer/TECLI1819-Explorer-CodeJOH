@@ -1,47 +1,52 @@
 <form [formGroup]="registrationForm" (ngSubmit)="onRegister()">
   <fieldset>
-    <legend>Register new actor</legend>
+    <legend>{{ 'register.header' | translate}}</legend>
     <div class="form group has-adnger">
-      <label for="role" class="form-control-label">Role:</label>
+      <label for="role" class="form-control-label">{{ 'actor.role' | translate}}:</label>
       <select id="role" class="form-control" formControlName="role">
         <option *ngFor="let role of roleList" [value]="role">
-          {{role}}
+          {{role | translate}}
         </option>
       </select>
     </div>
   
     <div class="form-group has-danger">
-      <label for="name" class="form-control-label">Name:</label>
+      <label for="name" class="form-control-label">{{ 'actor.name' | translate}}:</label>
       <input id="name" type="text" formControlName="name" class="form-control">
     </div>
 
     <div class="form-group has-danger">
-      <label for="surname" class="form-control-label">Surname:</label>
+      <label for="surname" class="form-control-label">{{ 'actor.surname' | translate}}:</label>
       <input id="surname" type="text" formControlName="surname" class="form-control">
     </div>
 
     <div class="form-group has-danger">
-      <label for="phone" class="form-control-label">Phone:</label>
+      <label for="phone" class="form-control-label">{{ 'actor.phone' | translate}}:</label>
       <input id="phone" type="text" formControlName="phone" class="form-control">
     </div>
 
     <div class="form-group has-danger">
-      <label for="address" class="form-control-label">Address:</label>
+      <label for="address" class="form-control-label">{{ 'actor.address' | translate}}:</label>
       <input id="address" type="text" formControlName="address" class="form-control">
     </div>
 
     <div class="form-group has-danger">
-      <label for="email" class="form-control-label">Email:</label>
+      <label for="email" class="form-control-label">{{ 'actor.email' | translate}}:</label>
       <input id="email" type="text" formControlName="email" class="form-control">
     </div>
 
     <div class="form-group has-danger">
+<<<<<<< HEAD
       <label for="password" class="form-control-label">Password:</label>
       <input id="password" type="password" formControlName="password" class="form-control">
+=======
+      <label for="password" class="form-control-label">{{ 'actor.password' | translate}}:</label>
+      <input id="password" type="text" formControlName="password" class="form-control">
+>>>>>>> 66cd565b8f43fb0953172e7088bde802f0c63cdc
     </div>
 
     <button type="submit" class="btn btn-primary">
-      Register
+      {{ 'shared.register' | translate}}
     </button>
 
   </fieldset>
@@ -49,6 +54,6 @@
 
 <div class="row">
   <div class="col-md-4 col-md-offset-4">
-    <p>Already registered?<a href="/login"> Login</a></p>
+    <p>{{ 'register.alreadyRegistered' | translate}}<a href="/login"> {{ 'shared.login' | translate}}</a></p>
   </div>
 </div>
