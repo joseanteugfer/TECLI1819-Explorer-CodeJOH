@@ -15,7 +15,9 @@ import { AngularFireModule } from 'angularfire2';
 import { AuthService } from './services/auth.service';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { SharedModule } from './shared/shared.module'
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyBDPPdxUsnYcPMc4yUs2ZRQfkXXW0wZFKE",
@@ -25,6 +27,11 @@ export const firebaseConfig = {
     storageBucket: "acme-explorer-code-joh.appspot.com",
     messagingSenderId: "513136153151"
 }
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+
 
 @NgModule({
   declarations: [
@@ -43,7 +50,17 @@ export const firebaseConfig = {
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
+<<<<<<< HEAD
     
+=======
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
+  })
+>>>>>>> 66cd565b8f43fb0953172e7088bde802f0c63cdc
   ],
   providers: [
     AuthService,
