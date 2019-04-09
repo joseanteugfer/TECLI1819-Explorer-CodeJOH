@@ -22,6 +22,10 @@ export class LoginComponent extends TranslatableComponent implements OnInit {
   }
 
   ngOnInit() {
+    const userToken = localStorage.getItem('token');
+    if (userToken) {
+      this.router.navigate(['trips']);
+    }
     this.createForm();
   }
 
@@ -36,7 +40,7 @@ export class LoginComponent extends TranslatableComponent implements OnInit {
     this.authService.login(this.loginForm.value.email, this.loginForm.value.password)
       .then(res => {
         console.log(res);
-        this.router.navigate(['login']);
+        this.router.navigate(['trips']);
       }, err => {
         console.log(err);
       });
