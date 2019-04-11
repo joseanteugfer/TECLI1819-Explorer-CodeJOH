@@ -35,7 +35,7 @@ export class RegisterComponent extends TranslatableComponent implements OnInit {
       password: [''],
       phone: [''],
       address: [''],
-      role: [''],
+      role: [this.roleList.find(x => x === 'EXPLORER')],
       validated: ['true'],
     });
   }

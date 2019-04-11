@@ -18,6 +18,10 @@ export class AuthService {
     return ['MANAGER', 'EXPLORER', 'ADMINISTRATOR', 'SPONSOR'];
   }
 
+  isUserAuthenticated(): boolean {
+    return localStorage.getItem('token') === undefined || localStorage.getItem('token') === '';
+  }
+
   registerUser(actor: Actor): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       this.fireAuth.auth.createUserWithEmailAndPassword(actor.email, actor.password)

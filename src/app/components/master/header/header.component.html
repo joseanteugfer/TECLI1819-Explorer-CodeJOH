@@ -17,13 +17,13 @@
           <button class="btn-sm btn-primary mr-1" type="submit" (click)="changeLanguage('es')">ES</button>
           <button class="btn-sm btn-primary mr-1" type="submit" (click)="changeLanguage('en')">EN</button>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="isUserAuthenticated()">
           <a class="nav-link" routerLink="/register">{{ 'shared.register' | translate}}</a>
         </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="isUserAuthenticated()">
           <a class="nav-link" routerLink="/login">{{ 'shared.login' | translate}}</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="!isUserAuthenticated()">
             <a class="nav-link"  style="cursor:pointer" (click)="logout()">{{ 'header.logout' | translate}}</a>
           </li>
       
