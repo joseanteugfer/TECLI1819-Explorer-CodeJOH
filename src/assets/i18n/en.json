@@ -26,5 +26,20 @@
     "register": {
         "header": "Register new actor",
         "alreadyRegistered": "Already registered?"
+    },
+    "footer": {
+        "company": "Company",
+        "products": "Products",
+        "trips": "Trips",
+        "orderedTrips": "Ordered Trips",
+        "actors": "Actors",
+        "authors": "Authors"
+    },
+    "trips": {
+        "title": "Destination",
+        "description": "Description",
+        "date_start": "Date Start",
+        "date_end": "Date End",
+        "price": "Price"
     }
 }

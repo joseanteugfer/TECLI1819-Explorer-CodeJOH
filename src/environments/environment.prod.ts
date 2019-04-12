@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiBackendUrl: 'https://acme-explorer-codejoh.herokuapp.com'
 };

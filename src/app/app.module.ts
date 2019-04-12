@@ -20,6 +20,9 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import { SharedModule } from './shared/shared.module';
 import { HeaderComponent } from './components/master/header/header.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { TranslatableComponent } from './components/shared/translatable/translatable.component';
+import { ApiService } from './services/api.service';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyBDPPdxUsnYcPMc4yUs2ZRQfkXXW0wZFKE",
@@ -44,7 +47,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     LoginComponent,
     RegisterComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    TranslatableComponent
   ],
   imports: [
     SharedModule,
@@ -52,6 +56,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    MDBBootstrapModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig),
     TranslateModule.forRoot({
       loader: {
@@ -63,6 +68,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     AuthService,
+    ApiService,
     AngularFireAuth
   ],
   bootstrap: [AppComponent]

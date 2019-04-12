@@ -1,7 +1,20 @@
 header {
-    height: 15%;
-
+    height: 15vh;
 }
+
+$color-primary-light: #A9DAED;
+$color-primary-dark: #33b5e5;
+
+.content {
+  padding: 18vh 0 8vh 0;
+  background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary-dark, 0.8)), url("../assets/img/fondo2.jpg");
+  background-size: cover;
+  background-position: top;
+}
+
 .sidenav-container {
     height: 100%;
   }
@@ -19,4 +32,6 @@ header {
     top: 0;
     z-index: 1;
   }
-  
+app-footer {
+  bottom: 0;
+}

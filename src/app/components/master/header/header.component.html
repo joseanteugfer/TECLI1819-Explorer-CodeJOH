@@ -1,33 +1,40 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<header>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light white">
+    <a class="navbar-brand" href="">
+      <img id="ACME-logo" class="logo" src="../assets/img/logo.png" alt="ACME-logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-    <form class="form-inline my-2 my-lg-0 justify-content-center">
-      <input class="form-control mr-sm-2" type="search" placeholder="{{ 'header.search' | translate}}" aria-label="Search">
-      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">{{ 'header.search' | translate}}</button>
-    </form>
-    
-    <ul class="nav justify-content-end">
-      <li class="nav-item">
-          <button class="btn-sm btn-primary mr-1" type="submit" (click)="changeLanguage('es')">ES</button>
-          <button class="btn-sm btn-primary mr-1" type="submit" (click)="changeLanguage('en')">EN</button>
-      </li>
+      <ul class="nav nav__left">
+          <li class="nav-item" *ngIf="isUserAuthenticated()">
+              <a class="nav-link btn btn-info btn-rounded btn-sm waves-effect waves-light" routerLink="/register">{{ 'shared.register' | translate}}</a>
+            </li>
+          <li class="nav-item" *ngIf="isUserAuthenticated()">
+              <a class="btn btn-info btn-rounded btn-sm waves-effect waves-light" routerLink="/login">{{ 'shared.login' | translate}}<mdb-icon fas icon="sign-in-alt" class="marginl-1" aria-hidden="true"></mdb-icon></a>
+          </li>
+      </ul>
+
+      <form class="form-inline my-2 my-lg-0 md-form md-bg">
+        <input class="form-control mr-sm-2" type="search" placeholder="{{ 'header.search' | translate}}" aria-label="Search">
+        <button class="btn btn-primary btn-rounded btn-sm my-0 p waves-effect waves-light" type="submit"><mdb-icon fas icon="search" class="marginl-1" aria-hidden="true"></mdb-icon></button>
+      </form>
+      
+      <ul class="nav nav__right">
+        <li class="nav-item">
+            <button class="btn btn-info btn-sm waves-light" type="submit" (click)="changeLanguage('es')">ES</button>
+            <button class="btn btn-info btn-sm waves-light" type="submit" (click)="changeLanguage('en')">EN</button>
       <li class="nav-item" *ngIf="isUserAuthenticated()">
-          <a class="nav-link" routerLink="/register">{{ 'shared.register' | translate}}</a>
-        </li>
-      <li class="nav-item" *ngIf="isUserAuthenticated()">
-          <a class="nav-link" routerLink="/login">{{ 'shared.login' | translate}}</a>
         </li>
         <li class="nav-item" *ngIf="!isUserAuthenticated()">
-            <a class="nav-link"  style="cursor:pointer" (click)="logout()">{{ 'header.logout' | translate}}</a>
-          </li>
-      
-    </ul>
+              <a class="nav-link btn btn-rounded btn-sm waves-effect waves-light logout"  style="cursor:pointer" (click)="logout()">{{ 'header.logout' | translate}}</a>
+        </li>
+      </ul>
 
-  </div>
-</nav>
+    </div>
+  </nav>
+</header>

@@ -4,8 +4,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MatInputModule, MatSelectModule, MatCheckboxModule } from '@angular/material';
+import { MatInputModule, MatSelectModule, MatCheckboxModule, MatCardModule, MatDialogModule, MatTableModule, MatPaginatorModule} from '@angular/material';
 
 @NgModule({
   declarations: [],
@@ -17,9 +16,12 @@ import { MatInputModule, MatSelectModule, MatCheckboxModule } from '@angular/mat
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
+    MatCardModule,
+    MatDialogModule,
+    MatTableModule,
     MatIconModule,
+    MatPaginatorModule,
     MatListModule,
-    NgbModule,
     MatInputModule,
     MatSelectModule,
     MatCheckboxModule
@@ -35,10 +37,13 @@ import { MatInputModule, MatSelectModule, MatCheckboxModule } from '@angular/mat
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    NgbModule,
     MatInputModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatPaginatorModule,
+    MatCheckboxModule,
+    MatCardModule,
+    MatDialogModule,
+    MatTableModule
   ]
 })
 export class SharedModule { }

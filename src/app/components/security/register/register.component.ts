@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -12,8 +12,37 @@ import { TranslatableComponent } from '../../shared/translatable/translatable.co
 })
 export class RegisterComponent extends TranslatableComponent implements OnInit {
 
-  registrationForm: FormGroup;
   roleList: string[];
+  name: string;
+  surname: string;
+  phone: Number;
+  email: string;
+  password: string;
+  departament: string;
+  message: string;
+  error: boolean;
+  registerForm: FormGroup;
+  account_validation_messages = {
+    'name': [
+      { type: 'required', message: 'Nombre requerido' },
+      { type: 'pattern', message: 'Sólo puede contener letras' }
+    ],
+    'surname': [
+      { type: 'required', message: 'Apellidos requeridos' },
+      { type: 'pattern', message: 'Sólo puede contener letras' }
+    ],
+    'email': [
+      { type: 'required', message: 'Email requerido' },
+      { type: 'pattern', message: 'Formato erróneo' }
+    ],
+    'password': [
+      { type: 'required', message: 'Contraseña requerida' }
+    ],
+    'phone': [
+      { type: 'pattern', message: 'Sólo puede contener números' },
+      { type: 'minlength', message: 'Mínimo de 9 números' }
+    ]
+  }
 
   constructor(private authService: AuthService,
               private translatableService: TranslateService,
@@ -28,24 +57,46 @@ export class RegisterComponent extends TranslatableComponent implements OnInit {
   }
 
   createForm() {
-    this.registrationForm = this.fb.group({
-      name: new FormControl(''),
-      surname: [''],
-      email: [''],
-      password: [''],
-      phone: [''],
-      address: [''],
-      role: [this.roleList.find(x => x === 'EXPLORER')],
-      validated: ['true'],
+    this.registerForm = new FormGroup({
+      name: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.pattern('[a-zA-Z]+')
+      ])),
+      surname: new FormControl('', Validators.compose([
+        Validators.pattern('[a-zA-Z]+')
+      ])),
+      email: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')
+      ])),
+      password: new FormControl('',
+      Validators.required),
+      phone: new FormControl(null, Validators.compose([
+        Validators.minLength(9),
+        Validators.pattern('[0-9]+')
+      ])),
+      departament: new FormControl('', Validators.compose([
+        Validators.pattern('[a-zA-Z]+')
+      ]))
     });
   }
 
   onRegister() {
-    this.authService.registerUser(this.registrationForm.value)
+    let actor = this.registerForm.value;
+    if (!actor.name || !actor.surname || !actor.email || !actor.password) {
+      this.error = true;
+      this.message = 'Completar campos requeridos';
+      return;
+    }
+    this.authService.registerUser(this.registerForm.value)
       .then(res => {
         console.log(res);
         this.router.navigate(['login']);
       }, err => {
+        if (err.message){
+          this.error = true;
+          this.message = err.message;
+         }
         console.log(err);
       });
   }

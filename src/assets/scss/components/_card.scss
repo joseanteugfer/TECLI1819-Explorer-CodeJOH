@@ -1,0 +1,76 @@
+$gutter-vertical: 8rem;
+$color-green: #28b485;
+$color-red: #FE2E2E;
+
+.card {
+    text-align: center;
+
+    /* &--login {
+        float: right;
+    } */
+
+    &--form {
+        max-width: 80%;
+        margin: 0 auto;
+        width: 25%;
+    }
+
+    &__header--text {
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    &__table {
+        border-collapse:separate; 
+        border-spacing: 2rem 1rem;
+    }
+
+    &__row {
+        &:not(:first-child) {
+            margin-top: $gutter-vertical;
+        }
+    }
+
+    &__text {
+        
+        &--ok{
+            color: $color-green;
+        }
+
+        &--error {
+            color: $color-red;
+        }
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    /* For mobile phones: */
+    .card--form {
+        width: 80%;
+    }
+  }
+@media only screen and (min-width: 400px) {
+    .card--form {
+        width: 60%;
+    }
+  }
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .card--form {
+        width: 45%;
+    } 
+} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .card--form {
+        width: 40%;
+    } 
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .card--form {
+        width: 26%;
+    } 
+} 

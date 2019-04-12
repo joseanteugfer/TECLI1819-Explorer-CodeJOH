@@ -1,0 +1,41 @@
+.btn {
+
+    &-rounded {
+        border-radius: 10em;
+    }
+
+    &-info {
+        background-color: #33b5e5;
+    }
+}
+
+.nav {
+
+    &__left {
+        margin-right: auto;
+    }
+
+    &__right {
+        margin-left: auto;
+    }
+
+}
+
+.marginl {
+
+    &-1 {
+        margin-left: 0.3rem;
+    }
+}
+
+.logout {
+    background-color: red!important;
+
+    &:active {
+        background-color: #8A0808!important;
+    }
+}
+
+.logo {
+    height: 45px;
+}

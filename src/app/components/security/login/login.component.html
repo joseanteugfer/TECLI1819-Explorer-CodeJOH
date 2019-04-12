@@ -1,21 +1,49 @@
-<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-  <fieldset>
-    <legend>{{ 'login.header' | translate}}</legend>
-    
-    <div class="form-group has-danger">
-      <label for="email" class="form-control-label">{{ 'actor.email' | translate}}:</label>
-      <input id="email" type="text" formControlName="email" class="form-control">
-    </div>
+<mat-card class="card card--form ">
+  <mat-card-header class="card__header--text">
+    <mat-card-title>{{ 'login.header' | translate}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
 
-    <div class="form-group has-danger">
-      <label for="password" class="form-control-label">{{ 'actor.password' | translate}}:</label>
-      <input id="password" type="password" formControlName="password" class="form-control">
-    </div>
+    <form class="example-form" [formGroup]="loginForm">
+        <table class="card__table" cellspacing="0">
 
-    <button type="submit" class="btn btn-primary">
-      {{ 'shared.login' | translate}}
-    </button>
+            <tr>
+              <td>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="{{ 'actor.email' | translate }}" [(ngModel)]="email" name="email"
+                  type="email" formControlName="email" required>
 
-  </fieldset>
-</form>
+                  <mat-error *ngFor="let validation of account_validation_messages.email">
+                      <mat-error class="error-message" *ngIf="loginForm.get('email').hasError(validation.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)">{{validation.message}}
+                      </mat-error>
+                  </mat-error>
+                </mat-form-field>
+              </td>
+            </tr>
 
+            <tr>
+                <td>
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="{{ 'actor.password' | translate }}" [(ngModel)]="password" name="password"
+                    type="password" formControlName="password" required>
+  
+                    <mat-error *ngFor="let validation of account_validation_messages.password">
+                        <mat-error class="error-message" *ngIf="loginForm.get('password').hasError(validation.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">{{validation.message}}
+                        </mat-error>
+                    </mat-error>
+                  </mat-form-field>
+                  </td>
+            </tr>
+
+            <tr *ngIf="message">
+                <p *ngIf="!error" class="card__text--ok paragraph">{{message}}</p>
+                <p *ngIf="error" class="card__text--error paragraph">{{message}}</p>
+            </tr>
+
+        </table>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="onLogin()" color="primary">{{ 'shared.login' | translate}}</button>
+  </mat-card-actions>
+</mat-card>

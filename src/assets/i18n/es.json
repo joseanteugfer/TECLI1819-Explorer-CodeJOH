@@ -27,5 +27,20 @@
     "register": {
         "header": "Registrar un nuevo actor",
         "alreadyRegistered": "Ya estás registrado?"
+    },
+    "footer": {
+        "company": "Compañía",
+        "products": "Productos",
+        "trips": "Viajes",
+        "orderedTrips": "Reservas",
+        "actors": "Usuarios",
+        "authors": "Autores"
+    },
+    "trips": {
+        "title": "Destino",
+        "description": "Descripción",
+        "date_start": "Ida",
+        "date_end": "Vuelta",
+        "price": "Precio"
     }
 }

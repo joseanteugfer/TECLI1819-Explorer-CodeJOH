@@ -15,7 +15,7 @@ export class AuthService {
     private http: HttpClient) { }
 
   getRoles(): string[] {
-    return ['MANAGER', 'EXPLORER', 'ADMINISTRATOR', 'SPONSOR'];
+    return ['EXPLORER', 'MANAGER', 'ADMINISTRATOR', 'SPONSOR'];
   }
 
   isUserAuthenticated(): boolean {
@@ -24,6 +24,7 @@ export class AuthService {
 
   registerUser(actor: Actor): Promise<any> {
     return new Promise<any>((resolve, reject) => {
+      console.log(actor.email);
       this.fireAuth.auth.createUserWithEmailAndPassword(actor.email, actor.password)
         .then(response => {
           // Firebase registration was correct, proceed with our backend
