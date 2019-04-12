@@ -1,27 +1,20 @@
 # TECLI1819ExplorerCodeJOH
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.6.
+## Enlace del proyecto en producción
 
-## Development server
+- UI de la aplicación: https://acme-explorer-codejoh.herokuapp.com/
+- UI de la API (Swagger): https://acme-explorer-codejoh.herokuapp.com/api-docs
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Enlace de la API
 
-## Code scaffolding
+https://github.com/hector23rp/ACME-Explorer-CodeJOH
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Modelo conceptual UML
 
-## Build
+[uml.png](./UML/uml.png)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+![UML](./UML/uml.png "Modelo conceptual de la API")
 
-## Running unit tests
+## Documentación
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- [A+ de Entrega 1](./Documentacion/entrega1.md)
