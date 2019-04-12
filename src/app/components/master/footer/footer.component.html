@@ -20,13 +20,13 @@
       <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
         <h6 class="text-uppercase mb-4 font-weight-bold">{{ 'footer.products' | translate }}</h6>
         <p>
-          <a href="#!">{{ 'footer.trips' | translate }}</a>
+          {{ 'footer.trips' | translate }}
         </p>
         <p>
-          <a href="#!">{{ 'footer.orderedTrips' | translate }}</a>
+          {{ 'footer.orderedTrips' | translate }}
         </p>
         <p>
-          <a href="#!">{{ 'footer.actors' | translate }}</a>
+          {{ 'footer.actors' | translate }}
         </p>
       </div>
       <!-- Grid column -->
@@ -60,14 +60,28 @@
       <div class="col-md-7 col-lg-8">
 
         <!--Copyright-->
-        <p class="text-center text-md-left">© 2019 Copyright:
-          <a href="https://mdbootstrap.com/education/bootstrap/">
+        <p class="text-center text-md-left">© {{today | localizedData}} Copyright:
             <strong> Code-JOH</strong>
-          </a>
         </p>
 
       </div>
       <!-- Grid column -->
+
+      <div class="col-md-5 col-lg-4 ml-lg-0">
+
+          <!-- Social buttons -->
+          <div class="text-center text-md-right">
+            <ul class="list-unstyled list-inline">
+              <li class="list-inline-item">
+                <a href="https://github.com/hector23rp/TECLI1819-Explorer-CodeJOH" class="btn-floating btn-sm rgba-white-slight mx-1">
+                  <i class="fab fa-github"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+        <!-- Grid column -->
 
     </div>
     <!-- Grid row -->

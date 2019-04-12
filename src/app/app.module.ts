@@ -23,6 +23,9 @@ import { HeaderComponent } from './components/master/header/header.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { TranslatableComponent } from './components/shared/translatable/translatable.component';
 import { ApiService } from './services/api.service';
+import { LocalizedDataPipe } from './components/shared/localized-data.pipe';
+import { registerLocaleData } from '@angular/common';
+import locales from '@angular/common/locales/es';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyBDPPdxUsnYcPMc4yUs2ZRQfkXXW0wZFKE",
@@ -32,6 +35,8 @@ export const firebaseConfig = {
     storageBucket: "acme-explorer-code-joh.appspot.com",
     messagingSenderId: "513136153151"
 }
+
+registerLocaleData(locales, 'es');
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -48,7 +53,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     RegisterComponent,
     FooterComponent,
     HeaderComponent,
-    TranslatableComponent
+    TranslatableComponent,
+    LocalizedDataPipe
   ],
   imports: [
     SharedModule,
