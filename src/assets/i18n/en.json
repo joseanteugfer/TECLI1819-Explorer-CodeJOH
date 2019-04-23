@@ -41,5 +41,8 @@
         "date_start": "Date Start",
         "date_end": "Date End",
         "price": "Price"
+    },
+    "message": {
+        
     }
 }

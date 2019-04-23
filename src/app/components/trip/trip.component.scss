@@ -7,4 +7,17 @@
 
 table {
     width: 100%;
-  }
+}
+
+.card-customer {
+
+    min-width: 245px;
+    flex: 0 0 0%;
+    width: 20%;
+    margin-bottom: 15px;
+
+    &_container {
+        width: 80%;
+        margin: 0 auto;
+    }
+}

@@ -14,4 +14,9 @@ export class ApiService {
     const url = `${environment.apiBackendUrl}/v1/trips`;
     return this.http.get(url);
   }
+
+  getTrip(id: string): Observable<any> {
+    const url = `${environment.apiBackendUrl}/v1/trips/${id}`;
+    return this.http.get(url);
+  }
 }

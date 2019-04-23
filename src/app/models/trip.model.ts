@@ -11,9 +11,7 @@ export class Trip extends Entity {
     price: number;
     requirements: string[];
     pictures: string[];
-// tslint:disable-next-line: variable-name
     date_start: Date;
-// tslint:disable-next-line: variable-name
     date_end: Date;
     created: Date;
     status: string;

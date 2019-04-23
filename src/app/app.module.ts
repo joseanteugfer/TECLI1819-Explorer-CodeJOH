@@ -26,6 +26,7 @@ import { ApiService } from './services/api.service';
 import { LocalizedDataPipe } from './components/shared/localized-data.pipe';
 import { registerLocaleData } from '@angular/common';
 import locales from '@angular/common/locales/es';
+import { TripDisplayComponent } from './components/trip-display/trip-display.component';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyBDPPdxUsnYcPMc4yUs2ZRQfkXXW0wZFKE",
@@ -54,7 +55,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     FooterComponent,
     HeaderComponent,
     TranslatableComponent,
-    LocalizedDataPipe
+    LocalizedDataPipe,
+    TripDisplayComponent
   ],
   imports: [
     SharedModule,
