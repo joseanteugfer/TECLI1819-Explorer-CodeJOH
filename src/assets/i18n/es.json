@@ -5,7 +5,7 @@
     "SPONSOR": "PATROCINADOR",
     "shared": {
         "register": "Registrar",
-        "login": "Empezar"
+        "login": "Iniciar Sesión"
     },
     "actor":{
         "email": "Correo electrónico",
@@ -42,5 +42,10 @@
         "date_start": "Ida",
         "date_end": "Vuelta",
         "price": "Precio"
+    },
+    "profile": {
+        "title": "PERFIL",
+        "show": "Mostrar perfil",
+        "edit": "Editar perfil"
     }
 }
