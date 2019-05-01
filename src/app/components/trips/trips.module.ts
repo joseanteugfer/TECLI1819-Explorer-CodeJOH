@@ -7,21 +7,25 @@ import { RouterModule } from '@angular/router';
 import { TripEditComponent } from './trip-edit/trip-edit.component';
 import { MatCardModule, MatFormFieldModule} from '@angular/material';
 import { ActorRoleGuard } from 'src/app/guards/actor-role.guard';
+import { TripListManagedComponent } from './trip-list-managed/trip-list-managed.component';
 
 const declarables = [
     TripListComponent,
     TripDetailsComponent,
-    TripEditComponent
+    TripEditComponent,
+    TripListManagedComponent
 ];
 
 const routes = [
-    { path : '', component: TripListComponent, canActivate: [ActorRoleGuard],
-            data: {expectedRole: 'ADMINISTRATOR|MANAGER|EXPLORER|anonymous'} },
+    { path : 'managed', component: TripListManagedComponent, canActivate: [ActorRoleGuard],
+            data: {expectedRole: 'MANAGER'} },
     { path : 'details/:id', component: TripDetailsComponent, canActivate: [ActorRoleGuard],
             data: { expectedRole: 'ADMINISTRATOR|MANAGER|EXPLORER|anonymous'} },
     { path : 'new', component: TripDetailsComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'MANAGER'} },
     { path : 'edit/:id', component: TripEditComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'MANAGER'} },
     { path : 'delete/:id', component: TripDetailsComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'MANAGER'} },
+    { path : '', component: TripListComponent, canActivate: [ActorRoleGuard],
+            data: {expectedRole: 'ADMINISTRATOR|MANAGER|EXPLORER|anonymous'} },
     { path : '**', component: TripListComponent }
 ];
 

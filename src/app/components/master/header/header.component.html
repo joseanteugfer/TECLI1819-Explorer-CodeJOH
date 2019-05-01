@@ -38,7 +38,7 @@
               <a class="dropdown-item" routerLink="/trips">{{'trips.listexplorer' | translate}}</a>
               <div class="dropdown-divider" *ngIf="activeRole === 'MANAGER'"></div>
               <div *ngIf="activeRole === 'MANAGER'">
-                <a class="dropdown-item" routerLink="/trips">{{'trips.listmanager' | translate}}</a> 
+                <a class="dropdown-item" routerLink="/trips/managed">{{'trips.listmanager' | translate}}</a> 
                 <a class="dropdown-item" routerLink="/trips/create">{{'trips.create' | translate}}</a>
             </div>   
             </div>

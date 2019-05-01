@@ -19,7 +19,6 @@ export class HeaderComponent extends TranslatableComponent implements OnInit {
     private router: Router) {
     super(translateService);
 
-
   }
 
 
@@ -28,11 +27,13 @@ export class HeaderComponent extends TranslatableComponent implements OnInit {
     this.authService.loggedIn.subscribe((authenticated) => {
       if (authenticated) {
         this.currentActor = true;
-        this.activeRole = this.authService.getCurrentActor().role;
+        this.activeRole = localStorage.getItem('activeRole');
       } else {
         this.activeRole = 'anonymous';
         this.currentActor = false;
       }
+      console.log(this.activeRole);
+      console.log(this.currentActor)
     });
   }
 

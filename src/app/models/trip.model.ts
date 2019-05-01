@@ -5,7 +5,7 @@ import { Sponsorship } from './sponsorship.model';
 
 export interface Trip {
     ticker?: string;
-    manager?: Actor;
+    manager?: string;
     title: string;
     description: string;
     price: number;
