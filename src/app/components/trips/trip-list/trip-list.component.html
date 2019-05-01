@@ -1,0 +1,23 @@
+<div class="card-deck card-customer_container">
+    <div class="card card-customer" *ngFor="let trip of trips">
+      <img class="card-img-top" src="../assets/img/avion.jpg" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{ trip.title }}</h5>
+        <div class="line"></div>
+        <p class="card-text card-customer--description">{{ trip.description }}</p>
+        <div class="row">
+          <div class="col"><span class="card-customer--description">Fecha de Ida</span></div>
+          <div class="col"><span class="card-customer--description">Fecha de Vuelta</span></div>
+        </div>
+        <div class="row">
+          <div class="col"><small class="text-muted">{{trip.date_start | date: 'yyyy-MM-dd'}}</small></div>
+          <div class="col"><small class="text-muted">{{trip.date_start | date: 'yyyy-MM-dd'}}</small></div>
+        </div>
+        <div class="row card-customer__price">
+          <div class="col"><span class="card-customer__price--text">{{trip.price}} $</span></div>
+        </div>
+      </div>
+      <a class="btn btn-primary" [routerLink]="['details/', trip._id]">Details<i class="fas fa-arrow-to-right"></i></a>
+    </div>
+</div>
+  

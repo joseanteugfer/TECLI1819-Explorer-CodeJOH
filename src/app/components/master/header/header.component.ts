@@ -28,9 +28,7 @@ export class HeaderComponent extends TranslatableComponent implements OnInit {
     this.authService.loggedIn.subscribe((authenticated) => {
       if (authenticated) {
         this.currentActor = true;
-        console.log(this.authService.getCurrentActor());
-        // this.activeRole = this.authService.getCurrentActor().role[0];
-        this.activeRole = localStorage.getItem('activeRole');
+        this.activeRole = this.authService.getCurrentActor().role;
       } else {
         this.activeRole = 'anonymous';
         this.currentActor = false;
@@ -38,18 +36,12 @@ export class HeaderComponent extends TranslatableComponent implements OnInit {
     });
   }
 
-  isUserAuthenticated() {
-    return this.authService.isUserAuthenticated();
-  }
-
   logout() {
     localStorage.setItem('token', '');
+    localStorage.setItem('actor', '');
     localStorage.setItem('activeRole', 'anonymous');
     this.activeRole = 'anonymous';
     this.currentActor = false;
-    console.log('logout');
-    console.log(this.activeRole);
-    console.log(this.currentActor);
 
     this.router.navigate(['login']);
   }

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Trip } from '../models/trip.model';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,22 @@ export class ApiService {
   getTrip(id: string): Observable<any> {
     const url = `${environment.apiBackendUrl}/v1/trips/${id}`;
     return this.http.get(url);
+  }
+
+  updateTrip(id: string, trip: Trip) {
+    const url = `${environment.apiBackendUrl}/v1/trips/${id}`;
+    const header = new HttpHeaders();
+    header.set('Content-Type', 'application/json');
+    header.set('Accept', 'application/json');
+    return this.http.put(url, trip, {headers: header});
+  }
+
+  updateTripStatus(id: string, status: string, comment: string = 'Empty') {
+    const url = `${environment.apiBackendUrl}/v1/trips/${id}/status?val=${status}&comment=${comment}`;
+    const header = new HttpHeaders();
+    header.set('Content-Type','application/json');
+    header.set('Accept','application/json');
+    return this.http.put(url, {headers: header});
   }
 
   getOrderedTrip(): Observable<any> {

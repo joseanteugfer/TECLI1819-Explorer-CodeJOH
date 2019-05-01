@@ -1,0 +1,37 @@
+<div *ngIf="trip">
+  <div>
+    <img class="card-img-top" src="../assets/img/avion.jpg" alt="Card image cap">
+  </div>
+  <div class="content">
+    <div class="row">
+      <div class="col-md-1">
+          <span>{{trip.title}}</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <span>{{trip.date_start | date: 'yyyy/MM/dd' }}</span>
+      </div>
+      <div class="col-md-2">
+        <span>{{trip.date_end | date: 'yyyy/MM/dd' }}</span>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1">
+            <span>{{trip.description}}</span>
+        </div>
+      </div>
+    <div class="row">
+        <div *ngFor="let stage of trip.stages" class="col-md-3">
+            <span>{{stage.title}}</span>
+            <span>{{stage.description}}</span>
+            <span>{{stage.price}}</span>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-1">
+          <span>{{trip.price}}</span>
+      </div>
+    </div>
+  </div>
+</div>

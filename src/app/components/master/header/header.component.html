@@ -11,16 +11,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
       <ul class="nav nav__left">
-        <li class="nav-item" *ngIf="!isUserAuthenticated()">
+        <li class="nav-item" *ngIf="!currentActor">
           <a class="nav-link btn btn-info btn-rounded btn-sm waves-effect waves-light"
             routerLink="/register">{{ 'shared.register' | translate}}</a>
         </li>
-        <li class="nav-item" *ngIf="!isUserAuthenticated()">
+        <li class="nav-item" *ngIf="!currentActor">
           <a class="btn btn-info btn-rounded btn-sm waves-effect waves-light"
             routerLink="/login">{{ 'shared.login' | translate}}<mdb-icon fas icon="sign-in-alt" class="marginl-1"
               aria-hidden="true"></mdb-icon></a>
         </li>
-        <li class="nav-item dropdown" *ngIf="isUserAuthenticated()">
+        <li class="nav-item dropdown" *ngIf="currentActor">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
             aria-haspopup="true" aria-expanded="false">{{ 'profile.menutitle' | translate}}</a>
           <div class="dropdown-menu" >
@@ -28,11 +28,10 @@
             <div class="dropdown-divider" *ngIf="activeRole === 'ADMINISTRATOR'"></div>
             <div *ngIf="activeRole === 'ADMINISTRATOR'">
               <a class="dropdown-item" routerLink="/profile">{{'profile.list' | translate}}</a> 
-              <a class="dropdown-item" href="#">{{'profile.create' | translate}}</a> 
             </div> 
           </div>
         </li>
-        <li class="nav-item dropdown" *ngIf="isUserAuthenticated()">
+        <li class="nav-item dropdown" *ngIf="currentActor">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
               aria-haspopup="true" aria-expanded="false">{{ 'trips.menutitle' | translate}}</a>
             <div class="dropdown-menu" >
@@ -75,7 +74,7 @@
           <button class="btn btn-info btn-sm waves-light" type="submit" (click)="changeLanguage('es')">ES</button>
           <button class="btn btn-info btn-sm waves-light" type="submit" (click)="changeLanguage('en')">EN</button>
         </li>
-        <li class="nav-item" *ngIf="isUserAuthenticated()">
+        <li class="nav-item" *ngIf="currentActor">
           <a class="nav-link btn btn-rounded btn-sm waves-effect waves-light logout" style="cursor:pointer"
             (click)="logout()">{{ 'header.logout' | translate}}</a>
         </li>

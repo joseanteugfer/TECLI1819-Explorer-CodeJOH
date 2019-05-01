@@ -89,7 +89,6 @@ export class RegisterComponent extends TranslatableComponent implements OnInit {
 
   onRegister() {
     let actor = this.registerForm.value;
-    console.log(actor);
     if (!actor.name || !actor.surname || !actor.email || !actor.password || !actor.roles) {
       this.error = true;
       this.message = 'Completar campos requeridos';
@@ -103,8 +102,7 @@ export class RegisterComponent extends TranslatableComponent implements OnInit {
         if (err.message){
           this.error = true;
           this.message = err.message;
-         }
-        console.log(err);
+        }
       });
   }
 

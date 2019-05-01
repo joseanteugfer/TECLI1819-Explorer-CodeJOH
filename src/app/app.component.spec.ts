@@ -1,7 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { ActorComponent } from './components/actor/actor.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -10,8 +9,7 @@ describe('AppComponent', () => {
         RouterTestingModule
       ],
       declarations: [
-        AppComponent,
-        ActorComponent
+        AppComponent
       ],
     }).compileComponents();
   }));
@@ -26,6 +24,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('TECLI1819-Explorer-CodeJOH');
-  });
-  
+  });  
 });

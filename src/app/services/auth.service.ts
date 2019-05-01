@@ -4,6 +4,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Actor } from '../models/actor.model';
 import { Observable, Subject, BehaviorSubject } from 'rxjs';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ import { Observable, Subject, BehaviorSubject } from 'rxjs';
 export class AuthService {
 
   constructor(private fireAuth: AngularFireAuth,
-    private http: HttpClient) {
+              private apiService: ApiService,
+              private http: HttpClient) {
   }
   currentActor: Actor;
   loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.isUserAuthenticated());
@@ -24,21 +26,22 @@ export class AuthService {
     return ['EXPLORER', 'MANAGER', 'ADMINISTRATOR', 'SPONSOR'];
   }
 
-  // He cambiado la funcionalidad a la inversa para que se correspondiese mejor con el nombre del método
   isUserAuthenticated(): boolean {
-    return !(localStorage.getItem('token') === undefined || localStorage.getItem('token') === '');
+    if (!(localStorage.getItem('actor') === undefined || localStorage.getItem('actor') === '')) {
+          this.currentActor = JSON.parse(localStorage.getItem('actor'));
+          return true;
+    }
+    return false;
   }
 
   registerUser(actor: Actor): Promise < any > {
         return new Promise<any>((resolve, reject) => {
-          console.log(actor.email);
           this.fireAuth.auth.createUserWithEmailAndPassword(actor.email, actor.password)
             .then(response => {
               // Firebase registration was correct, proceed with our backend
               const headers = new HttpHeaders();
               headers.append('Content-Type', 'application/json');
               const url = `${environment.apiBackendUrl}/v1/actors`;
-              console.log(actor);
               this.http.post(url, actor, { headers: headers }).toPromise()
                 .then(res => {
                   resolve(res);
@@ -68,21 +71,27 @@ export class AuthService {
                         (token: string) => {
                           localStorage.setItem('token', token);
                           localStorage.setItem('activeRole', this.currentActor.role[0]);
+                          localStorage.setItem('actor', JSON.stringify({
+                            _id: res._id,
+                            name: res.name,
+                            surname: res.surname,
+                            email: res.email,
+                            preferredLanguage: res.preferredLanguage,
+                            role: res.role[0]
+                          }));
                           this.loggedIn.next(true);
                           resolve(this.currentActor);
                         }
                       );
                   })
                   .catch(error => {
-                    console.log(error);
                     reject(error);
                   });
               } else {
                 reject('Error while login');
               }
-            }, error => { console.log(error); reject(error); })
+            }, error => { reject(error); })
             .catch(error => {
-              console.log(error);
               reject(error);
             });
         });

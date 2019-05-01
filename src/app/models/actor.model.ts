@@ -11,7 +11,7 @@ export class Actor extends Entity {
     preferredLanguage: string;
     phone: string;
     address: string;
-    role: string[];
+    role: string;
     validated: boolean;
     banned: boolean;
     customToken: string;

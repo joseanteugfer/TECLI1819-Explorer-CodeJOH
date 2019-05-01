@@ -20,9 +20,7 @@ export class ActorRoleGuard implements CanActivate {
         const expectedRole = next.data.expectedRole;
         const currentActor = this.authService.getCurrentActor();
         let result = false;
-        console.log(currentActor);
         if (currentActor) {
-          //es necesario usar role[0], porque en el backend está modelado ese campo como un array
           const activeRole = localStorage.getItem('activeRole');
           if (expectedRole.search(activeRole) !== -1) {
             result = true;
@@ -31,7 +29,6 @@ export class ActorRoleGuard implements CanActivate {
           }
           resolve(result);
         } else {
-          console.log(expectedRole);
           if (expectedRole.indexOf('anonymous') !== -1) {
             result = true;
           } else {

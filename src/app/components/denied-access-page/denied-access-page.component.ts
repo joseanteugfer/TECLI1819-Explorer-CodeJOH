@@ -13,12 +13,13 @@ export class DeniedAccessPageComponent extends TranslatableComponent implements 
   private url: string;
 
   constructor(private translateService: TranslateService,
-    private route: ActivatedRoute) { 
-      super(translateService)
+              private route: ActivatedRoute) {
+      super(translateService);
     }
 
   ngOnInit() {
-    this.url = location.origin + this.route.snapshot.queryParams['previousURL'];
+    const previousURL = 'previousURL';
+    this.url = location.origin + this.route.snapshot.queryParams[previousURL];
   }
 
 }

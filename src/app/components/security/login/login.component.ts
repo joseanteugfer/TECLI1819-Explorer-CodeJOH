@@ -46,10 +46,6 @@ export class LoginComponent extends TranslatableComponent implements OnInit {
   }
 
   ngOnInit() {
-    /* const userToken = localStorage.getItem('token');
-    if (userToken) {
-      this.router.navigate(['trips']);
-    } */
     this.createForm();
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '';
   }
@@ -64,18 +60,14 @@ export class LoginComponent extends TranslatableComponent implements OnInit {
   onLogin() {
     this.authService.login(this.loginForm.value.email, this.loginForm.value.password)
       .then(res => {
-        console.log(res);
         this.error = false;
         this.message = res.message;
-        console.log(this.returnUrl);
         this.router.navigateByUrl(this.returnUrl);
-        //this.router.navigate(['trips']);
       }, err => {
         if (err.message){
           this.error = true;
           this.message = err.statusText;
-         }
-        console.log(err);
+        }
       });
   }
 

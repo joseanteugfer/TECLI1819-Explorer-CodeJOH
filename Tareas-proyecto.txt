@@ -1,0 +1,119 @@
+Leyenda del documento:
+    - Los nombres pueden estar precididos por:
+        - Nada: son del entregable C
+        - (B): son del entregable B
+        - (A): son del entregable A
+
+Vistas:
+
+- Trips:
+    - Buscar trips por keyword
+    - Edición
+    - Crear
+    - Eliminar
+    - Detalles -> Mapa
+
+- Ordered Trips:
+    - Listar
+    - Edición
+
+- Perfil de usuario:
+    - Listar propiedades
+    - Editar propiedades
+
+- Usuarios:
+    - Listar
+    - Editar
+    - Crear
+
+- Dashboard
+    - Media, mínimo, máximo y desviación estándar del número de trips manejados por Manager.
+    - Media, mínimo, máximo y desviación estándar del número de ordered trips por trips
+    - Media, mínimo, máximo y desviación estándar del precio de los trips
+    - Ratio de los ordered trips agrupado por status
+    - Rango medio del precio de los explorer en los finders
+    - Top 10 de los key words del explorer que se indica en su finder.
+
+- Menú:
+    - Usuarios
+    - Trips
+    - Ordered Trips
+    - Dashboard
+
+- Sponsorships:
+    - Listar
+    - Editar
+    - Crear
+    - Eliminar
+
+- (B) Settings:
+    - Editar período en el que finder se guarda en caché
+    - Editar máximo número de resultados que un finder puede devolver.
+    - (A) Configurar flat rate de sponsorships
+
+Permisos roles:
+
+- Actor no autenticado:
+    - Trips:
+        - Listar Trips
+        - Buscar trips por keyword
+- Explorer:
+    - Trips:
+        - Listar Trips
+        - Buscar trips por keyword
+    - Perfil de usuario:
+        - Listar propiedades
+        - Editar propiedades
+
+- Manager:
+    - Trips:
+        - Listar sólo sus trips
+        - Crear trips
+        - Publicar trips (Crear trip y cambiar estado a PUBLISH)
+        - Modificar sólo sus trips
+        - Eliminiar sólo sus trips
+    
+    - Ordered Trips:
+        - Listar sólo sus ordered trips
+        - Cambiar status de "PENDING" a "REJECTED" o "DUE"
+        - Cancelar un trip que ha sido publicado y que no ha empezado y que no tiene ningún usuario que lo haya aceptado.
+
+- Administrador:
+    - Usuarios:
+        - Listar 
+        - Crear nuevos Managers
+        - Banear o desbanear un actor (desactivar o activar cuenta)
+    - Dashboard
+    - (B) Settings
+
+- (A) Sponsor:
+    - Sponsorships:
+        - Listar sólo sus sponsorships
+        - Editar sólo sus sponsorships
+        - Crear sponsorships
+        - Eliminar sólo sus sponsorships
+
+Tests funcionales: (mínimo 2 por apartado)
+
+- Trips:
+    - Lista
+    - Detalles
+
+- Ordered Trips:
+    - Lista
+
+Tareas adicionales:
+
+- Poner estilos de Ordered trips dependiendo del status:
+    - PENDING (start-date > 1 month): white background
+    - PENDING (start-date < 1 month): red background
+    - REJECTED: grey background
+    - DUE: yellow background
+    - ACCEPTED: green background
+
+- Paypal:
+    - ¡No se puede poner los datos en el localStorage!
+
+A+:
+- Clase de validación de formulario como una directiva
+- Utilizar otro proveedor de mapas (como Leaflet)
