@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 import { TranslateService } from '@ngx-translate/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -9,23 +9,48 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent  extends TranslatableComponent implements OnInit {
+export class HeaderComponent extends TranslatableComponent implements OnInit {
 
-  constructor(private translatableService: TranslateService,
-              private authService: AuthService, 
-              private router: Router) {
-    super(translatableService);
-   }
+  currentActor: boolean;
+  activeRole: string = 'anonymous';
 
-  ngOnInit() {
+  constructor(private translateService: TranslateService,
+    private authService: AuthService,
+    private router: Router) {
+    super(translateService);
+
+
   }
 
-  isUserAuthenticated(){
+
+
+  ngOnInit() {
+    this.authService.loggedIn.subscribe((authenticated) => {
+      if (authenticated) {
+        this.currentActor = true;
+        console.log(this.authService.getCurrentActor());
+        // this.activeRole = this.authService.getCurrentActor().role[0];
+        this.activeRole = localStorage.getItem('activeRole');
+      } else {
+        this.activeRole = 'anonymous';
+        this.currentActor = false;
+      }
+    });
+  }
+
+  isUserAuthenticated() {
     return this.authService.isUserAuthenticated();
   }
 
   logout() {
     localStorage.setItem('token', '');
+    localStorage.setItem('activeRole', 'anonymous');
+    this.activeRole = 'anonymous';
+    this.currentActor = false;
+    console.log('logout');
+    console.log(this.activeRole);
+    console.log(this.currentActor);
+
     this.router.navigate(['login']);
   }
 

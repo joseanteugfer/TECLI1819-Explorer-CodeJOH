@@ -25,42 +25,54 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ProfileDisplayComponent } from './components/profile-display/profile-display.component';
 import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ActorRoleGuard } from './guards/actor-role.guard';
+import { DeniedAccessPageComponent } from './components/denied-access-page/denied-access-page.component';
 
 const routes: Routes = [
-  {path: '', component: LoginComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
+  {path: '', redirectTo: '/trips', pathMatch: 'full'},
+  {path: 'login', component: LoginComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'anonymous'}},
+  {path: 'register', component: RegisterComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'anonymous'}},
   {path: 'trips', children: [
-    {path: 'create' , component: TripCreateComponent},
-    {path: 'edit/:id', component: TripEditComponent},
-    {path: 'delete/:id', component: TripDeleteComponent},
-    {path: ':id', component: TripDisplayComponent},
-    {path: '', component: TripComponent}
+    {path: 'create' , component: TripCreateComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'MANAGER'}},
+// tslint:disable-next-line: max-line-length
+    {path: 'edit/:id', component: TripEditComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'MANAGER'}},
+    {path: 'delete/:id', component: TripDeleteComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'MANAGER'}},
+    {path: ':id', component: TripDisplayComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'ADMINISTRATOR|MANAGER|EXPLORER'}},
+    {path: '', component: TripComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'anonymous|ADMINISTRATOR|MANAGER|EXPLORER'}}
   ]},
   {path: 'ordered-trips', children: [
-    {path: 'edit/:id', component: OrderedTripEditComponent},
-    {path: '', component: OrderedTripComponent}
+    // El explorer tb debería poder cancelar una reserva?
+    {path: 'edit/:id', component: OrderedTripEditComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'MANAGER|EXPLORER'}},
+    {path: '', component: OrderedTripComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'MANAGER|EXPLORER'}}
   ]},
   {path: 'profile', children: [
-    {path: 'edit/:id', component: ProfileEditComponent},
-    {path: ':id', component: ProfileDisplayComponent},
-    {path: '', component: ProfileComponent}
+// tslint:disable-next-line: max-line-length
+    {path: 'edit/:id', component: ProfileEditComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'ADMINISTRATOR|MANAGER|EXPLORER'}},
+// tslint:disable-next-line: max-line-length
+    {path: ':id', component: ProfileDisplayComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'ADMINISTRATOR|MANAGER|EXPLORER'}},
+    {path: '', component: ProfileComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'ADMINISTRATOR'}}
   ]},
   {path: 'dashboard', children: [
-    {path: 'trips-per-manager', component: DashboardTripPerManagerComponent},
-    {path: 'orederedtips-per-trip', component: DashboardOrderedTripsPerTripComponent},
-    {path: 'price-per-trip', component: DashboardPricePerTripComponent},
-    {path: 'orderedtrip-by-status', component: DashboardOrderedTripsByStatusComponent},
-    {path: 'price-in-finders', component: DashboardPriceInFindersComponent},
-    {path: 'topkeywords', component: DashboardTopKeywordsComponent}
+// tslint:disable-next-line: max-line-length
+    {path: 'trips-per-manager', component: DashboardTripPerManagerComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'ADMINISTRATOR'}},
+// tslint:disable-next-line: max-line-length
+    {path: 'orederedtips-per-trip', component: DashboardOrderedTripsPerTripComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'ADMINISTRATOR'}},
+// tslint:disable-next-line: max-line-length
+    {path: 'price-per-trip', component: DashboardPricePerTripComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'ADMINISTRATOR'}},
+// tslint:disable-next-line: max-line-length
+    {path: 'orderedtrip-by-status', component: DashboardOrderedTripsByStatusComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'ADMINISTRATOR'}},
+// tslint:disable-next-line: max-line-length
+    {path: 'price-in-finders', component: DashboardPriceInFindersComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'ADMINISTRATOR'}},
+    {path: 'topkeywords', component: DashboardTopKeywordsComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'ADMINISTRATOR'}}
   ]},
-  {path: 'sponsorship', component: SponsorshipComponent},
+  {path: 'sponsorship', component: SponsorshipComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'SPONSOR'}},
   {path: 'settings', children: [
-    {path: 'edit/:id', component: SettingEditComponent},
-    {path: '', component: SettingComponent}
+    {path: 'edit/:id', component: SettingEditComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'ADMINISTRATOR'}},
+    {path: '', component: SettingComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'ADMINISTRATOR'}}
   ]},
   {path: 'terms-and-conditions', component: TermsAndConditionsComponent},
   {path: 'not-found', component: NotFoundComponent},
+  {path: 'denied-access', component: DeniedAccessPageComponent},
   {path: '**', redirectTo: '/not-found'}
 ];
 

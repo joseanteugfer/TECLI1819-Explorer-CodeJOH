@@ -41,6 +41,9 @@ export class RegisterComponent extends TranslatableComponent implements OnInit {
     'phone': [
       { type: 'pattern', message: 'Sólo puede contener números' },
       { type: 'minlength', message: 'Mínimo de 9 números' }
+    ],
+    'roles': [
+      { type: 'required', message: 'Rol requerido' }
     ]
   }
 
@@ -77,20 +80,24 @@ export class RegisterComponent extends TranslatableComponent implements OnInit {
       ])),
       departament: new FormControl('', Validators.compose([
         Validators.pattern('[a-zA-Z]+')
+      ])),
+      roles: new FormControl('EXPLORER', Validators.compose([
+        Validators.required
       ]))
     });
   }
 
   onRegister() {
     let actor = this.registerForm.value;
-    if (!actor.name || !actor.surname || !actor.email || !actor.password) {
+    console.log(actor);
+    if (!actor.name || !actor.surname || !actor.email || !actor.password || !actor.roles) {
       this.error = true;
       this.message = 'Completar campos requeridos';
       return;
     }
+    actor.role = [actor.roles];
     this.authService.registerUser(this.registerForm.value)
       .then(res => {
-        console.log(res);
         this.router.navigate(['login']);
       }, err => {
         if (err.message){

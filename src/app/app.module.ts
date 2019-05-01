@@ -43,6 +43,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ProfileDisplayComponent } from './components/profile-display/profile-display.component';
 import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { DeniedAccessPageComponent } from './components/denied-access-page/denied-access-page.component';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyBDPPdxUsnYcPMc4yUs2ZRQfkXXW0wZFKE",
@@ -89,7 +90,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     NotFoundComponent,
     ProfileDisplayComponent,
     ProfileEditComponent,
-    ProfileComponent
+    ProfileComponent,
+    DeniedAccessPageComponent
   ],
   imports: [
     SharedModule,

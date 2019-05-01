@@ -38,14 +38,34 @@
     },
     "trips": {
         "title": "Destino",
+        "menutitle": "VIAJES",
         "description": "Descripción",
         "date_start": "Ida",
         "date_end": "Vuelta",
-        "price": "Precio"
+        "price": "Precio",
+        "listexplorer": "Viajes disponibles",
+        "listmanager": "Mis viajes gestionados",
+        "create": "Nuevo viaje"
     },
     "profile": {
-        "title": "PERFIL",
+        "menutitle": "PERFIL",
         "show": "Mostrar perfil",
-        "edit": "Editar perfil"
+        "list": "Listar usuarios",
+        "create": "Nuevo manager"
+    },
+    "orderedtrips": {
+        "menutitle": "RESERVAS",
+        "listexplorer": "Mis reservas",
+        "listmanager": "Mis reservas gestionadas"
+    },
+    "administration": {
+        "menutitle": "ADMINISTRACIÓN",
+        "settings": "Ajustes",
+        "dashboard": "Dashboard"
+    },
+    "denied-access-page": {
+        "title": "Acceso denegado",
+        "message-start": "No tienes permiso para acceder a ",
+        "message-end": " en este servidor"
     }
 }

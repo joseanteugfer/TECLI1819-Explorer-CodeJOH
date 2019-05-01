@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 
 @Component({
@@ -17,6 +17,7 @@ export class LoginComponent extends TranslatableComponent implements OnInit {
   email: string;
   message: string;
   error: boolean;
+  returnUrl: string;
   account_validation_messages = {
     'email': [
       { type: 'required', message: 'Email requerido' }
@@ -31,6 +32,7 @@ export class LoginComponent extends TranslatableComponent implements OnInit {
   constructor(private authService: AuthService,
               private translatableService: TranslateService,
               private fb: FormBuilder,
+              private route: ActivatedRoute,
               private router: Router) {
                 super(translatableService);
                 this.loginForm = new FormGroup({
@@ -44,11 +46,12 @@ export class LoginComponent extends TranslatableComponent implements OnInit {
   }
 
   ngOnInit() {
-    const userToken = localStorage.getItem('token');
+    /* const userToken = localStorage.getItem('token');
     if (userToken) {
       this.router.navigate(['trips']);
-    }
+    } */
     this.createForm();
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '';
   }
 
   createForm() {
@@ -64,7 +67,9 @@ export class LoginComponent extends TranslatableComponent implements OnInit {
         console.log(res);
         this.error = false;
         this.message = res.message;
-        this.router.navigate(['trips']);
+        console.log(this.returnUrl);
+        this.router.navigateByUrl(this.returnUrl);
+        //this.router.navigate(['trips']);
       }, err => {
         if (err.message){
           this.error = true;

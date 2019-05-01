@@ -72,8 +72,8 @@
 
           <tr>
               <td>
-                <select id="role" class="form-control">
-                  <option *ngFor="let role of roleList" [value]="role">
+                <select id="role" formControlName="roles" class="form-control">
+                  <option *ngFor="let role of roleList" [value]="role" [selected]="role == roles">
                     {{role | translate}}
                   </option>
                 </select>
