@@ -6,6 +6,7 @@ import { MatCardModule, MatFormFieldModule} from '@angular/material';
 import { ActorRoleGuard } from 'src/app/guards/actor-role.guard';
 import { OrderedTripsEditComponent } from './ordered-trips-edit/ordered-trips-edit.component';
 import { OrderedTripsListComponent } from './ordered-trips-list/ordered-trips-list.component';
+import { CoreModule } from 'src/app/core/core.module';
 
 
 const declarables = [
@@ -23,6 +24,7 @@ const routes = [
 
 @NgModule({
     imports: [
+        CoreModule,
         CommonModule,
         FormsModule,
         MatCardModule,

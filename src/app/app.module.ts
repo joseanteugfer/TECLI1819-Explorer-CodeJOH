@@ -26,6 +26,8 @@ import { TermsAndConditionsComponent } from './components/terms-and-conditions/t
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { DeniedAccessPageComponent } from './components/denied-access-page/denied-access-page.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { HttpModule } from '@angular/http';
+import { CoreModule, HttpLoaderFactory } from './core/core.module';
 
 export const firebaseConfig = {
     apiKey: 'AIzaSyBDPPdxUsnYcPMc4yUs2ZRQfkXXW0wZFKE',
@@ -37,10 +39,6 @@ export const firebaseConfig = {
 };
 
 registerLocaleData(locales, 'es');
-
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
-}
 
 
 @NgModule({
@@ -63,6 +61,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    CoreModule,
     MDBBootstrapModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig),
     TranslateModule.forRoot({
@@ -71,7 +70,8 @@ export function HttpLoaderFactory(http: HttpClient) {
           useFactory: HttpLoaderFactory,
           deps: [HttpClient]
       }
-  })
+  }),
+    HttpModule
   ],
   providers: [
     AuthService,

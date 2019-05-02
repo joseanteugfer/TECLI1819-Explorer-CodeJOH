@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ActorRoleGuard } from 'src/app/guards/actor-role.guard';
 import { SponsorshipsListComponent } from './sponsorships-list/sponsorships-list.component';
+import { CoreModule } from 'src/app/core/core.module';
 
 
 const declarables = [
@@ -18,6 +19,7 @@ const routes = [
 
 @NgModule({
     imports: [
+        CoreModule,
         CommonModule,
         FormsModule,
         ReactiveFormsModule,

@@ -4,6 +4,6 @@ import { Actor } from './actor.model';
 export class Sponsorship extends Entity {
     link: string;
     banner: string;
-    actorId: Actor;
+    actorId: string;
     payed: boolean;
 }

@@ -5,7 +5,8 @@
     "SPONSOR": "PATROCINADOR",
     "shared": {
         "register": "Registrar",
-        "login": "Iniciar Sesión"
+        "login": "Iniciar Sesión",
+        "details": "Detalles"
     },
     "actor":{
         "email": "Correo electrónico",
@@ -34,14 +35,15 @@
         "trips": "Viajes",
         "orderedTrips": "Reservas",
         "actors": "Usuarios",
-        "authors": "Autores"
+        "authors": "Autores",
+        "terms-and-conditions": "Términos y Condiciones"
     },
     "trips": {
         "title": "Destino",
         "menutitle": "VIAJES",
         "description": "Descripción",
-        "date_start": "Ida",
-        "date_end": "Vuelta",
+        "date_start": "Fecha de Ida",
+        "date_end": "Fecha de vuelta",
         "price": "Precio",
         "listexplorer": "Viajes disponibles",
         "listmanager": "Mis viajes gestionados",
@@ -67,5 +69,9 @@
         "title": "Acceso denegado",
         "message-start": "No tienes permiso para acceder a ",
         "message-end": " en este servidor"
+    },
+    "sponsorship": {
+        "menutitle": "SPONSORSHIPS",
+        "sponsorships": "Sponsorships"
     }
 }

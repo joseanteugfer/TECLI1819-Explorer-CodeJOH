@@ -6,7 +6,7 @@ export class OrderedTrip extends Entity {
     status: string;
     date_apply: Date;
     comments: string;
-    actor_id: Actor;
+    actor_id: string;
 }
 
 

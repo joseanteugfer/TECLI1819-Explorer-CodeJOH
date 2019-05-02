@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { MatInputModule, MatSelectModule, MatCheckboxModule, MatCardModule, MatDialogModule, MatTableModule, MatPaginatorModule} from '@angular/material';
 
 @NgModule({

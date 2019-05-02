@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { ActorRoleGuard } from 'src/app/guards/actor-role.guard';
 import { ProfileDisplayComponent } from './profile-display/profile-display.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
+import { CoreModule } from 'src/app/core/core.module';
 
 
 const declarables = [
@@ -14,14 +15,15 @@ const declarables = [
 
 const routes = [
     { path : '', component: ProfileDisplayComponent, canActivate: [ActorRoleGuard],
-            data: { expectedRole: 'ADMINISTRATOR|MANAGER|EXPLORER'} },
+            data: { expectedRole: 'ADMINISTRATOR|MANAGER|EXPLORER|SPONSOR'} },
     { path : 'edit/:id', component: ProfileEditComponent, canActivate: [ActorRoleGuard],
-            data: { expectedRole: 'ADMINISTRATOR|MANAGER|EXPLORER'} },
+            data: { expectedRole: 'ADMINISTRATOR|MANAGER|EXPLORER|SPONSOR'} },
     { path: '**', redirectTo: '/not-found' }
 ];
 
 @NgModule({
     imports: [
+        CoreModule,
         CommonModule,
         FormsModule,
         ReactiveFormsModule,

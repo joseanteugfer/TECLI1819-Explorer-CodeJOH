@@ -11,20 +11,20 @@ import { Router } from '@angular/router';
 })
 export class TripListComponent extends TranslatableComponent implements OnInit {
 
-  trips;
+  tripsAvailables;
 
   displayedColumns: string[] = ['title', 'description', 'date_start', 'date_end', 'price'];
 
   constructor(private apiService: ApiService,
-              private translatableService: TranslateService,
+              private translateService: TranslateService,
               private router: Router) {
-    super(translatableService);
+    super(translateService);
   }
 
   ngOnInit() {
     this.apiService.getTrips().subscribe(
       res => {
-        this.trips = res;
+        this.tripsAvailables = res;
       }
     )
   }

@@ -8,7 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class TranslatableComponent implements OnInit {
 
-  constructor(private translate: TranslateService) { 
+  constructor(private translate: TranslateService) {
     let lang = localStorage.getItem('language');
 
     if(lang === 'null'){

@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { ActorRoleGuard } from 'src/app/guards/actor-role.guard';
 import { SettingsDetailsComponent } from './settings-details/settings-details.component';
 import { SettingsEditComponent } from './settings-edit/settings-edit.component';
+import { CoreModule } from 'src/app/core/core.module';
 
 
 const declarables = [
@@ -22,6 +23,7 @@ const routes = [
 
 @NgModule({
     imports: [
+        CoreModule,
         CommonModule,
         FormsModule,
         ReactiveFormsModule,

@@ -51,4 +51,9 @@ export class ApiService {
     const url = `${environment.apiBackendUrl}/v1/trips/fromManager/${id}`;
     return this.http.get(url);
   }
+
+  getOrderedTripsFromManager(id: string): Observable<any> {
+    const url = `${environment.apiBackendUrl}/v1/orderedTrips/fromManager/${id}`;
+    return this.http.get(url);
+  }
 }

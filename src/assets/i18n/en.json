@@ -5,7 +5,8 @@
     "SPONSOR": "SPONSOR",
     "shared": {
         "register": "Register",
-        "login": "Login"
+        "login": "Login",
+        "details": "Details"
     },
     "actor":{
         "email": "Email",
@@ -33,7 +34,8 @@
         "trips": "Trips",
         "orderedTrips": "Ordered Trips",
         "actors": "Actors",
-        "authors": "Authors"
+        "authors": "Authors",
+        "terms-and-conditions": "Terms and Conditions"
     },
     "trips": {
         "title": "Destination",
@@ -66,5 +68,9 @@
         "title": "Denied access",
         "message-start": "You don't have permission to access ",
         "message-end": " on this server"
+    },
+    "sponsorship": {
+        "menutitle": "SPONSORSHIPS",
+        "sponsorships": "Sponsorships"
     }
 }
