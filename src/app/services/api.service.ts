@@ -56,4 +56,9 @@ export class ApiService {
     const url = `${environment.apiBackendUrl}/v1/orderedTrips/fromManager/${id}`;
     return this.http.get(url);
   }
+
+  getDashboardLatest(): Observable<any> {
+    const url = `${environment.apiBackendUrl}/v1/dashboards/latest`;
+    return this.http.get(url);
+  }
 }

@@ -1,3 +1,49 @@
-<p>
-  dashboard works!
-</p>
+<div class="container">
+
+  <div class="row" *ngIf="orderedtripsPerTrips">
+    <div class="col">
+      <div style="display: block">
+        <canvas mdbChart
+            [chartType]="chartType"
+            [datasets]="chartDatasets"
+            [labels]="chartLabels"
+            [colors]="chartColors"
+            [options]="chartOptions"
+            [legend]="true">
+        </canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col" *ngIf="topKeywords" > 
+          <table class="table table-hover w-auto">
+              <thead>
+                  <tr>
+                      <th>Keyword</th>
+                      <th>Keyword Sum</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr class="table-info" *ngFor="let key of topKeywords">
+                      <td>{{key.keyword}}</td>
+                      <td>{{key.keywordSum}}</td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+
+  <div class="row" *ngIf="avgPriceRangeFinders" >
+    <div class="col">
+      <h3>Avg Price Range Finders: {{avgPriceRangeFinders}}</h3>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="computationMoment" >
+    <div class="col">
+      <h3>Computation date: {{computationMoment | date: 'dd/MM/yyyy hh:mm:ss'}}</h3>
+    </div>
+  </div>
+
+</div>

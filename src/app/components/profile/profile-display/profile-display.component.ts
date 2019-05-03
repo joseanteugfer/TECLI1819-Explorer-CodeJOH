@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { ApiService } from 'src/app/services/api.service';
+import { Actor } from 'src/app/models/actor.model';
 
 @Component({
   selector: 'app-profile-display',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileDisplayComponent implements OnInit {
 
-  constructor() { }
+  private ParameterActorId = '_id';
+  actor: Actor;
+
+  constructor(private authService: AuthService,
+              private apiService: ApiService) { }
 
   ngOnInit() {
+    const id = this.authService.currentActor[this.ParameterActorId];
+    this.apiService.getActor(id).subscribe(actor => {
+      this.actor = actor;
+    });
   }
 
 }

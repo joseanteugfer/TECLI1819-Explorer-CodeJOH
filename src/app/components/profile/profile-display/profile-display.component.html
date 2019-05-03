@@ -1,3 +1,38 @@
-<p>
-  profile-display works!
-</p>
+<div *ngIf="actor" class="card container">
+  <div class="card-header">
+    Profile
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-4">
+        <img class="profile__img" src="./assets/img/man.svg" alt="Profile">
+      </div>
+      <div class="col-8 profile__content">
+          <div class="row">
+            <div class="col">
+              <span class="font-weight-bold">Name: </span>
+              <span>{{actor.name}}</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <span class="font-weight-bold">Surname: </span>
+              <span>{{actor.surname}}</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <span class="font-weight-bold">Email: </span>
+              <span>{{actor.email}}</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <span class="font-weight-bold">CreatedAt: </span>
+              <span>{{actor.created | date: 'dd/MM/yyyy'}}</span>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

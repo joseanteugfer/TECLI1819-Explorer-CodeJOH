@@ -15,13 +15,11 @@ export class HeaderComponent extends TranslatableComponent implements OnInit {
   activeRole: string = 'anonymous';
 
   constructor(private translateService: TranslateService,
-    private authService: AuthService,
-    private router: Router) {
+              private authService: AuthService,
+              private router: Router) {
     super(translateService);
 
   }
-
-
 
   ngOnInit() {
     this.authService.loggedIn.subscribe((authenticated) => {
