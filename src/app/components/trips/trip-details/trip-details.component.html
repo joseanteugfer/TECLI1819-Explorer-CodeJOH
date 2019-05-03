@@ -1,37 +1,50 @@
-<div *ngIf="trip">
-  <div>
-    <img class="card-img-top" src="../assets/img/avion.jpg" alt="Card image cap">
-  </div>
-  <div class="content">
-    <div class="row">
-      <div class="col-md-1">
-          <span>{{trip.title}}</span>
+<div *ngIf="trip" class="container">
+    <div class="row row__list">
+      <div class="col">
+          <h2>{{trip.title}}</h2>
+          <div class="row__list--line"></div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-2">
+    <div class="row row__list">
+      <div class="col align-center">
+        <h5 class="row__list--title">{{ 'trips.date_end' | translate }}</h5>
         <span>{{trip.date_start | date: 'yyyy/MM/dd' }}</span>
       </div>
-      <div class="col-md-2">
+      <div class="col align-center">
+        <h5 class="row__list--title">{{ 'trips.date_end' | translate }}</h5>
         <span>{{trip.date_end | date: 'yyyy/MM/dd' }}</span>
       </div>
     </div>
-    <div class="row">
-        <div class="col-md-1">
-            <span>{{trip.description}}</span>
+    <div class="row row__list">
+        <div class="col">
+          <h5 class="row__list--title">{{ 'trips.description' | translate }}</h5>
+            <span class="row__list--description">{{trip.description}}</span>
         </div>
       </div>
-    <div class="row">
-        <div *ngFor="let stage of trip.stages" class="col-md-3">
-            <span>{{stage.title}}</span>
-            <span>{{stage.description}}</span>
-            <span>{{stage.price}}</span>
-        </div>
-    </div>
-    <div class="row">
-      <div class="col-md-1">
-          <span>{{trip.price}}</span>
+    <div class="row row__list">
+      <div class="col">
+          <h5 class="row__list--title">{{ 'trips.stages' | translate }}</h5>
       </div>
     </div>
-  </div>
+    <div class="row row__list">
+        <div *ngFor="let stage of trip.stages" class="col">
+            <div class="container__stages">
+                <div class="container__stages--title">
+                    <span>{{stage.title}}</span>
+                </div>
+                <div class="container__stages--line"></div>
+                <div class="container__stages--description">
+                    <span>{{stage.description}}</span>
+                </div>
+                <div class="container__stages--price">
+                    <span>{{stage.price}} $</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row row__list row__list--price">
+      <div class="col">
+          <h5 class="row__list--title">{{trip.price}} $</h5>
+      </div>
+    </div>
 </div>

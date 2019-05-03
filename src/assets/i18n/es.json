@@ -47,7 +47,8 @@
         "price": "Precio",
         "listexplorer": "Viajes disponibles",
         "listmanager": "Mis viajes gestionados",
-        "create": "Nuevo viaje"
+        "create": "Nuevo viaje",
+        "stages": "Etapas"
     },
     "profile": {
         "menutitle": "PERFIL",
@@ -71,7 +72,7 @@
         "message-end": " en este servidor"
     },
     "sponsorship": {
-        "menutitle": "SPONSORSHIPS",
-        "sponsorships": "Sponsorships"
+        "menutitle": "PATROCINADORES",
+        "sponsorships": "Viajes patrocinados"
     }
 }

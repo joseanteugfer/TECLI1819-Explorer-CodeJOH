@@ -23,7 +23,7 @@ const routes = [
     { path : 'managed', component: TripListManagedComponent, canActivate: [ActorRoleGuard],
             data: {expectedRole: 'MANAGER'} },
     { path : 'details/:id', component: TripDetailsComponent, canActivate: [ActorRoleGuard],
-            data: { expectedRole: 'ADMINISTRATOR|MANAGER|EXPLORER|anonymous'} },
+            data: { expectedRole: 'SPONSOR|ADMINISTRATOR|MANAGER|EXPLORER|anonymous'} },
     { path : 'new', component: TripDetailsComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'MANAGER'} },
     { path : 'edit/:id', component: TripEditComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'MANAGER'} },
     { path : 'delete/:id', component: TripDetailsComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'MANAGER'} },

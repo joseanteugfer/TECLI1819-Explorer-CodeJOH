@@ -46,7 +46,8 @@
         "price": "Price",
         "listexplorer": "Available trips",
         "listmanager": "My managed trips",
-        "create": "New trip"
+        "create": "New trip",
+        "stages": "Stages"
     },
     "profile": {
         "menutitle": "PROFILE",
@@ -71,6 +72,6 @@
     },
     "sponsorship": {
         "menutitle": "SPONSORSHIPS",
-        "sponsorships": "Sponsorships"
+        "sponsorships": "Sponsored trips"
     }
 }

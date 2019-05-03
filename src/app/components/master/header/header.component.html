@@ -25,10 +25,10 @@
             aria-haspopup="true" aria-expanded="false">{{ 'profile.menutitle' | translate}}</a>
           <div class="dropdown-menu" >
             <a class="dropdown-item" routerLink="/profile/{{currentActor._id}}">{{'profile.show' | translate}}</a>
-            <div class="dropdown-divider" *ngIf="activeRole === 'ADMINISTRATOR'"></div>
+            <!-- <div class="dropdown-divider" *ngIf="activeRole === 'ADMINISTRATOR'"></div>
             <div *ngIf="activeRole === 'ADMINISTRATOR'">
               <a class="dropdown-item" routerLink="/profile">{{'profile.list' | translate}}</a> 
-            </div> 
+            </div>  -->
           </div>
         </li>
         <li class="nav-item dropdown" *ngIf="currentActor">
@@ -39,7 +39,7 @@
               <div class="dropdown-divider" *ngIf="activeRole === 'MANAGER'"></div>
               <div *ngIf="activeRole === 'MANAGER'">
                 <a class="dropdown-item" routerLink="/trips/managed">{{'trips.listmanager' | translate}}</a> 
-                <a class="dropdown-item" routerLink="/trips/create">{{'trips.create' | translate}}</a>
+                <!-- <a class="dropdown-item" routerLink="/trips/create">{{'trips.create' | translate}}</a> -->
             </div>   
             </div>
           </li>
@@ -55,7 +55,7 @@
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
               aria-haspopup="true" aria-expanded="false">{{ 'administration.menutitle' | translate}}</a>
             <div class="dropdown-menu" >
-              <a class="dropdown-item" routerLink="settings">{{'administration.settings' | translate}}</a>
+              <!-- <a class="dropdown-item" routerLink="settings">{{'administration.settings' | translate}}</a> -->
               <a class="dropdown-item" routerLink="dashboard">{{'administration.dashboard' | translate}}</a> 
             </div>
           </li>
@@ -63,7 +63,7 @@
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
               aria-haspopup="true" aria-expanded="false">{{ 'sponsorship.menutitle' | translate}}</a>
             <div class="dropdown-menu" >
-              <a class="dropdown-item" routerLink="/sponsorships">{{'sponsorship.sponsorships' | translate}}</a>            </div>
+              <a class="dropdown-item" routerLink="/sponsorships">{{'sponsorship.sponsorships' | translate}}</a></div>
           </li>
       </ul>
 
