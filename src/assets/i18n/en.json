@@ -15,7 +15,8 @@
         "surname": "Surname",
         "phone": "Phone",
         "address": "Address",
-        "role": "Role"
+        "role": "Role",
+        "createdAt": "Created at"
     },
     "login":{
         "header": "Start new session"
@@ -50,7 +51,7 @@
         "status": "Status",
         "ticker": "Ticker",
         "reservationdata": "Reservation data",
-        "comments": "Comments"
+        "comments": "Comments",
         "stages": "Stages",
         "apply": "Apply"
     },

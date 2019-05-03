@@ -1,0 +1,25 @@
+.table-container {
+    height: 400px;
+    overflow: auto;
+    width: 80%;
+    margin: 0 auto;
+}
+
+table {
+    margin: 0 auto;
+    background: white;
+    width: 80%;
+}
+
+.card-customer {
+
+    min-width: 245px;
+    flex: 0 0 0%;
+    width: 20%;
+    margin-bottom: 15px;
+
+    &_container {
+        width: 80%;
+        margin: 0 auto;
+    }
+}

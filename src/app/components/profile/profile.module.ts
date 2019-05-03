@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule, DatePipe, registerLocaleData } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ActorRoleGuard } from 'src/app/guards/actor-role.guard';
 import { ProfileDisplayComponent } from './profile-display/profile-display.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { CoreModule } from 'src/app/core/core.module';
+import locales from '@angular/common/locales/es';
+
 
 
 const declarables = [
@@ -20,6 +22,8 @@ const routes = [
             data: { expectedRole: 'ADMINISTRATOR|MANAGER|EXPLORER|SPONSOR'} },
     { path: '**', redirectTo: '/not-found' }
 ];
+
+registerLocaleData(locales, 'es');
 
 @NgModule({
     imports: [

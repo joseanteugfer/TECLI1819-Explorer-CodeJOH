@@ -16,7 +16,8 @@
         "surname": "Apellido",
         "phone": "Teléfono",
         "address": "Dirección",
-        "role": "Rol"
+        "role": "Rol",
+        "createdAt": "Creado el"
     },
     "login": {
         "header": "Iniciar sesión"
@@ -51,7 +52,7 @@
         "status": "Estado",
         "ticker": "Ticker" ,
         "reservationdata": "Fecha de reserva",
-        "comments": "Comentarios"
+        "comments": "Comentarios",
         "stages": "Etapas",
         "apply": "Reservar"
     },
