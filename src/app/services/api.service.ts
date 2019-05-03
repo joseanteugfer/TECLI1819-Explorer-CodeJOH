@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Trip } from '../models/trip.model';
+import { OrderedTrip } from '../models/orderedTrip.model';
 
 @Injectable({
   providedIn: 'root'
@@ -60,5 +61,13 @@ export class ApiService {
   getDashboardLatest(): Observable<any> {
     const url = `${environment.apiBackendUrl}/v1/dashboards/latest`;
     return this.http.get(url);
+  }
+
+  createOrderedTrip(orderedTrip: string): Observable<any> {
+    const url = `${environment.apiBackendUrl}/v1/orderedTrips`;
+    const header = new HttpHeaders();
+    header.set('Content-Type','application/json');
+    header.set('Accept','application/json');
+    return this.http.post(url, JSON.parse(orderedTrip), {headers: header});
   }
 }

@@ -47,4 +47,14 @@
           <h5 class="row__list--title">{{trip.price}} $</h5>
       </div>
     </div>
+    <div class="row row__list row__list--apply" *ngIf="isExplorer">
+      <div class="col">
+        <button class="btn btn-info btn-sm waves-light" type="submit" (click)="applyTrip()">{{'trips.apply' | translate}}</button>
+      </div>
+    </div>
+    <div class="row row__list row__list--message" *ngIf="applicationDone">
+      <div class="col">
+        <p>{{'messages.applyDone' | translate}}</p>
+      </div>
+    </div>
 </div>

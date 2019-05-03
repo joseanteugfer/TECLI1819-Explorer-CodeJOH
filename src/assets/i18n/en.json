@@ -47,7 +47,8 @@
         "listexplorer": "Available trips",
         "listmanager": "My managed trips",
         "create": "New trip",
-        "stages": "Stages"
+        "stages": "Stages",
+        "apply": "Apply"
     },
     "profile": {
         "menutitle": "PROFILE",
@@ -73,5 +74,8 @@
     "sponsorship": {
         "menutitle": "SPONSORSHIPS",
         "sponsorships": "Sponsored trips"
+    },
+    "messages": {
+        "applyDone": "The application is done correctly"
     }
 }

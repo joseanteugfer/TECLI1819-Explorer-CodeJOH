@@ -48,7 +48,8 @@
         "listexplorer": "Viajes disponibles",
         "listmanager": "Mis viajes gestionados",
         "create": "Nuevo viaje",
-        "stages": "Etapas"
+        "stages": "Etapas",
+        "apply": "Reservar"
     },
     "profile": {
         "menutitle": "PERFIL",
@@ -74,5 +75,8 @@
     "sponsorship": {
         "menutitle": "PATROCINADORES",
         "sponsorships": "Viajes patrocinados"
+    },
+    "messages": {
+        "applyDone": "La reserva de se ha hecho de forma correcta"
     }
 }

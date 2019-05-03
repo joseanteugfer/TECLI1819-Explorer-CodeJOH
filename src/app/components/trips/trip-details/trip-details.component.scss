@@ -58,6 +58,14 @@
     &--description {
         font-style: italic;
     }
+    &--apply {
+        text-align: center;
+    }
+    &--message {
+        text-align: center;
+        color: lightskyblue;
+        font-style: bold;
+    }
 }
 
 .align-center {

@@ -46,7 +46,7 @@ export class OrderedTripsListComponent extends TranslatableComponent implements 
   async getOrderedTripsForExplorer() {
     const res = await this.apiService.getOrderedTrip().toPromise();
     this.orderedTrips = res;
-    console.log(this.orderedTrips.toString());
+    //console.log(this.orderedTrips.toString());
     for (let i = 0; i < this.orderedTrips.length; i++) {
       if (this.orderedTrips[i].actor_id === this.idCurrentActor) {
         this.orderedTripsTratadas.push(this.orderedTrips[i]);

@@ -31,7 +31,7 @@ export class HeaderComponent extends TranslatableComponent implements OnInit {
         this.currentActor = false;
       }
       console.log(this.activeRole);
-      console.log(this.currentActor)
+      console.log(this.currentActor);
     });
   }
 
