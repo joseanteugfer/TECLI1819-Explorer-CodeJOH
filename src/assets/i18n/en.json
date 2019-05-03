@@ -47,6 +47,10 @@
         "listexplorer": "Available trips",
         "listmanager": "My managed trips",
         "create": "New trip",
+        "status": "Status",
+        "ticker": "Ticker",
+        "reservationdata": "Reservation data",
+        "comments": "Comments"
         "stages": "Stages",
         "apply": "Apply"
     },

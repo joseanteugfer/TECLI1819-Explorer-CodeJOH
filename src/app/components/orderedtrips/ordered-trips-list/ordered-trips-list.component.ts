@@ -13,9 +13,10 @@ import { AuthService } from 'src/app/services/auth.service';
 export class OrderedTripsListComponent extends TranslatableComponent implements OnInit {
 
   orderedTrips;
-  orderedTripsTratadas: OrderedTrip[] = new Array();
+  orderedTripsTratadas: OrderedTrip[];
   activeRole: string;
   idCurrentActor: string;
+  dtOptions: DataTables.Settings = {};
 
   constructor(private apiService: ApiService,
     private authService: AuthService,
@@ -24,15 +25,18 @@ export class OrderedTripsListComponent extends TranslatableComponent implements 
   }
 
   ngOnInit() {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5,
+      processing: true
+    };
     this.activeRole = localStorage.getItem('activeRole');
     this.idCurrentActor = this.authService.getCurrentActor()._id;
     console.log(this.activeRole);
     if (this.activeRole === 'EXPLORER') {
-      console.log('Se llama a getOrderedTripsForExplorer con id de Manager: ',this.idCurrentActor);
       this.getOrderedTripsForExplorer();
     }
     if (this.activeRole === 'MANAGER') {
-      console.log('Se llama a getOrderedTripsFromManager con id de Manager: ',this.idCurrentActor);
       this.apiService.getOrderedTripsFromManager(this.idCurrentActor).subscribe(
         res => {
           if (res != null) {
@@ -46,7 +50,7 @@ export class OrderedTripsListComponent extends TranslatableComponent implements 
   async getOrderedTripsForExplorer() {
     const res = await this.apiService.getOrderedTrip().toPromise();
     this.orderedTrips = res;
-    //console.log(this.orderedTrips.toString());
+    this.orderedTripsTratadas = new Array();
     for (let i = 0; i < this.orderedTrips.length; i++) {
       if (this.orderedTrips[i].actor_id === this.idCurrentActor) {
         this.orderedTripsTratadas.push(this.orderedTrips[i]);

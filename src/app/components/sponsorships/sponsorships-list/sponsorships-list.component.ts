@@ -16,6 +16,7 @@ export class SponsorshipsListComponent extends TranslatableComponent implements 
   trips;
   sponsorships: any[];
   tripsFromSponsorships: Trip[];
+  dtOptions: DataTables.Settings = {};
 
   constructor(private apiService: ApiService,
     private authService: AuthService,
@@ -24,7 +25,11 @@ export class SponsorshipsListComponent extends TranslatableComponent implements 
   }
 
   ngOnInit() {
-
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5,
+      processing: true
+    };
     this.getTripsBySponsor();
 
   }

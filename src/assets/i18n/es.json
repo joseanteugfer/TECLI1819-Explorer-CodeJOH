@@ -48,6 +48,10 @@
         "listexplorer": "Viajes disponibles",
         "listmanager": "Mis viajes gestionados",
         "create": "Nuevo viaje",
+        "status": "Estado",
+        "ticker": "Ticker" ,
+        "reservationdata": "Fecha de reserva",
+        "comments": "Comentarios"
         "stages": "Etapas",
         "apply": "Reservar"
     },

@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { ActorRoleGuard } from 'src/app/guards/actor-role.guard';
 import { SponsorshipsListComponent } from './sponsorships-list/sponsorships-list.component';
 import { CoreModule } from 'src/app/core/core.module';
+import { DataTablesModule } from 'angular-datatables';
 
 
 const declarables = [
@@ -22,6 +23,7 @@ const routes = [
         CoreModule,
         CommonModule,
         FormsModule,
+        DataTablesModule,
         ReactiveFormsModule,
         RouterModule.forChild(routes)
     ],
