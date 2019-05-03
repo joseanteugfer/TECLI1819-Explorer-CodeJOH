@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DeniedAccessPageComponent extends TranslatableComponent implements OnInit {
 
-  private url: string;
+  url: string;
 
   constructor(private translateService: TranslateService,
               private route: ActivatedRoute) {
