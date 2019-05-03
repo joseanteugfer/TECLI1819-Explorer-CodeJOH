@@ -15,6 +15,8 @@ export class DashboardComponent implements OnInit {
   computationMoment: string;
   pricePerTrips: any;
   rebuildPeriod: string;
+  ratioOrderedtrips: any;
+  tripsPerManager: any;
   public chartType: string = 'bar';
 
   public chartDatasets: Array<any> = [
@@ -41,7 +43,7 @@ export class DashboardComponent implements OnInit {
         'rgba(153, 102, 255, 1)',
         'rgba(255, 159, 64, 1)'
       ],
-      borderWidth: 2,
+      borderWidth: 2
     }
   ];
 
@@ -70,6 +72,18 @@ export class DashboardComponent implements OnInit {
           }
           if (this.dashboardResultLatest['computationMoment']) {
             this.computationMoment = this.dashboardResultLatest['computationMoment'];
+          }
+          if (this.dashboardResultLatest['rebuildPeriod']) {
+            this.rebuildPeriod = this.dashboardResultLatest['rebuildPeriod'];
+          }
+          if (this.dashboardResultLatest['pricePerTrips']) {
+            this.pricePerTrips = this.dashboardResultLatest['pricePerTrips'];
+          }
+          if (this.dashboardResultLatest['ratioOrderedtrips']) {
+            this.ratioOrderedtrips = this.dashboardResultLatest['ratioOrderedtrips'];
+          }
+          if (this.dashboardResultLatest['tripsPerManager']) {
+            this.tripsPerManager = this.dashboardResultLatest['tripsPerManager'];
           }
         });
   }

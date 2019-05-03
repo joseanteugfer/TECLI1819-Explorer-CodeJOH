@@ -1,5 +1,49 @@
 <div class="container">
 
+  <div class="row">
+      <div class="col" *ngIf="topKeywords" > 
+          <table class="table table-hover w-auto">
+              <thead>
+                  <tr>
+                      <th>{{ 'dashboard.keyword' | translate }}</th>
+                      <th>{{ 'dashboard.keywordsum' | translate }}</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr class="table-info" *ngFor="let key of topKeywords">
+                      <td>{{key.keyword}}</td>
+                      <td>{{key.keywordSum}}</td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+      <div class="col" *ngIf="avgPriceRangeFinders && computationMoment">
+          <table class="table table-hover w-auto">
+            <thead>
+                <tr>
+                    <th>{{ 'dashboard.parameter' | translate }}</th>
+                    <th>{{ 'dashboard.value' | translate }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-info">
+                    <td>{{ 'dashboard.avgPriceRangeFinders' | translate }}</td>
+                    <td>{{avgPriceRangeFinders}} $</td>
+                </tr>
+                <tr class="table-info">
+                    <td>{{ 'dashboard.computationMoment' | translate }}</td>
+                    <td>{{ computationMoment | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
+                </tr>
+                <tr class="table-info">
+                    <td>{{ 'dashboard.rebuildPeriod' | translate }}</td>
+                    <td>{{ rebuildPeriod }}</td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+  </div>
+
+
   <div class="row" *ngIf="orderedtripsPerTrips">
     <div class="col">
       <div style="display: block">
@@ -15,35 +59,90 @@
     </div>
   </div>
 
-  <div class="row">
-      <div class="col" *ngIf="topKeywords" > 
-          <table class="table table-hover w-auto">
-              <thead>
-                  <tr>
-                      <th>Keyword</th>
-                      <th>Keyword Sum</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr class="table-info" *ngFor="let key of topKeywords">
-                      <td>{{key.keyword}}</td>
-                      <td>{{key.keywordSum}}</td>
-                  </tr>
-              </tbody>
+  <div class="row" *ngIf="pricePerTrips">
+    <div class="col">
+        <table class="table table-hover w-auto">
+            <thead>
+                <tr>
+                    <th>{{ 'dashboard.avgPrice' | translate }}</th>
+                    <th>{{ 'dashboard.maxPrice' | translate }}</th>
+                    <th>{{ 'dashboard.minPrice' | translate }}</th>
+                    <th>{{ 'dashboard.stdDevPrice' | translate }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-info">
+                    <td>{{ pricePerTrips.avgPrice }} $</td>
+                    <td>{{ pricePerTrips.maxPrice }} $</td>
+                    <td>{{ pricePerTrips.minPrice }} $</td>
+                    <td>{{ pricePerTrips.stdDevPrice }}</td>
+                </tr>
+            </tbody>
           </table>
+    </div>
+  </div>
+
+    <div class="row">
+        <div class="col" *ngIf="ratioOrderedtrips">
+            <table class="table table-hover w-auto">
+                <thead>
+                    <tr>
+                      <th>{{ 'dashboard.parameter' | translate }}</th>
+                      <th>{{ 'dashboard.value' | translate }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-info">
+                        <td>{{ 'dashboard.ratioOrderedTripAccepted' | translate }}</td>
+                        <td>{{ ratioOrderedtrips.ratioOrderedTripAccepted }}</td>
+                    </tr>
+                    <tr class="table-info">
+                        <td>{{ 'dashboard.ratioOrderedTripCancelled' | translate }}</td>
+                        <td>{{ ratioOrderedtrips.ratioOrderedTripCancelled }}</td>
+                    </tr>
+                    <tr class="table-info">
+                        <td>{{ 'dashboard.ratioOrderedTripDue' | translate }}</td>
+                        <td>{{ ratioOrderedtrips.ratioOrderedTripDue }}</td>
+                    </tr>
+                    <tr class="table-info">
+                        <td>{{ 'dashboard.ratioOrderedTripPending' | translate }}</td>
+                        <td>{{ ratioOrderedtrips.ratioOrderedTripPending }}</td>
+                    </tr>
+                    <tr class="table-info">
+                        <td>{{ 'dashboard.ratioOrderedTripRejected' | translate }}</td>
+                        <td>{{ ratioOrderedtrips.ratioOrderedTripRejected }}</td>
+                    </tr>
+                </tbody>
+              </table>
+        </div>
+        <div class="col" *ngIf="tripsPerManager">
+            <table class="table table-hover w-auto">
+                <thead>
+                    <tr>
+                      <th>{{ 'dashboard.parameter' | translate }}</th>
+                      <th>{{ 'dashboard.value' | translate }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-info">
+                        <td>{{ 'dashboard.avgTripsManager' | translate }}</td>
+                        <td>{{ tripsPerManager.avgTripsManager }}</td>
+                    </tr>
+                    <tr class="table-info">
+                        <td>{{ 'dashboard.maxTripsManager' | translate }}</td>
+                        <td>{{ tripsPerManager.maxTripsManager }}</td>
+                    </tr>
+                    <tr class="table-info">
+                        <td>{{ 'dashboard.minTripsManager' | translate }}</td>
+                        <td>{{ tripsPerManager.minTripsManager }}</td>
+                    </tr>
+                    <tr class="table-info">
+                        <td>{{ 'dashboard.stdDevTripsManager' | translate }}</td>
+                        <td>{{ tripsPerManager.stdDevTripsManager }}</td>
+                    </tr>
+                </tbody>
+              </table>
+        </div>
       </div>
-  </div>
-
-  <div class="row" *ngIf="avgPriceRangeFinders" >
-    <div class="col">
-      <h3>Avg Price Range Finders: {{avgPriceRangeFinders}}</h3>
-    </div>
-  </div>
-
-  <div class="row" *ngIf="computationMoment" >
-    <div class="col">
-      <h3>Computation date: {{computationMoment | date: 'dd/MM/yyyy hh:mm:ss'}}</h3>
-    </div>
-  </div>
 
 </div>

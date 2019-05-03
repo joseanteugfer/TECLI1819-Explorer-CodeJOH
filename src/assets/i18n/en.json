@@ -82,5 +82,27 @@
     },
     "messages": {
         "applyDone": "The application is done correctly"
+    },
+    "dashboard": {
+        "keyword": "Keyword",
+        "keywordsum": "Numbers of time applied",
+        "parameter": "Parameter",
+        "value": "Value",
+        "avgPriceRangeFinders": "Avg price from finders",
+        "computationMoment": "Last registered date",
+        "rebuildPeriod": "Finder rebuild period",
+        "avgPrice": "Avg price",
+        "maxPrice": "Max price",
+        "minPrice": "Min price",
+        "stdDevPrice": "Std price",
+        "ratioOrderedTripAccepted": "Ratio accepted applications",
+        "ratioOrderedTripCancelled": "Ratio cancelled applications",
+        "ratioOrderedTripDue": "Ratio due applications",
+        "ratioOrderedTripPending": "Ratio pending applications",
+        "ratioOrderedTripRejected": "Ratio rejected applications",
+        "avgTripsManager": "Avg trips from manager",
+        "maxTripsManager": "Max trips from manager",
+        "minTripsManager": "Min trips from manager",
+        "stdDevTripsManager": "Std desviation trips from manager"
     }
 }

@@ -83,5 +83,27 @@
     },
     "messages": {
         "applyDone": "La reserva de se ha hecho de forma correcta"
+    },
+    "dashboard": {
+        "keyword": "Clave",
+        "keywordsum": "Nº veces utilizada",
+        "parameter": "Parámetro",
+        "value": "Valor",
+        "avgPriceRangeFinders": "Media de precios por finder",
+        "computationMoment": "Fecha último registro",
+        "rebuildPeriod": "Período de refresco del finder",
+        "avgPrice": "Precio medio",
+        "maxPrice": "Precio máximo",
+        "minPrice": "Precio mínimo",
+        "stdDevPrice": "Desviación media",
+        "ratioOrderedTripAccepted": "Proporción de reservas aceptadas",
+        "ratioOrderedTripCancelled": "Proporción de reservas caneladas",
+        "ratioOrderedTripDue": "Proporción de reservas en caducadas",
+        "ratioOrderedTripPending": "Proporción de reservas pendientes",
+        "ratioOrderedTripRejected": "Proporción de reservas rechazadas",
+        "avgTripsManager": "Media de viajes por Gestor",
+        "maxTripsManager": "Máximo número de viajes por Gestor",
+        "minTripsManager": "Mínimo número de viajes por Gestor",
+        "stdDevTripsManager": "Desviación típica de viajes por Gestor"
     }
 }
