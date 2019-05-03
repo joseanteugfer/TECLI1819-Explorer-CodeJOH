@@ -25,12 +25,13 @@ export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
-describe('TripListComponent', () => {
+fdescribe('TripListComponent', () => {
   let component: TripListComponent;
   let fixture: ComponentFixture<TripListComponent>;
   let injector: Injector;
   let translate: TranslateService;
   let apiService: ApiService;
+  let originalTimeout;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -66,12 +67,18 @@ describe('TripListComponent', () => {
   }));
 
   beforeEach(() => {
+    originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 100000;
     injector = getTestBed();
     translate = injector.get(TranslateService);
     apiService = TestBed.get(ApiService);
     fixture = TestBed.createComponent(TripListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
   });
 
   it('should create', () => {

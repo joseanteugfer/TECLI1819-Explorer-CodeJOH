@@ -63,8 +63,4 @@ export class TripDetailsComponent extends TranslatableComponent implements OnIni
     }
   }
 
-  /*isApplicationDone(): boolean {
-    return this.applicationDone;
-  }*/
-
 }

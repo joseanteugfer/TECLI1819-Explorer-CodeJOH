@@ -30,7 +30,7 @@ export const firebaseConfig = {
   messagingSenderId: '513136153151'
 };
 
-describe('AppComponent', () => {
+fdescribe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
