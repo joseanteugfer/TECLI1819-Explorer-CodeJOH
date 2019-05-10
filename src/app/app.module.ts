@@ -28,6 +28,8 @@ import { DeniedAccessPageComponent } from './components/denied-access-page/denie
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HttpModule } from '@angular/http';
 import { CoreModule, HttpLoaderFactory } from './core/core.module';
+import { ApiMockService } from './services-mock/api-mock.service';
+import { environment } from 'src/environments';
 
 export const firebaseConfig = {
     apiKey: 'AIzaSyBDPPdxUsnYcPMc4yUs2ZRQfkXXW0wZFKE',
@@ -37,6 +39,18 @@ export const firebaseConfig = {
     storageBucket: 'acme-explorer-code-joh.appspot.com',
     messagingSenderId: '513136153151'
 };
+
+const mockedServices = [
+  { provide: ApiService, useClass: ApiMockService },
+  { provide: AuthService, useClass: AuthService },
+  { provide: AngularFireAuth, useClass: AngularFireAuth }
+];
+
+const realServices = [
+  AuthService,
+  ApiService,
+  AngularFireAuth
+];
 
 registerLocaleData(locales, 'es');
 
@@ -73,11 +87,7 @@ registerLocaleData(locales, 'es');
   }),
     HttpModule
   ],
-  providers: [
-    AuthService,
-    ApiService,
-    AngularFireAuth
-  ],
+  providers: environment.isMock ? mockedServices : realServices,
   bootstrap: [AppComponent]
 })
 export class AppModule { }
