@@ -1,5 +1,3 @@
-import { Entity } from './entity.model';
-import { Actor } from './actor.model';
 import { Stage } from './stage.model';
 import { Sponsorship } from './sponsorship.model';
 
