@@ -39,7 +39,7 @@ export class TripDetailsComponent extends TranslatableComponent implements OnIni
     //this.apply.subscribe();
 
     this.apiService.getTrip(this.id).subscribe(response => {
-      if (response && response.length > 0) { this.trip = response[0]; }
+      if (response) { this.trip = response; }
     }, err => { });
   }
 
