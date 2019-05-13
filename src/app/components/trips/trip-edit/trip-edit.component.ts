@@ -60,6 +60,7 @@ export class TripEditComponent extends TranslatableComponent implements OnInit {
   update() {
     // Update Trip propertys
     const trip: Trip = {
+      _id: this.id,
       title: this.formGroup.value.title,
       stages: this.formGroup.value.stages,
       description: this.formGroup.value.description,

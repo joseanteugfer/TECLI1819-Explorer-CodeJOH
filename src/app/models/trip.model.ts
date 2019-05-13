@@ -2,6 +2,7 @@ import { Stage } from './stage.model';
 import { Sponsorship } from './sponsorship.model';
 
 export interface Trip {
+    _id: string;
     ticker?: string;
     manager?: string;
     title: string;
@@ -15,4 +16,5 @@ export interface Trip {
     status?: string;
     stages?: Stage[];
     sponsorships?: Sponsorship[];
+    __v?: number;
 }
