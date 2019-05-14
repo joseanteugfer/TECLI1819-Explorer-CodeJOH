@@ -22,29 +22,24 @@ export class TripDetailsComponent extends TranslatableComponent implements OnIni
   isExplorer: boolean;
   currentActor: Actor;
   applicationDone: boolean;
-  /*apply: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.isApplicationDone());*/
-
 
   constructor(private translatableService: TranslateService,
-    private route: ActivatedRoute,
-    private apiService: ApiService,
-    private authService: AuthService) {
-    super(translatableService);
+              private route: ActivatedRoute,
+              private apiService: ApiService,
+              private authService: AuthService) {
+              super(translatableService);
   }
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
     this.isExplorer = (localStorage.getItem("activeRole") === 'EXPLORER');
     this.applicationDone = false;
-    //this.apply.subscribe();
-
     this.apiService.getTrip(this.id).subscribe(response => {
       if (response) { this.trip = response; }
-    }, err => { });
+    }, err => {         });
   }
 
   applyTrip() {
-
     if ((this.currentActor = this.authService.getCurrentActor()) !== undefined && this.isExplorer) {
       this.applicationDone = false;
       let orderedTrip: string = JSON.stringify({
