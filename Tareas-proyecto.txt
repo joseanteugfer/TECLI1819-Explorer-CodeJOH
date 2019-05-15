@@ -11,7 +11,7 @@ Vistas:
     - Edición
     - Crear
     - Eliminar
-    - Detalles -> Mapa
+    ?- Detalles -> Mapa
 
 - Ordered Trips:
     - Listar
@@ -69,7 +69,7 @@ Permisos roles:
     - Trips:
         - Listar sólo sus trips
         - Crear trips
-        - Publicar trips (Crear trip y cambiar estado a PUBLISH)
+        - Publicar trips (Crear trip y cambiar estado a PUBLISHED)
         - Modificar sólo sus trips
         - Eliminiar sólo sus trips
     

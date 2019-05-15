@@ -4,10 +4,10 @@ import { TranslateService } from '@ngx-translate/core';
 import { Trip } from 'src/app/models/trip.model';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
-import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Actor } from 'src/app/models/actor.model';
-import { BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-trip-details',
@@ -32,27 +32,27 @@ export class TripDetailsComponent extends TranslatableComponent implements OnIni
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
-    this.isExplorer = (localStorage.getItem("activeRole") === 'EXPLORER');
+    this.isExplorer = (localStorage.getItem('activeRole') === 'EXPLORER');
     this.applicationDone = false;
-    this.apiService.getTrip(this.id).subscribe(response => {
-      if (response) { this.trip = response; }
-    }, err => {         });
+    this.apiService.getTrip(this.id)
+                   .pipe(map(trip => trip[0] as Trip))
+                   .subscribe((trip: Trip) => this.trip = trip);
   }
 
-  applyTrip() {
-    if ((this.currentActor = this.authService.getCurrentActor()) !== undefined && this.isExplorer) {
+  applyTrip(trip) {
+    this.currentActor = this.authService.getCurrentActor();
+    if (this.currentActor && this.isExplorer) {
       this.applicationDone = false;
-      let orderedTrip: string = JSON.stringify({
-        ticker: this.trip.ticker,
-        status: "PENDING",
+      const orderedTrip: string = JSON.stringify({
+        ticker: trip.ticker,
+        status: 'PENDING',
         date_apply: Date.now(),
-        comments: "",
+        comments: '',
         actor_id: this.currentActor._id
       });
       this.apiService.createOrderedTrip(orderedTrip).subscribe(response => {
         if (response) {
           this.applicationDone = true;
-          console.log(response)
         }
       }, err => { });
     }

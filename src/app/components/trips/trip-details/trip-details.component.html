@@ -49,7 +49,7 @@
     </div>
     <div class="row row__list row__list--apply" *ngIf="isExplorer">
       <div class="col">
-        <button class="btn btn-info btn-sm waves-light" type="submit" (click)="applyTrip()">{{'trips.apply' | translate}}</button>
+        <button class="btn btn-info btn-sm waves-light" type="submit" (click)="applyTrip(trip)">{{'trips.apply' | translate}}</button>
       </div>
     </div>
     <div class="row row__list row__list--message" *ngIf="applicationDone">

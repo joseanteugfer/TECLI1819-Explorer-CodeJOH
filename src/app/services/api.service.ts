@@ -22,9 +22,9 @@ export class ApiService {
     return this.http.get(url);
   }
 
-  getTrip(id: string): Observable<any> {
+  getTrip(id: string): Observable<Trip> {
     const url = `${environment.apiBackendUrl}/v1/trips/${id}`;
-    return this.http.get(url);
+    return this.http.get<Trip>(url);
   }
 
   updateTrip(id: string, trip: Trip) {
