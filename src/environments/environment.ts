@@ -7,7 +7,8 @@ import { Configuration } from './configuration';
 export const environment: Configuration = {
   production: false,
   isMock: false,
-  apiBackendUrl: 'https://acme-explorer-codejoh.herokuapp.com'
+  //apiBackendUrl: 'https://acme-explorer-codejoh.herokuapp.com'
+  apiBackendUrl: 'http://localhost:3000'
 };
 
 /*

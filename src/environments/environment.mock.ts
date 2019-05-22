@@ -1,7 +1,7 @@
 import { Configuration } from './configuration';
 
 export const environment: Configuration = {
-  production: true,
+  production: false,
   isMock: true,
   apiBackendUrl: ''
 };

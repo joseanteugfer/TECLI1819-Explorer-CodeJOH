@@ -6,7 +6,11 @@
     "shared": {
         "register": "Register",
         "login": "Login",
-        "details": "Details"
+        "details": "Details",
+        "edit": "Editar",
+        "apply": "Apply",
+        "back": "Back",
+        "change-status": "Change status"
     },
     "actor":{
         "email": "Email",
@@ -80,9 +84,6 @@
         "menutitle": "SPONSORSHIPS",
         "sponsorships": "Sponsored trips"
     },
-    "messages": {
-        "applyDone": "The application is done correctly"
-    },
     "dashboard": {
         "keyword": "Keyword",
         "keywordsum": "Numbers of time applied",
@@ -104,5 +105,22 @@
         "maxTripsManager": "Max trips from manager",
         "minTripsManager": "Min trips from manager",
         "stdDevTripsManager": "Std desviation trips from manager"
+    },
+    "messages": {
+        "applyDone": "The application is done correctly",
+        "updateDone": "The trip has been updated correctly",
+        "updateStatusDone": "Status trip has been updated"
+    },
+    "errorMessages": {
+        "validation": {
+            "required": "Field required"
+        },
+        "api": {
+            "500": "Internal error on the server",
+            "404": "Trip not founded in the server",
+            "405-1": "Cancel trip with status PUBLISHED and a valid application is not allowed",
+            "405-2": "Cancel trip with status PUBLISHED and started is not allowed",
+            "405-3": "Update trip with status PUBLISHED is not allowed"
+        }
     }
 }

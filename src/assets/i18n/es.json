@@ -6,7 +6,11 @@
     "shared": {
         "register": "Registrar",
         "login": "Iniciar Sesión",
-        "details": "Detalles"
+        "details": "Detalles",
+        "edit": "Edit",
+        "apply": "Aplicar",
+        "back": "Volver",
+        "change-status": "Cambiar estado"
     },
     "actor":{
         "email": "Correo electrónico",
@@ -81,9 +85,6 @@
         "menutitle": "PATROCINADORES",
         "sponsorships": "Viajes patrocinados"
     },
-    "messages": {
-        "applyDone": "La reserva de se ha hecho de forma correcta"
-    },
     "dashboard": {
         "keyword": "Clave",
         "keywordsum": "Nº veces utilizada",
@@ -105,5 +106,22 @@
         "maxTripsManager": "Máximo número de viajes por Gestor",
         "minTripsManager": "Mínimo número de viajes por Gestor",
         "stdDevTripsManager": "Desviación típica de viajes por Gestor"
+    },
+    "messages": {
+        "applyDone": "La reserva de se ha hecho de forma correcta",
+        "updateDone": "El viaje ha sido actualizado de forma correcta",
+        "updateStatusDone": "El estado del viaje ha sido actualizado"
+    },
+    "errorMessages": {
+        "validation": {
+            "required": "Field required"
+        },
+        "api": {
+            "500": "Error interno en el servidor",
+            "404": "No se ha encontrado el viaje en el servidor",
+            "405-1": "No está permitido cancelar un viaje con estado PUBLISHED y que tenga una reserva",
+            "405-2": "No está permitido cancelar un viaje con estado PUBLISHED y que ya haya empezado",
+            "405-3": "No se puede actualizar un viaje con estado PUBLISHED"
+        }
     }
 }

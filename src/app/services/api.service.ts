@@ -38,8 +38,8 @@ export class ApiService {
   updateTripStatus(id: string, status: string, comment: string = 'Empty') {
     const url = `${environment.apiBackendUrl}/v1/trips/${id}/status?val=${status}&comment=${comment}`;
     const header = new HttpHeaders();
-    header.set('Content-Type','application/json');
-    header.set('Accept','application/json');
+    header.set('Content-Type', 'application/json');
+    header.set('Accept', 'application/json');
     return this.http.put(url, {headers: header});
   }
 

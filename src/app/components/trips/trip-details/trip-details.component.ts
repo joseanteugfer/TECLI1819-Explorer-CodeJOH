@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { TranslatableComponent } from '../../shared/translatable/translatable.component';
+import { ActivatedRoute, Router, NavigationStart } from '@angular/router';
+import { map, filter } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
+
+import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 import { Trip } from 'src/app/models/trip.model';
-import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Actor } from 'src/app/models/actor.model';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-trip-details',
@@ -21,9 +22,12 @@ export class TripDetailsComponent extends TranslatableComponent implements OnIni
   id: string;
   isExplorer: boolean;
   currentActor: Actor;
+  activeRole: string;
   applicationDone: boolean;
+  canEdit = false;
 
   constructor(private translatableService: TranslateService,
+              private router: Router,
               private route: ActivatedRoute,
               private apiService: ApiService,
               private authService: AuthService) {
@@ -31,16 +35,25 @@ export class TripDetailsComponent extends TranslatableComponent implements OnIni
   }
 
   ngOnInit() {
+    this.activeRole = localStorage.getItem('activeRole');
+    if (this.activeRole === 'ADMINISTRATOR') {
+      this.canEdit = true;
+    }
+    this.currentActor = this.authService.getCurrentActor();
     this.id = this.route.snapshot.params['id'];
     this.isExplorer = (localStorage.getItem('activeRole') === 'EXPLORER');
     this.applicationDone = false;
     this.apiService.getTrip(this.id)
                    .pipe(map(trip => trip[0] as Trip))
-                   .subscribe((trip: Trip) => this.trip = trip);
+                   .subscribe((trip: Trip) => {
+                     this.trip = trip;
+                     if (trip.manager === this.currentActor._id) {
+                       this.canEdit = true;
+                     }
+                    });
   }
 
   applyTrip(trip) {
-    this.currentActor = this.authService.getCurrentActor();
     if (this.currentActor && this.isExplorer) {
       this.applicationDone = false;
       const orderedTrip: string = JSON.stringify({
