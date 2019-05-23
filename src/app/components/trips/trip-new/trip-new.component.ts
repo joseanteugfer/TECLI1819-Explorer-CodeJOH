@@ -27,7 +27,6 @@ export class TripNewComponent extends TranslatableComponent implements OnInit {
   showMessageError = false;
   timeDisplayMessage = 3000; //ms
   currentActor: Actor;
-  disablePrice = true;
 
   constructor(private translatableService: TranslateService,
               private route: ActivatedRoute,
@@ -53,19 +52,23 @@ export class TripNewComponent extends TranslatableComponent implements OnInit {
       stages: this.formBuilder.array([ this.createItemStage() ])
     }, { validator: dateEndLessStart });
     this.tripNewGroup.get('stages').valueChanges.subscribe((stages) => {
-      let total = 0;
-      stages.forEach((stage) => {
-        const price = stage['price'] ? parseInt(stage['price']) : 0;
-        total += price;
-      });
+      const total = this.updateTotalPrice(stages);
       if (total === 0) {
         this.tripNewGroup.get('price').enable();
       } else {
         this.tripNewGroup.get('price').disable();
       }
-      this.disablePrice = (total === 0) ? false : true;
-      this.tripNewGroup.get('price').setValue(total);
     });
+  }
+
+  public updateTotalPrice(stages): number {
+    let total = 0;
+    stages.forEach((stage) => {
+      const price = stage['price'] ? parseInt(stage['price']) : 0;
+      total += price;
+    });
+    this.tripNewGroup.get('price').setValue(total);
+    return total;
   }
 
   public createItemStage(): FormGroup {
@@ -83,6 +86,7 @@ export class TripNewComponent extends TranslatableComponent implements OnInit {
 
   public deleteStage(index: number): void {
     this.stages = this.tripNewGroup.get('stages') as FormArray;
+    this.updateTotalPrice(this.stages.value);
     this.stages.removeAt(index);
   }
 
