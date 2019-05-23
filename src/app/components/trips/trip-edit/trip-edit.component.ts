@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
@@ -19,6 +19,7 @@ export class TripEditComponent extends TranslatableComponent implements OnInit {
   trip: Trip;
   id: string;
   tripGroup: FormGroup;
+  stages: FormArray;
   showMessageStatus = false;
   showMessageUpdated = false;
   showMessageError = false;
@@ -47,7 +48,16 @@ export class TripEditComponent extends TranslatableComponent implements OnInit {
       date_end: ['', Validators.required],
       description: ['', Validators.required],
       price: ['', Validators.required],
-      status: ['', Validators.required]
+      status: ['', Validators.required],
+      stages: this.formBuilder.array([ ])
+    });
+    this.tripGroup.get('stages').valueChanges.subscribe((stages) => {
+      const total = this.updateTotalPrice(stages);
+      if (total === 0) {
+        this.tripGroup.get('price').enable();
+      } else {
+        this.tripGroup.get('price').disable();
+      }
     });
     this.apiService.getTrip(this.id)
                    .pipe(map(trips => {
@@ -64,9 +74,43 @@ export class TripEditComponent extends TranslatableComponent implements OnInit {
                         this.tripGroup.controls['description'].setValue(trip.description);
                         this.tripGroup.controls['price'].setValue(trip.price);
                         this.tripGroup.controls['status'].setValue(trip.status);
-                        // this.tripGroup.controls['stages'].setValue(trip.stages);
+                        if (trip.stages.length !== 0) {
+                          this.stages = this.tripGroup.get('stages') as FormArray;
+                          trip.stages.forEach((stage) => {
+                            this.stages.push(this.createItemStage(stage.title, stage.description, stage.price));
+                          });
+                        }
                      }
     });
+  }
+
+  public updateTotalPrice(stages): number {
+    let total = 0;
+    stages.forEach((stage) => {
+      const price = stage['price'] ? parseInt(stage['price']) : 0;
+      total += price;
+    });
+    this.tripGroup.get('price').setValue(total);
+    return total;
+  }
+
+  public createItemStage(title: string = '', description: string = '', price = ''): FormGroup {
+    return this.formBuilder.group({
+      title: [title, Validators.required],
+      description: description,
+      price: [price, Validators.required]
+    });
+  }
+
+  public addStage(): void {
+    this.stages = this.tripGroup.get('stages') as FormArray;
+    this.stages.push(this.createItemStage());
+  }
+
+  public deleteStage(index: number): void {
+    this.stages = this.tripGroup.get('stages') as FormArray;
+    this.updateTotalPrice(this.stages.value);
+    this.stages.removeAt(index);
   }
 
   public displayMessage(error: boolean, params?: object): void {

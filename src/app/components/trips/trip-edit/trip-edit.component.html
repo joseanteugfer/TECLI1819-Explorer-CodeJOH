@@ -41,6 +41,35 @@
       </label>
     </div>
     <div class="form-group">
+        <label class="control-label col">{{ 'trips.stages' | translate }}
+          <div formArrayName="stages" *ngFor="let stageControl of tripGroup.get('stages').controls; let i = index;">
+            <div [formGroupName]="i" class="stages">
+              <label class="control-label">{{ 'trips.title' | translate }}
+                <input type="text" formControlName="title" class="form-control" placeholder="{{ 'trips.title' | translate }}">
+                <div *ngIf="stageControl.get('title').errors && (stageControl.get('title').dirty || stageControl.get('title').touched)" class="alert alert-danger">
+                  <div *ngIf="stageControl.get('title').errors.required">
+                    {{ 'errorMessages.validation.required' | translate }}
+                  </div>
+                </div>
+              </label>
+              <label class="control-label">{{ 'trips.description' | translate }}
+                <input type="text" formControlName="description" class="form-control" placeholder="{{ 'trips.description' | translate }}">
+              </label>
+              <label class="control-label">{{ 'trips.price' | translate }}
+                <input type="number" formControlName="price" class="form-control" placeholder="{{ 'trips.price' | translate }}">
+                <div *ngIf="stageControl.get('price').errors && (stageControl.get('price').dirty || stageControl.get('price').touched)" class="alert alert-danger">
+                  <div *ngIf="stageControl.get('price').errors.required">
+                    {{ 'errorMessages.validation.required' | translate }}
+                  </div>
+                </div>
+              </label>
+              <a (click)="deleteStage(i)" class="btn-delete"><i class="fas fa-trash"></i></a>
+            </div>
+          </div>
+          <a (click)="addStage()" class="btn-add"><i class="fas fa-plus"></i></a>
+        </label>
+      </div>
+    <div class="form-group">
       <label class="control-label col-sm-4">{{ 'trips.status' | translate }}
         <select formControlName="status">
           <option *ngFor="let stat of status">{{stat}}</option>
