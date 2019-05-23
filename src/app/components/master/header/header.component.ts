@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 import { TranslateService } from '@ngx-translate/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -30,8 +30,6 @@ export class HeaderComponent extends TranslatableComponent implements OnInit {
         this.activeRole = 'anonymous';
         this.currentActor = false;
       }
-      console.log(this.activeRole);
-      console.log(this.currentActor);
     });
   }
 

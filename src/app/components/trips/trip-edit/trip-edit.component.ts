@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { TranslatableComponent } from '../../shared/translatable/translatable.component';
-import { TranslateService } from '@ngx-translate/core';
-import { Trip } from 'src/app/models/trip.model';
-import { ActivatedRoute } from '@angular/router';
-import { ApiService } from 'src/app/services/api.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { map } from 'rxjs/operators';
 import { DatePipe } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
+
+import { TranslatableComponent } from '../../shared/translatable/translatable.component';
+import { Trip } from 'src/app/models/trip.model';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-trip-edit',
@@ -16,7 +17,6 @@ import { DatePipe } from '@angular/common';
 export class TripEditComponent extends TranslatableComponent implements OnInit {
 
   trip: Trip;
-  title: string;
   id: string;
   tripGroup: FormGroup;
   showMessageStatus = false;

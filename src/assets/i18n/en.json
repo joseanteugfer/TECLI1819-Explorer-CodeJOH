@@ -109,11 +109,14 @@
     "messages": {
         "applyDone": "The application is done correctly",
         "updateDone": "The trip has been updated correctly",
-        "updateStatusDone": "Status trip has been updated"
+        "updateStatusDone": "Status trip has been updated",
+        "createdDone": "Tip has been created!"
     },
     "errorMessages": {
         "validation": {
-            "required": "Field required"
+            "required": "Field required",
+            "dateLess": "The date must be greater than today",
+            "dateEndLessStart": "End date should be greater than start date"
         },
         "api": {
             "500": "Internal error on the server",

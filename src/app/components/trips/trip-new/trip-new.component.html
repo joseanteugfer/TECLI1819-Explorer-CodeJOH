@@ -1,0 +1,102 @@
+<div class="container">
+
+  <a [routerLink]="['']" class="btn-back">&larr; {{'shared.back' | translate}}</a>
+  <form [formGroup]="tripNewGroup" #f="ngForm">
+    <div class="form-group">
+      <label class="control-label col-sm-6">{{ 'trips.title' | translate }}
+        <input type="text" formControlName="title" class="form-control" placeholder="{{'trips.title' | translate}}" required>
+        <div *ngIf="tripNewGroup.get('title').errors && (tripNewGroup.get('title').dirty || tripNewGroup.get('title').touched)" class="alert alert-danger">
+          <div *ngIf="tripNewGroup.get('title').errors.required">
+            {{ 'errorMessages.validation.required' | translate }}
+          </div>
+        </div>
+      </label>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-6">{{ 'trips.date_start' | translate }}
+        <input type="date" formControlName="date_start" class="form-control" placeholder="{{'trips.date_start' | translate}}">
+        <div *ngIf="tripNewGroup.get('date_start').errors && (tripNewGroup.get('date_start').dirty || tripNewGroup.get('date_start').touched)" class="alert alert-danger">
+          <div *ngIf="tripNewGroup.get('date_start').errors.required">
+            {{ 'errorMessages.validation.required' | translate }}
+          </div>
+          <div *ngIf="tripNewGroup.get('date_start').errors.dateLess">
+            {{ 'errorMessages.validation.dateLess' | translate }}
+          </div>
+        </div>
+      </label>
+      <label class="control-label col-sm-6">{{ 'trips.date_end' | translate }}
+        <input type="date" formControlName="date_end" class="form-control" placeholder="{{'trips.date_end' | translate}}">
+        <div *ngIf="tripNewGroup.get('date_end').errors && (tripNewGroup.get('date_end').dirty || tripNewGroup.get('date_end').touched)" class="alert alert-danger">
+          <div *ngIf="tripNewGroup.get('date_end').errors.required">
+            {{ 'errorMessages.validation.required' | translate }}
+          </div>
+          <div *ngIf="tripNewGroup.get('date_end').errors.dateLess">
+            {{ 'errorMessages.validation.dateLess' | translate }}
+          </div>
+        </div>
+        <div *ngIf="tripNewGroup.errors?.dateEndLessStart" class="alert alert-danger">
+          {{ 'errorMessages.validation.dateEndLessStart' | translate }}
+        </div>
+      </label>
+    </div>
+    <div class="form-group">
+      <label class="control-label col">{{ 'trips.description' | translate }}
+        <input type="text" formControlName="description" class="form-control" placeholder="{{ 'trips.description' | translate }}">
+        <div *ngIf="tripNewGroup.get('description').errors && (tripNewGroup.get('description').dirty || tripNewGroup.get('description').touched)" class="alert alert-danger">
+          <div *ngIf="tripNewGroup.get('description').errors.required">
+            {{ 'errorMessages.validation.required' | translate }}
+          </div>
+        </div>
+      </label>
+    </div>
+    <div class="form-group">
+      <label class="control-label col">{{ 'trips.stages' | translate }}
+        <div formArrayName="stages" *ngFor="let stageControl of tripNewGroup.get('stages').controls; let i = index;">
+          <div [formGroupName]="i" class="stages">
+            <label class="control-label">{{ 'trips.title' | translate }}
+              <input type="text" formControlName="title" class="form-control" placeholder="{{ 'trips.title' | translate }}">
+              <div *ngIf="stageControl.get('title').errors && (stageControl.get('title').dirty || stageControl.get('title').touched)" class="alert alert-danger">
+                <div *ngIf="stageControl.get('title').errors.required">
+                  {{ 'errorMessages.validation.required' | translate }}
+                </div>
+              </div>
+            </label>
+            <label class="control-label">{{ 'trips.description' | translate }}
+              <input type="text" formControlName="description" class="form-control" placeholder="{{ 'trips.description' | translate }}">
+            </label>
+            <label class="control-label">{{ 'trips.price' | translate }}
+              <input type="number" formControlName="price" class="form-control" placeholder="{{ 'trips.price' | translate }}">
+              <div *ngIf="stageControl.get('price').errors && (stageControl.get('price').dirty || stageControl.get('price').touched)" class="alert alert-danger">
+                <div *ngIf="stageControl.get('price').errors.required">
+                  {{ 'errorMessages.validation.required' | translate }}
+                </div>
+              </div>
+            </label>
+            <a (click)="deleteStage(i)" class="btn-delete"><i class="fas fa-trash"></i></a>
+          </div>
+        </div>
+        <a (click)="addStage()" class="btn-add"><i class="fas fa-plus"></i></a>
+      </label>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-4">{{ 'trips.price' | translate }}
+        <input type="number" formControlName="price" class="form-control" placeholder="{{ 'trips.price' | translate }}">
+        <div *ngIf="tripNewGroup.get('price').errors && (tripNewGroup.get('price').dirty || tripNewGroup.get('price').touched)" class="alert alert-danger">
+          <div *ngIf="tripNewGroup.get('price').errors.required">
+            {{ 'errorMessages.validation.required' | translate }}
+          </div>
+        </div>
+      </label>
+    </div>
+    <div *ngIf="showMessageCorrect" class="form-group center message">
+      <p>{{'messages.createdDone' | translate}}</p>
+    </div>
+    <div *ngIf="showMessageError" class="form-group center message-error">
+      <p *ngIf="codeError==500">{{ 'errorMessages.api.500' | translate }}</p>
+      <p *ngIf="codeError==404">{{ 'errorMessages.api.404' | translate }}</p>
+    </div>
+    <div class="form-group center">
+      <button [disabled]="tripNewGroup.invalid || !tripNewGroup.dirty" type="submit" (click)="onSubmit()" class="btn btn-primary">{{ 'shared.apply' | translate }}</button>
+    </div>
+  </form>
+</div>

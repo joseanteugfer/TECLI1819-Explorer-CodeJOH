@@ -27,6 +27,14 @@ export class ApiService {
     return this.http.get<Trip>(url);
   }
 
+  postTrip(trip: Trip): Observable<Trip> {
+    const url = `${environment.apiBackendUrl}/v1/trips`;
+    const header = new HttpHeaders();
+    header.set('Content-Type', 'application/json');
+    header.set('Accept', 'application/json');
+    return this.http.post<Trip>(url, trip, { headers: header });
+  }
+
   updateTrip(id: string, trip: Trip) {
     const url = `${environment.apiBackendUrl}/v1/trips/${id}`;
     const header = new HttpHeaders();

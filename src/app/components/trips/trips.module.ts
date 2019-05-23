@@ -10,13 +10,15 @@ import { ActorRoleGuard } from 'src/app/guards/actor-role.guard';
 import { TripListManagedComponent } from './trip-list-managed/trip-list-managed.component';
 import locales from '@angular/common/locales/es';
 import { CoreModule } from 'src/app/core/core.module';
+import { TripNewComponent } from './trip-new/trip-new.component';
 
 
 const declarables = [
     TripListComponent,
     TripDetailsComponent,
     TripEditComponent,
-    TripListManagedComponent
+    TripListManagedComponent,
+    TripNewComponent
 ];
 
 const routes = [
@@ -24,7 +26,7 @@ const routes = [
             data: {expectedRole: 'MANAGER'} },
     { path : 'details/:id', component: TripDetailsComponent, canActivate: [ActorRoleGuard],
             data: { expectedRole: 'SPONSOR|ADMINISTRATOR|MANAGER|EXPLORER|anonymous' }},
-    { path : 'new', component: TripDetailsComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'MANAGER'} },
+    { path : 'new', component: TripNewComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'MANAGER'} },
     { path : 'edit/:id', component: TripEditComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'MANAGER|ADMINISTRATOR'} },
     { path : 'delete/:id', component: TripDetailsComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'MANAGER' } },
     { path : '', component: TripListComponent, canActivate: [ActorRoleGuard],
