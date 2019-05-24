@@ -31,7 +31,6 @@ export class OrderedTripsListComponent extends TranslatableComponent implements 
 
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 5,
       processing: true
     };
     this.activeRole = localStorage.getItem('activeRole');

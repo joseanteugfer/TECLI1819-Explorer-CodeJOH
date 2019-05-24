@@ -58,7 +58,8 @@
         "reservationdata": "Reservation data",
         "comments": "Comments",
         "stages": "Stages",
-        "apply": "Apply"
+        "apply": "Apply",
+        "all": "List all trips"
     },
     "profile": {
         "menutitle": "PROFILE",

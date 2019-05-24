@@ -42,7 +42,7 @@
                 <a class="dropdown-item" routerLink="/trips/new">{{'trips.create' | translate}}</a>
               </div>
               <div *ngIf="activeRole === 'ADMINISTRATOR'">
-                <a class="dropdown-item" routerLink="/trips/all">Todos los viajes</a> 
+                <a class="dropdown-item" routerLink="/trips/all">{{ 'trips.all' | translate }}</a> 
               </div>
             </div>
           </li>

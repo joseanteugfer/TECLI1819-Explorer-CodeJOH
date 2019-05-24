@@ -25,7 +25,6 @@ export class TripListAllComponent extends TranslatableComponent implements OnIni
   ngOnInit() {
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 5,
       processing: true
     };
     this.apiService.getTrips().pipe(map(trips => trips as Trip[])).subscribe(

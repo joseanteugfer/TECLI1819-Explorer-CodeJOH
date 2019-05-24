@@ -59,7 +59,8 @@
         "reservationdata": "Fecha de reserva",
         "comments": "Comentarios",
         "stages": "Etapas",
-        "apply": "Reservar"
+        "apply": "Reservar",
+        "all": "Todo los viajes"
     },
     "profile": {
         "menutitle": "PERFIL",
