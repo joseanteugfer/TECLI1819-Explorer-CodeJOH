@@ -93,8 +93,8 @@
       <p>{{'messages.updateDone' | translate}}</p>
     </div>
     <div *ngIf="showMessageStatus" class="form-group center message">
-        <p>{{'messages.updateStatusDone' | translate}}</p>
-      </div>
+      <p>{{'messages.updateStatusDone' | translate}}</p>
+    </div>
     <div *ngIf="showMessageError" class="form-group center message-error">
       <p *ngIf="codeError==500">{{ 'errorMessages.api.500' | translate }}</p>
       <p *ngIf="codeError==404">{{ 'errorMessages.api.404' | translate }}</p>

@@ -42,6 +42,12 @@
             </div>
         </div>
     </div>
+    <div class="row row__list">
+      <div class="col">
+          <h5 class="row__list--title">{{ 'trips.status' | translate }}</h5>
+          <span>{{trip.status}}</span>
+      </div>
+    </div>
     <div class="row row__list row__list--price">
       <div class="col">
           <h5 class="row__list--title">{{trip.price}} $</h5>
@@ -52,10 +58,21 @@
         <button class="btn btn-info btn-sm waves-light" type="submit" (click)="applyTrip(trip)">{{'trips.apply' | translate}}</button>
       </div>
     </div>
-    <div *ngIf="canEdit" class="row row__list row__list--apply">
+    <div *ngIf="canEditDelete && !showMessageCorrect" class="row row__list row__list--apply">
       <div class="col">
         <a [routerLink]="['../../edit/' + trip._id]" class="btn btn-info btn-sm waves-light">{{'shared.edit' | translate}}</a>
       </div>
+      <div class="col">
+        <a (click)="deleteTrip(trip)" class="btn btn-danger btn-sm waves-light">{{'shared.delete' | translate}}</a>
+      </div>
+    </div>
+    <div *ngIf="showMessageCorrect" class="form-group message align-center">
+      <p>{{'messages.deletedDone' | translate}}</p>
+    </div>
+    <div *ngIf="showMessageError" class="form-group message-error align-center">
+      <p *ngIf="codeError==500">{{ 'errorMessages.api.500' | translate }}</p>
+      <p *ngIf="codeError==404">{{ 'errorMessages.api.404' | translate }}</p>
+      <p *ngIf="codeError==405">{{ 'errorMessages.api.405-delete' | translate }}</p>
     </div>
     <div class="row row__list row__list--message" *ngIf="applicationDone">
       <div class="col">
