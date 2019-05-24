@@ -14,7 +14,7 @@ Vistas:
     ?- Detalles -> Mapa (Done)
 
 - Ordered Trips:
-    - Listar 
+    - Listar (Done)
     - Edición
 
 - Perfil de usuario:
@@ -60,12 +60,15 @@ Permisos roles:
 - Explorer:
     - Trips:
         - Listar Trips (Done)
-        - Reservar Trips que no hayan empezado o cancelados
-        - Listar sus reservas y ordenarlos por estado.
-        - Pagar una reserva con estado DUE
-        - Cancelar una reserva con estado PENDING o ACCEPTED
+        - Reservar Trips que no hayan empezado o cancelados (Done)
+        - Listar sus reservas y ordenarlos por estado. (Done)
+        - Cuando se hace una reserva, el estado inicial de la reserva es PENDING (Done)
+        - El manager puede cambiar la reserva a estado REJECTED o DUE. (Done)
+        - Pagar una reserva con estado DUE (Done)
+        - Cuando se paga una reserva, el estado de la misma cambia a ACCEPTED (Done)
+        - Cancelar una reserva con estado PENDING o ACCEPTED (Done)
         - Buscar trips por keyword (Filtro)
-        - El estado de la reserva se muestra en diferente color:
+        - El estado de la reserva se muestra en diferente color: (Done)
             - PENDING: Fondo blanco. Si el viaje empieza en menos de un mes -> Fondo rojo
             - REJECTED: Fondo gris
             - DUE: Fondo amarillo
@@ -86,9 +89,9 @@ Permisos roles:
         - Eliminiar sólo sus trips (Done)
     
     - Ordered Trips:
-        - Listar sólo sus ordered trips
-        - Cambiar status de "PENDING" a "REJECTED" o "DUE"
-        - Cancelar un trip que ha sido publicado y que no ha empezado y que no tiene ningún usuario que lo haya aceptado.
+        - Listar sólo sus ordered trips (Done)
+        - Cambiar status de "PENDING" a "REJECTED" o "DUE". Que sólo se pueda editar el estado. (Done)
+        - Cancelar un trip que ha sido publicado y que no ha empezado y que no tiene ningún usuario que lo haya aceptado. (Done)
 
 - Administrador:
     - Usuarios:
@@ -121,12 +124,12 @@ Tests funcionales: (mínimo 2 por apartado)
 
 Tareas adicionales:
 
-- Poner estilos de Ordered trips dependiendo del status:
-    - PENDING (start-date > 1 month): white background
+- Poner estilos de Ordered trips dependiendo del status: (done)
+    - PENDING (start-date > 1 month): white background  (done)
     - PENDING (start-date < 1 month): red background
-    - REJECTED: grey background
-    - DUE: yellow background
-    - ACCEPTED: green background
+    - REJECTED: grey background  (done)
+    - DUE: yellow background  (done)
+    - ACCEPTED: green background  (done)
 
 - Paypal:
     - ¡No se puede poner los datos en el localStorage!

@@ -6,14 +6,30 @@
         <th>{{ 'trips.status' | translate }}</th>
         <th>{{ 'trips.reservationdata' | translate }}</th>
         <th>{{ 'trips.comments' | translate }}</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let trip of orderedTripsTratadas">
+      <tr *ngFor="let trip of orderedTripsTratadas" class="row-orderedtrip" [ngStyle]="getOrderedTripStyle(trip.status)">
         <td>{{ trip.ticker }}</td>
         <td>{{ trip.status }}</td>
         <td>{{ trip.date_apply | date: 'yyyy-MM-dd' }}</td>
         <td>{{ trip.comments }}</td>
+        <td *ngIf="!(activeRole === 'MANAGER' && trip.status === 'PENDING') 
+            && !(activeRole === 'EXPLORER' && trip.status === 'DUE')
+            && !((activeRole === 'EXPLORER' && trip.status === 'PENDING') || (activeRole === 'EXPLORER' && trip.status === 'ACCEPTED'))"></td>
+        <td *ngIf="activeRole === 'EXPLORER' && trip.status === 'DUE'">
+          <a (click)="payOrderedTrip(trip._id)" class="btn btn-info btn-sm waves-light btn-change">Pagar</a>
+        </td>
+        <td *ngIf="(activeRole === 'EXPLORER' && trip.status === 'PENDING') || (activeRole === 'EXPLORER' && trip.status === 'ACCEPTED')">
+          <a (click)="cancelOrderedTrip(trip._id)" class="btn btn-danger btn-sm waves-light btn-change">Cancelar</a>
+        </td>
+        <td *ngIf="activeRole === 'MANAGER' && trip.status === 'PENDING'">
+          <a (click)="dueOrderedTrip(trip._id)" class="btn btn-info btn-sm waves-light btn-change">Cambiar a pendiente</a>
+          <a (click)="rejectOrderedTrip(trip._id)" class="btn btn-danger btn-sm waves-light btn-change">Rechazar</a>
+        </td>
+        <!-- <td *ngIf="activeRole === 'MANAGER' && (trip.status === 'REJECTED' || trip.status === 'DUE')" class="center"><a (click)="pendingOrderedTrip(trip._id)" class="btn btn-info btn-sm waves-light">Cambiar a pendiente</a></td> -->
+        <!-- <td><a [routerLink]="['edit/', trip._id]" class="btn btn-info btn-sm waves-light btn-status">{{ 'shared.change-status' | translate }}</a></td> -->
       </tr>
     </tbody>
   </table>
