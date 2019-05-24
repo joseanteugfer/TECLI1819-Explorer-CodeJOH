@@ -40,15 +40,19 @@
               <div *ngIf="activeRole === 'MANAGER'">
                 <a class="dropdown-item" routerLink="/trips/managed">{{'trips.listmanager' | translate}}</a> 
                 <a class="dropdown-item" routerLink="/trips/new">{{'trips.create' | translate}}</a>
-            </div>   
+              </div>
+              <div *ngIf="activeRole === 'ADMINISTRATOR'">
+                <a class="dropdown-item" routerLink="/trips/all">{{ 'trips.all' | translate }}</a> 
+              </div>
             </div>
           </li>
-          <li class="nav-item dropdown" *ngIf="activeRole === 'MANAGER' || activeRole === 'EXPLORER'">
+          <li class="nav-item dropdown" *ngIf="activeRole === 'MANAGER' || activeRole === 'EXPLORER' || activeRole === 'ADMINISTRATOR'">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
               aria-haspopup="true" aria-expanded="false">{{ 'orderedtrips.menutitle' | translate}}</a>
             <div class="dropdown-menu" >
               <a class="dropdown-item" routerLink="/ordered-trips" *ngIf="activeRole === 'EXPLORER'">{{'orderedtrips.listexplorer' | translate}}</a>
-              <a class="dropdown-item" routerLink="/ordered-trips" *ngIf="activeRole === 'MANAGER'">{{'orderedtrips.listmanager' | translate}}</a> 
+              <a class="dropdown-item" routerLink="/ordered-trips" *ngIf="activeRole === 'MANAGER'">{{'orderedtrips.listmanager' | translate}}</a>
+              <a class="dropdown-item" routerLink="/ordered-trips" *ngIf="activeRole === 'ADMINISTRATOR'">{{'orderedtrips.listall' | translate}}</a>
             </div>
           </li>
           <li class="nav-item dropdown" *ngIf="activeRole === 'ADMINISTRATOR'">

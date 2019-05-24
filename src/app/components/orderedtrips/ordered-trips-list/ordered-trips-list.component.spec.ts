@@ -1,11 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { DataTablesModule } from 'angular-datatables';
 
 import { SharedModule } from 'src/app/shared/shared.module';
 import { OrderedTripsListComponent } from './ordered-trips-list.component';
@@ -20,10 +22,6 @@ import { TermsAndConditionsComponent } from '../../terms-and-conditions/terms-an
 import { NotFoundComponent } from '../../not-found/not-found.component';
 import { DeniedAccessPageComponent } from '../../denied-access-page/denied-access-page.component';
 import { LocalizedDataPipe } from '../../shared/localized-data.pipe';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { of } from 'rxjs';
-import { DataTablesModule } from 'angular-datatables';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);

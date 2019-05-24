@@ -58,7 +58,8 @@
         "reservationdata": "Reservation data",
         "comments": "Comments",
         "stages": "Stages",
-        "apply": "Apply"
+        "apply": "Apply",
+        "all": "List all trips"
     },
     "profile": {
         "menutitle": "PROFILE",
@@ -69,7 +70,8 @@
     "orderedtrips": {
         "menutitle": "APPLICATIONS",
         "listexplorer": "My applications",
-        "listmanager": "My managed applications"
+        "listmanager": "My managed applications",
+        "listall": "Applications list"
     },
     "administration": {
         "menutitle": "ADMINISTRATION",

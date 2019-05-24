@@ -1,3 +1,31 @@
-<p>
-  ordered-trip-edit works!
-</p>
+<div class="container">
+
+  <a *ngIf="orderedTrip" [routerLink]="['../../']" class="btn-back">&larr; {{'shared.back' | translate}}</a>
+  <form [formGroup]="orderedTripGroup" #f="ngForm">
+    <div class="form-group">
+      <label class="control-label col-sm-4">{{ 'trips.status' | translate }}
+        <select formControlName="status">
+          <option *ngFor="let stat of status">{{stat}}</option>
+        </select>
+        <div *ngIf="orderedTripGroup.get('status').errors && (orderedTripGroup.get('status').dirty || orderedTripGroup.get('status').touched)" class="alert alert-danger">
+          <div *ngIf="orderedTripGroup.get('status').errors.required">
+            {{ 'errorMessages.validation.required' | translate }}
+          </div>
+        </div>
+      </label>
+    </div>
+    <div *ngIf="showMessageStatus" class="form-group center message">
+      <p>{{'messages.updateStatusDone' | translate}}</p>
+    </div>
+    <div *ngIf="showMessageError" class="form-group center message-error">
+      <p *ngIf="codeError==500">{{ 'errorMessages.api.500' | translate }}</p>
+      <p *ngIf="codeError==404">{{ 'errorMessages.api.404' | translate }}</p>
+      <p *ngIf="codeError==405 && flagError==1">{{ 'errorMessages.api.405-1' | translate }}</p>
+      <p *ngIf="codeError==405 && flagError==2">{{ 'errorMessages.api.405-2' | translate }}</p>
+      <p *ngIf="codeError==405 && flagError==3">{{ 'errorMessages.api.405-3' | translate }}</p>
+    </div>
+    <div class="form-group center">
+      <button id="btn-status" [disabled]="orderedTripGroup.get('status').invalid || !orderedTripGroup.get('status').dirty" (click)="changeStatus(orderedTripGroup.get('status').value)" class="btn btn-primary">{{ 'shared.change-status' | translate }}</button>
+    </div>
+  </form>
+</div>

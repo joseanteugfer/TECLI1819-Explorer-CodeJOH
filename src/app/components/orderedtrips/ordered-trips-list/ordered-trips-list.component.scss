@@ -23,3 +23,28 @@ table {
         margin: 0 auto;
     }
 }
+
+.container {
+    overflow: auto;
+    margin: 0 auto;
+    width: 95vw;
+    padding: 1.5% 1%;
+    background-color: white;
+    border: 2px solid;
+    border-color: adjust-hue($color: #45526e, $degrees: 0);
+    border-radius: 5px;
+    box-shadow: 2px 2px  5px #33b5e5;
+}
+
+.btn-status {
+    color: white;
+}
+
+.row-orderedtrip {
+    color: white;
+    text-align: center;
+}
+
+.btn-change {
+    margin: 1% 0;
+}

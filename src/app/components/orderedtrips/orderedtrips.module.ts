@@ -17,7 +17,7 @@ const declarables = [
 
 const routes = [
     { path : '', component: OrderedTripsListComponent, canActivate: [ActorRoleGuard],
-            data: { expectedRole: 'MANAGER|EXPLORER'} },
+            data: { expectedRole: 'MANAGER|EXPLORER|ADMINISTRATOR'} },
     { path : 'edit/:id', component: OrderedTripsEditComponent, canActivate: [ActorRoleGuard],
             data: { expectedRole: 'MANAGER|EXPLORER'} },
     { path: '**', redirectTo: '/not-found' }

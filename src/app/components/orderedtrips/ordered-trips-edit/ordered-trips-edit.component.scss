@@ -1,0 +1,47 @@
+.container {
+    overflow: auto;
+    margin: 0 auto;
+    width: 60vw;
+    background-color: white;
+    border: 2px solid;
+    border-color: adjust-hue($color: #45526e, $degrees: 0);
+    border-radius: 5px;
+    box-shadow: 2px 2px  5px #33b5e5;
+
+    &__stages {
+        background-color: wheat;
+        border-radius: 4px;
+
+        &--title {
+            padding: .5em 0;
+            text-align: center
+        }
+
+        &--line {
+            margin: 0 auto;
+            width: 80%;
+            height: .6px;
+            background-color: black;
+        }
+
+        &--description {
+            padding: .5em .3em .5em 1em;
+            font-style: italic;
+            font-size: 60%;
+        }
+
+        &--price {
+            text-align: center;
+            font-weight: 400;
+        }
+    }
+}
+
+.btn-back {
+    text-decoration: underline;
+    font-size: 0.91em;
+    display: inline-block;
+    margin: 1%;
+    padding: 2%;
+    text-transform: uppercase;
+}

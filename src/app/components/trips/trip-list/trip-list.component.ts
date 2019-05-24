@@ -3,6 +3,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-trip',
@@ -22,7 +23,7 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.apiService.getTrips().subscribe(
+    this.apiService.getTrips().pipe(map(trips => trips.filter(trip => trip.status === 'PUBLISHED'))).subscribe(
       res => {
         this.tripsAvailables = res;
       }

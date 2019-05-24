@@ -61,6 +61,39 @@ export class ApiService {
     return this.http.get(url);
   }
 
+  getOrderedTripById(id: string): Observable<OrderedTrip> {
+    const url = `${environment.apiBackendUrl}/v1/orderedTrips/${id}`;
+    const header = new HttpHeaders();
+    header.set('Accept', 'application/json');
+    return this.http.get<OrderedTrip>(url, { headers: header });
+  }
+
+  updateOrderedTripStatus(id: string, status: string): Observable<OrderedTrip> {
+    const url = `${environment.apiBackendUrl}/v1/orderedTrips/${id}/status?status=${status}`;
+    const header = new HttpHeaders();
+    header.set('Accept', 'application/json');
+    return this.http.put<OrderedTrip>(url, { headers: header });
+  }
+
+  payOrderedTrip(id: string): Observable<OrderedTrip> {
+    const url = `${environment.apiBackendUrl}/v1/orderedTrips/${id}/pay`;
+    const header = new HttpHeaders();
+    header.set('Accept', 'application/json');
+    return this.http.put<OrderedTrip>(url, { headers: header });
+  }
+
+  cancelOrderedTrip(id: string): Observable<OrderedTrip> {
+    const status = 'CANCELLED';
+    const url = `${environment.apiBackendUrl}/v1/orderedTrips/${id}/status?status=${status}`;
+    const header = new HttpHeaders();
+    header.set('Content-Type', 'application/json');
+    header.set('Accept', 'application/json');
+    const body = {
+      comments: 'Cancelled'
+    };
+    return this.http.put<OrderedTrip>(url, body, { headers: header });
+  }
+
   getTripsFromManager(id: string): Observable<any> {
     const url = `${environment.apiBackendUrl}/v1/trips/fromManager/${id}`;
     return this.http.get(url);
