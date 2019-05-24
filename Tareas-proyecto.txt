@@ -8,17 +8,17 @@ Vistas:
 
 - Trips:
     - Buscar trips por keyword
-    - Edición
-    - Crear
-    - Eliminar
-    ?- Detalles -> Mapa
+    - Edición (Done)
+    - Crear (Done)
+    - Eliminar (Done)
+    ?- Detalles -> Mapa (Done)
 
 - Ordered Trips:
-    - Listar
+    - Listar 
     - Edición
 
 - Perfil de usuario:
-    - Listar propiedades
+    - Listar propiedades (Done)
     - Editar propiedades
 
 - Usuarios:
@@ -26,19 +26,19 @@ Vistas:
     - Editar
     - Crear
 
-- Dashboard
-    - Media, mínimo, máximo y desviación estándar del número de trips manejados por Manager.
-    - Media, mínimo, máximo y desviación estándar del número de ordered trips por trips
-    - Media, mínimo, máximo y desviación estándar del precio de los trips
-    - Ratio de los ordered trips agrupado por status
-    - Rango medio del precio de los explorer en los finders
-    - Top 10 de los key words del explorer que se indica en su finder.
+- Dashboard (Done)
+    - Media, mínimo, máximo y desviación estándar del número de trips manejados por Manager. (Done)
+    - Media, mínimo, máximo y desviación estándar del número de ordered trips por trips (Done)
+    - Media, mínimo, máximo y desviación estándar del precio de los trips (Done)
+    - Ratio de los ordered trips agrupado por status (Done)
+    - Rango medio del precio de los explorer en los finders (Done)
+    - Top 10 de los key words del explorer que se indica en su finder. (Done)
 
-- Menú:
-    - Usuarios
-    - Trips
-    - Ordered Trips
-    - Dashboard
+- Menú: (Done)
+    - Usuarios (Done)
+    - Trips (Done)
+    - Ordered Trips (Done)
+    - Dashboard (Done)
 
 - Sponsorships:
     - Listar
@@ -59,19 +59,31 @@ Permisos roles:
         - Buscar trips por keyword
 - Explorer:
     - Trips:
-        - Listar Trips
-        - Buscar trips por keyword
+        - Listar Trips (Done)
+        - Reservar Trips que no hayan empezado o cancelados
+        - Listar sus reservas y ordenarlos por estado.
+        - Pagar una reserva con estado DUE
+        - Cancelar una reserva con estado PENDING o ACCEPTED
+        - Buscar trips por keyword (Filtro)
+        - El estado de la reserva se muestra en diferente color:
+            - PENDING: Fondo blanco. Si el viaje empieza en menos de un mes -> Fondo rojo
+            - REJECTED: Fondo gris
+            - DUE: Fondo amarillo
+            - ACCEPTED: Fondo verde
+            - CANCELLED: No aparecen
+        - (B) Gestionar su finder
+        - (B) Listar la salida del finder
     - Perfil de usuario:
-        - Listar propiedades
+        - Listar propiedades (Done)
         - Editar propiedades
 
 - Manager:
     - Trips:
-        - Listar sólo sus trips
-        - Crear trips
-        - Publicar trips (Crear trip y cambiar estado a PUBLISHED)
-        - Modificar sólo sus trips
-        - Eliminiar sólo sus trips
+        - Listar sólo sus trips (Done)
+        - Crear trips (Done)
+        - Publicar trips (Crear trip y cambiar estado a PUBLISHED) (Done)
+        - Modificar sólo sus trips (Done)
+        - Eliminiar sólo sus trips (Done)
     
     - Ordered Trips:
         - Listar sólo sus ordered trips
@@ -83,7 +95,7 @@ Permisos roles:
         - Listar 
         - Crear nuevos Managers
         - Banear o desbanear un actor (desactivar o activar cuenta)
-    - Dashboard
+    - Dashboard (Done)
     - (B) Settings
 
 - (A) Sponsor:
@@ -92,6 +104,11 @@ Permisos roles:
         - Editar sólo sus sponsorships
         - Crear sponsorships
         - Eliminar sólo sus sponsorships
+
+
+Funcionalidades adicionales:
+
+- Los pagos de reserva por Paypal
 
 Tests funcionales: (mínimo 2 por apartado)
 

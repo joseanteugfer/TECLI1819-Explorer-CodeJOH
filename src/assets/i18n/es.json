@@ -70,7 +70,8 @@
     "orderedtrips": {
         "menutitle": "RESERVAS",
         "listexplorer": "Mis reservas",
-        "listmanager": "Mis reservas gestionadas"
+        "listmanager": "Mis reservas gestionadas",
+        "listall": "Lista de reservas"
     },
     "administration": {
         "menutitle": "ADMINISTRACIÓN",

@@ -69,7 +69,8 @@
     "orderedtrips": {
         "menutitle": "APPLICATIONS",
         "listexplorer": "My applications",
-        "listmanager": "My managed applications"
+        "listmanager": "My managed applications",
+        "listall": "Applications list"
     },
     "administration": {
         "menutitle": "ADMINISTRATION",

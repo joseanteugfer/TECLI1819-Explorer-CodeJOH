@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+
 import { ApiService } from 'src/app/services/api.service';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
-import { TranslateService } from '@ngx-translate/core';
 import { OrderedTrip } from 'src/app/models/orderedTrip.model';
 import { AuthService } from 'src/app/services/auth.service';
+
+declare var $: any;
 
 @Component({
   selector: 'app-ordered-trips-list',
@@ -25,6 +28,7 @@ export class OrderedTripsListComponent extends TranslatableComponent implements 
   }
 
   ngOnInit() {
+
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
@@ -32,18 +36,20 @@ export class OrderedTripsListComponent extends TranslatableComponent implements 
     };
     this.activeRole = localStorage.getItem('activeRole');
     this.idCurrentActor = this.authService.getCurrentActor()._id;
-    console.log(this.activeRole);
     if (this.activeRole === 'EXPLORER') {
       this.getOrderedTripsForExplorer();
     }
     if (this.activeRole === 'MANAGER') {
       this.apiService.getOrderedTripsFromManager(this.idCurrentActor).subscribe(
         res => {
-          if (res != null) {
+          if (res !== null) {
             this.orderedTripsTratadas = res;
           }
         }
       );
+    }
+    if (this.activeRole === 'ADMINISTRATOR') {
+      this.getAllOrderedTrips();
     }
   }
 
@@ -56,6 +62,11 @@ export class OrderedTripsListComponent extends TranslatableComponent implements 
         this.orderedTripsTratadas.push(this.orderedTrips[i]);
       }
     }
+  }
+
+  async getAllOrderedTrips() {
+    this.orderedTripsTratadas = await this.apiService.getOrderedTrip().toPromise();
+    console.log(this.orderedTripsTratadas[0]);
   }
 
 

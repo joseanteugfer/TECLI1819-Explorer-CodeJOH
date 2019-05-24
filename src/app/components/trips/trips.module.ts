@@ -11,6 +11,8 @@ import { TripListManagedComponent } from './trip-list-managed/trip-list-managed.
 import locales from '@angular/common/locales/es';
 import { CoreModule } from 'src/app/core/core.module';
 import { TripNewComponent } from './trip-new/trip-new.component';
+import { TripListAllComponent } from './trip-list-all/trip-list-all.component';
+import { DataTablesModule } from 'angular-datatables';
 
 
 const declarables = [
@@ -18,7 +20,8 @@ const declarables = [
     TripDetailsComponent,
     TripEditComponent,
     TripListManagedComponent,
-    TripNewComponent
+    TripNewComponent,
+    TripListAllComponent
 ];
 
 const routes = [
@@ -28,6 +31,7 @@ const routes = [
             data: { expectedRole: 'SPONSOR|ADMINISTRATOR|MANAGER|EXPLORER|anonymous' }},
     { path : 'new', component: TripNewComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'MANAGER'} },
     { path : 'edit/:id', component: TripEditComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'MANAGER|ADMINISTRATOR'} },
+    { path : 'all', component: TripListAllComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'MANAGER|ADMINISTRATOR'} },
     { path : '', component: TripListComponent, canActivate: [ActorRoleGuard],
             data: {expectedRole: 'SPONSOR|ADMINISTRATOR|MANAGER|EXPLORER|anonymous'} },
     { path : '**', component: TripListComponent }
@@ -42,6 +46,7 @@ registerLocaleData(locales, 'es');
         FormsModule,
         MatCardModule,
         MatFormFieldModule,
+        DataTablesModule,
         ReactiveFormsModule,
         RouterModule.forChild(routes)
     ],
