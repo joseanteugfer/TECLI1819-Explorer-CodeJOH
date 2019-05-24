@@ -24,7 +24,10 @@ export class TripDetailsComponent extends TranslatableComponent implements OnIni
   currentActor: Actor;
   activeRole: string;
   applicationDone: boolean;
-  canEdit = false;
+  canEditDelete = false;
+  codeError: number;
+  showMessageError = false;
+  showMessageCorrect = false;
 
   constructor(private translatableService: TranslateService,
               private router: Router,
@@ -37,7 +40,7 @@ export class TripDetailsComponent extends TranslatableComponent implements OnIni
   ngOnInit() {
     this.activeRole = localStorage.getItem('activeRole');
     if (this.activeRole === 'ADMINISTRATOR') {
-      this.canEdit = true;
+      this.canEditDelete = true;
     }
     this.currentActor = this.authService.getCurrentActor();
     this.id = this.route.snapshot.params['id'];
@@ -48,7 +51,7 @@ export class TripDetailsComponent extends TranslatableComponent implements OnIni
                    .subscribe((trip: Trip) => {
                      this.trip = trip;
                      if (trip.manager === this.currentActor._id) {
-                       this.canEdit = true;
+                       this.canEditDelete = true;
                      }
                     });
   }
@@ -68,6 +71,25 @@ export class TripDetailsComponent extends TranslatableComponent implements OnIni
           this.applicationDone = true;
         }
       }, err => { });
+    }
+  }
+
+  deleteTrip(trip: Trip) {
+    this.apiService.deleteTrip(trip._id).subscribe(_ => {
+      this.displayMessage(false);
+    }, error => {
+      const errorParams = { };
+      errorParams['code'] = error.status;
+      this.displayMessage(true, errorParams);
+    });
+  }
+
+  public displayMessage(error: boolean, params?: object): void {
+    if (!error) {
+      this.showMessageCorrect = true;
+    } else {
+      this.showMessageError = true;
+      this.codeError = params['code'] ? params['code'] : 500;
     }
   }
 

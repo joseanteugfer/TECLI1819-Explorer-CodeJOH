@@ -51,6 +51,11 @@ export class ApiService {
     return this.http.put(url, {headers: header});
   }
 
+  deleteTrip(id: string): Observable<Trip> {
+    const url = `${environment.apiBackendUrl}/v1/trips/${id}`;
+    return this.http.delete<Trip>(url);
+  }
+
   getOrderedTrip(): Observable<any> {
     const url = `${environment.apiBackendUrl}/v1/orderedTrips`;
     return this.http.get(url);
