@@ -32,6 +32,7 @@
     },
     "register": {
         "header": "Register new actor",
+        "header-manager": "Register new Manager",
         "alreadyRegistered": "Already registered?"
     },
     "footer": {
@@ -123,7 +124,9 @@
             "dateLess": "The date must be greater than today",
             "dateEndLessStart": "End date should be greater than start date",
             "pattern": "Incorrect format",
-            "pattern-string": "Only characters"
+            "pattern-string": "Only characters",
+            "pattern-number": "Only numbers",
+            "phone-minmax": "Min-Max 9 numbers"
         },
         "api": {
             "500": "Internal error on the server",
@@ -131,7 +134,8 @@
             "405-1": "Cancel trip with status PUBLISHED and a valid application is not allowed",
             "405-2": "Cancel trip with status PUBLISHED and started is not allowed",
             "405-3": "Update trip with status PUBLISHED is not allowed",
-            "405-delete": "Delete trip with status PUBLISHED is not allowed"
+            "405-delete": "Delete trip with status PUBLISHED is not allowed",
+            "422-emailExist": "This email is used by other user"
         }
     }
 }

@@ -94,7 +94,6 @@ export class ProfileEditComponent extends TranslatableComponent implements OnIni
       this.actor = response;
       this.displayMessage(false);
     }, error => {
-      console.log(error);
       const errorParams = { };
       errorParams['code'] = error.status;
       if (errorParams['code'] === 405) {

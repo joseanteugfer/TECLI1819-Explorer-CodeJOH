@@ -33,6 +33,7 @@
     },
     "register": {
         "header": "Registrar un nuevo actor",
+        "header-manager": "Registrar un nuevo Gestor",
         "alreadyRegistered": "Ya estás registrado?"
     },
     "footer": {
@@ -124,7 +125,9 @@
             "dateLess": "La fecha debe ser mayor que hoy",
             "dateEndLessStart": "La fecha de vuelta debe ser mayor que la de ida",
             "pattern": "Formato incorrecto",
-            "pattern-string": "Sólo caracteres"
+            "pattern-string": "Sólo caracteres",
+            "pattern-number": "Sólo números",
+            "phone-minmax": "Mínimo y máximo de 9 números"
         },
         "api": {
             "500": "Error interno en el servidor",
@@ -132,7 +135,8 @@
             "405-1": "No está permitido cancelar un viaje con estado PUBLISHED y que tenga una reserva",
             "405-2": "No está permitido cancelar un viaje con estado PUBLISHED y que ya haya empezado",
             "405-3": "No se puede actualizar un viaje con estado PUBLISHED",
-            "405-delete": "No se puede eliminar un viaje con estado PUBLISHED"
+            "405-delete": "No se puede eliminar un viaje con estado PUBLISHED",
+            "422-emailExist": "El email introducido ya existe"
         }
     }
 }
