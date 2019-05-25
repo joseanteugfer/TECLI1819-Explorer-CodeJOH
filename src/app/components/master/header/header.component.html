@@ -25,10 +25,6 @@
             aria-haspopup="true" aria-expanded="false">{{ 'profile.menutitle' | translate}}</a>
           <div class="dropdown-menu" >
             <a class="dropdown-item" routerLink="/profile/{{currentActor._id}}">{{'profile.show' | translate}}</a>
-            <!-- <div class="dropdown-divider" *ngIf="activeRole === 'ADMINISTRATOR'"></div>
-            <div *ngIf="activeRole === 'ADMINISTRATOR'">
-              <a class="dropdown-item" routerLink="/profile">{{'profile.list' | translate}}</a> 
-            </div>  -->
           </div>
         </li>
         <li class="nav-item dropdown" *ngIf="currentActor">
@@ -59,7 +55,6 @@
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
               aria-haspopup="true" aria-expanded="false">{{ 'administration.menutitle' | translate}}</a>
             <div class="dropdown-menu" >
-              <!-- <a class="dropdown-item" routerLink="settings">{{'administration.settings' | translate}}</a> -->
               <a class="dropdown-item" routerLink="dashboard">{{'administration.dashboard' | translate}}</a> 
               <div class="dropdown-divider"></div>
               <a class="dopdown-item" routerLink="register-manager">Registrar Manager</a>
@@ -72,14 +67,6 @@
               <a class="dropdown-item" routerLink="/sponsorships">{{'sponsorship.sponsorships' | translate}}</a></div>
           </li>
       </ul>
-
-      <form class="form-inline my-2 my-lg-0 md-form md-bg">
-        <input class="form-control mr-sm-2" type="search" placeholder="{{ 'header.search' | translate}}"
-          aria-label="Search">
-        <button class="btn btn-primary btn-rounded btn-sm my-0 p waves-effect waves-light" type="submit">
-          <mdb-icon fas icon="search" class="marginl-1" aria-hidden="true"></mdb-icon>
-        </button>
-      </form>
 
       <ul class="nav nav__right">
         <li class="nav-item">

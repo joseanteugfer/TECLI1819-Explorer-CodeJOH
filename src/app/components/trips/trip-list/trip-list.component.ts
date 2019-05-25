@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { FilterComponent } from '../../shared/filter/filter.component';
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-trip',
@@ -11,8 +13,9 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./trip-list.component.scss']
 })
 export class TripListComponent extends TranslatableComponent implements OnInit {
-
+  @ViewChild('filter') filter: FilterComponent;
   tripsAvailables;
+  private subs = new SubSink();
 
   displayedColumns: string[] = ['title', 'description', 'date_start', 'date_end', 'price'];
 
@@ -27,7 +30,20 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
       res => {
         this.tripsAvailables = res;
       }
-    )
+    );
+  }
+
+  ngAfterContentInit(): void {
+    this.subs.sink = this.filter.searchValueChange.subscribe(searchString => {
+      this.getTripsByKeyword(searchString);
+    });
+  }
+
+  getTripsByKeyword(keyword: string) {
+    this.apiService.getTripsByKeyword(keyword).subscribe(res => {
+      this.tripsAvailables = res.filter(trip => trip.status === 'PUBLISHED');
+      console.log(this.tripsAvailables);
+    });
   }
 
   goEdit(id) {

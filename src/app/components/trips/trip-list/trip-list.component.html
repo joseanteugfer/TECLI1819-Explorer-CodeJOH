@@ -1,3 +1,7 @@
+<div class="container-filter">
+  <app-filter #filter label="{{ 'header.search' | translate }}" placeholder="{{ 'header.search' | translate }}" >
+  </app-filter>
+</div>
 <div class="card-deck card-customer_container">
     <div class="card card-customer" *ngFor="let trip of tripsAvailables">
       <img class="card-img-top" src="../assets/img/avion.jpg" alt="Card image cap">

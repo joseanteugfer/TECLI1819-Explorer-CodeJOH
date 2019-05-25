@@ -27,6 +27,11 @@ export class ApiService {
     return this.http.get(url);
   }
 
+  getTripsByKeyword(keyword: string): Observable<any> {
+    const url = `${environment.apiBackendUrl}/v1/trips/search?keyword=${keyword}`;
+    return this.http.get(url);
+  }
+
   getTrip(id: string): Observable<Trip> {
     const url = `${environment.apiBackendUrl}/v1/trips/${id}`;
     return this.http.get<Trip>(url);
