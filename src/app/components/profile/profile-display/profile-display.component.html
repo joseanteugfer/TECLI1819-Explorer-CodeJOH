@@ -32,6 +32,23 @@
               <span>{{actor.created | date: 'dd/MM/yyyy'}}</span>
             </div>
           </div>
+          <div class="row" *ngIf="actor.phone">
+            <div class="col">
+              <span class="font-weight-bold">{{'actor.phone' | translate}}: </span>
+              <span>{{actor.phone}}</span>
+            </div>
+          </div>
+          <div class="row" *ngIf="actor.address">
+            <div class="col">
+              <span class="font-weight-bold">{{'actor.address' | translate}}: </span>
+              <span>{{actor.address}}</span>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+          <a [routerLink]="['edit/' + actor._id]" class="btn btn-info btn-sm waves-light">{{'shared.edit' | translate}}</a>
       </div>
     </div>
   </div>

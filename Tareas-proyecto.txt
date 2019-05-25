@@ -78,7 +78,7 @@ Permisos roles:
         - (B) Listar la salida del finder
     - Perfil de usuario:
         - Listar propiedades (Done)
-        - Editar propiedades
+        - Editar propiedades (Done)
 
 - Manager:
     - Trips:

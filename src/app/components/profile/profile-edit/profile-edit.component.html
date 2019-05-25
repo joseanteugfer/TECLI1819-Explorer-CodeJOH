@@ -1,3 +1,85 @@
-<p>
-  profile-edit works!
-</p>
+<div class="container">
+
+    <a *ngIf="actor" [routerLink]="['/profile']" class="btn-back">&larr; {{'shared.back' | translate}}</a>
+    <form [formGroup]="actorGroup" #f="ngForm">
+      <div class="form-group">
+        <label class="control-label col-sm-6">{{ 'actor.name' | translate }}
+          <input type="text" formControlName="name" class="form-control" placeholder="{{'actor.name' | translate}}" required>
+          <div *ngIf="actorGroup.get('name').errors && (actorGroup.get('name').dirty || actorGroup.get('name').touched)" class="alert alert-danger">
+            <div *ngIf="actorGroup.get('name').errors.required">
+              {{ 'errorMessages.validation.required' | translate }}
+            </div>
+            <div *ngIf="actorGroup.get('name').errors.pattern">
+              {{ 'errorMessages.validation.pattern-string' | translate }}
+            </div>
+          </div>
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-6">{{ 'actor.surname' | translate }}
+          <input type="text" formControlName="surname" class="form-control" placeholder="{{'actor.surname' | translate}}">
+          <div *ngIf="actorGroup.get('surname').errors && (actorGroup.get('surname').dirty || actorGroup.get('surname').touched)" class="alert alert-danger">
+            <div *ngIf="actorGroup.get('surname').errors.required">
+              {{ 'errorMessages.validation.required' | translate }}
+            </div>
+            <div *ngIf="actorGroup.get('surname').errors.pattern">
+              {{ 'errorMessages.validation.pattern-string' | translate }}
+            </div>
+          </div>
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-6">{{ 'actor.email' | translate }}
+          <input type="email" formControlName="email" class="form-control" placeholder="{{'actor.email' | translate}}">
+          <div *ngIf="actorGroup.get('email').errors && (actorGroup.get('email').dirty || actorGroup.get('email').touched)" class="alert alert-danger">
+            <div *ngIf="actorGroup.get('email').errors.required">
+              {{ 'errorMessages.validation.required' | translate }}
+            </div>
+            <div *ngIf="actorGroup.get('email').errors.pattern">
+              {{ 'errorMessages.validation.pattern' | translate }}
+            </div>
+          </div>
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-6">{{ 'actor.phone' | translate }}
+          <input type="text" formControlName="phone" class="form-control" placeholder="{{'actor.phone' | translate}}">
+          <div *ngIf="actorGroup.get('phone').errors && (actorGroup.get('phone').dirty || actorGroup.get('phone').touched)" class="alert alert-danger">
+            <div *ngIf="actorGroup.get('phone').errors.required">
+              {{ 'errorMessages.validation.required' | translate }}
+            </div>
+            <div *ngIf="actorGroup.get('phone').errors.pattern">
+              {{ 'errorMessages.validation.pattern' | translate }}
+            </div>
+          </div>
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-6">{{ 'actor.address' | translate }}
+          <input type="text" formControlName="address" class="form-control" placeholder="{{'actor.address' | translate}}">
+          <div *ngIf="actorGroup.get('address').errors && (actorGroup.get('address').dirty || actorGroup.get('address').touched)" class="alert alert-danger">
+            <div *ngIf="actorGroup.get('address').errors.required">
+              {{ 'errorMessages.validation.required' | translate }}
+            </div>
+            <div *ngIf="actorGroup.get('address').errors.pattern">
+              {{ 'errorMessages.validation.pattern' | translate }}
+            </div>
+          </div>
+        </label>
+      </div>
+      <div *ngIf="showMessageUpdated" class="form-group center message">
+        <p>{{'messages.updateProfileDone' | translate}}</p>
+      </div>
+      <div *ngIf="showMessageError" class="form-group center message-error">
+        <p *ngIf="codeError==500">{{ 'errorMessages.api.500' | translate }}</p>
+        <p *ngIf="codeError==404">{{ 'errorMessages.api.404' | translate }}</p>
+        <p *ngIf="codeError==405 && flagError==1">{{ 'errorMessages.api.405-1' | translate }}</p>
+        <p *ngIf="codeError==405 && flagError==2">{{ 'errorMessages.api.405-2' | translate }}</p>
+        <p *ngIf="codeError==405 && flagError==3">{{ 'errorMessages.api.405-3' | translate }}</p>
+      </div>
+      <div class="form-group center">
+        <button [disabled]="actorGroup.invalid || !actorGroup.dirty" type="submit" (click)="onSubmit()" class="btn btn-primary">{{ 'shared.apply' | translate }}</button>
+      </div>
+    </form>
+  </div>
+  

@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { Actor } from 'src/app/models/actor.model';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 import { TranslateService } from '@ngx-translate/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-profile-display',
@@ -14,6 +15,7 @@ export class ProfileDisplayComponent extends TranslatableComponent implements On
 
   private ParameterActorId = '_id';
   actor: Actor;
+  actorGroup: FormGroup;
 
   constructor(private authService: AuthService,
               private apiService: ApiService,
@@ -24,6 +26,7 @@ export class ProfileDisplayComponent extends TranslatableComponent implements On
   ngOnInit() {
     const id = this.authService.currentActor[this.ParameterActorId];
     this.apiService.getActor(id).subscribe(actor => {
+      console.log(actor);
       this.actor = actor;
     });
   }

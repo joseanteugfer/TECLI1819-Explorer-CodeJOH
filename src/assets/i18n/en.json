@@ -113,6 +113,7 @@
         "applyDone": "The application is done correctly",
         "updateDone": "The trip has been updated correctly",
         "updateStatusDone": "Status trip has been updated",
+        "updateProfileDone": "Profile has been updated",
         "createdDone": "Trip has been created!",
         "deletedDone": "Trip has been deleted!"
     },
@@ -120,7 +121,9 @@
         "validation": {
             "required": "Field required",
             "dateLess": "The date must be greater than today",
-            "dateEndLessStart": "End date should be greater than start date"
+            "dateEndLessStart": "End date should be greater than start date",
+            "pattern": "Incorrect format",
+            "pattern-string": "Only characters"
         },
         "api": {
             "500": "Internal error on the server",
