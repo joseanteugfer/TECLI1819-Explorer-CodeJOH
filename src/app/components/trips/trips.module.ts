@@ -13,6 +13,7 @@ import { CoreModule } from 'src/app/core/core.module';
 import { TripNewComponent } from './trip-new/trip-new.component';
 import { TripListAllComponent } from './trip-list-all/trip-list-all.component';
 import { DataTablesModule } from 'angular-datatables';
+import { FilterComponent } from '../shared/filter/filter.component';
 
 
 const declarables = [
@@ -21,7 +22,8 @@ const declarables = [
     TripEditComponent,
     TripListManagedComponent,
     TripNewComponent,
-    TripListAllComponent
+    TripListAllComponent,
+    FilterComponent
 ];
 
 const routes = [

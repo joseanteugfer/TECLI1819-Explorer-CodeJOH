@@ -50,7 +50,7 @@ Permisos roles:
 
 - Actor no autenticado:
     - Trips:
-        - Listar Trips
+        - Listar Trips (Done)
         - Buscar trips por keyword
 - Explorer:
     - Trips:
