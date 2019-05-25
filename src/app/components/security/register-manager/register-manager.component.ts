@@ -7,13 +7,12 @@ import { AuthService } from 'src/app/services/auth.service';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  selector: 'app-register-manager',
+  templateUrl: './register-manager.component.html',
+  styleUrls: ['./register-manager.component.scss']
 })
-export class RegisterComponent extends TranslatableComponent implements OnInit {
+export class RegisterManagerComponent extends TranslatableComponent implements OnInit {
 
-  roleList: string[];
   registerForm: FormGroup;
   showMessageCreated = false;
   showMessageError = false;
@@ -23,8 +22,7 @@ export class RegisterComponent extends TranslatableComponent implements OnInit {
               private translatableService: TranslateService,
               private fb: FormBuilder,
               private router: Router) {
-      super(translatableService);
-      this.roleList = authService.getRoles().filter(rol => rol !== 'MANAGER');
+    super(translatableService);
   }
 
   ngOnInit() {
@@ -51,9 +49,6 @@ export class RegisterComponent extends TranslatableComponent implements OnInit {
         Validators.minLength(9),
         Validators.maxLength(9),
         Validators.pattern('[0-9]+')
-      ])),
-      roles: new FormControl('EXPLORER', Validators.compose([
-        Validators.required
       ]))
     });
   }
@@ -69,13 +64,14 @@ export class RegisterComponent extends TranslatableComponent implements OnInit {
     }
   }
 
-  onRegister() {
+  onRegister(): void {
     let actor = this.registerForm.value;
-    actor.role = [actor.roles];
-    this.authService.registerUser(this.registerForm.value)
+    actor.role = ['MANAGER'];
+    this.authService.registerUser(actor)
       .then(_ => {
         this.displayMessage(false);
       }, error => {
+        console.log(error);
         const errorParams = { };
         errorParams['code'] = error.code ? 422 : error.status;
         this.displayMessage(true, errorParams);

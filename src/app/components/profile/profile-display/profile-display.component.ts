@@ -26,7 +26,6 @@ export class ProfileDisplayComponent extends TranslatableComponent implements On
   ngOnInit() {
     const id = this.authService.currentActor[this.ParameterActorId];
     this.apiService.getActor(id).subscribe(actor => {
-      console.log(actor);
       this.actor = actor;
     });
   }

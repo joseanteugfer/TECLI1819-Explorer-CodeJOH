@@ -7,11 +7,13 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ActorRoleGuard } from './guards/actor-role.guard';
 import { DeniedAccessPageComponent } from './components/denied-access-page/denied-access-page.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { RegisterManagerComponent } from './components/security/register-manager/register-manager.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/trips', pathMatch: 'full'},
   {path: 'login', component: LoginComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'anonymous'}},
   {path: 'register', component: RegisterComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'anonymous'}},
+  {path: 'register-manager', component: RegisterManagerComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'ADMINISTRATOR'}},
   {path: 'trips', loadChildren: './components/trips/trips.module#TripsModule'},
   {path: 'ordered-trips', loadChildren: './components/orderedtrips/orderedtrips.module#OrderedTripsModule'},
   {path: 'sponsorships', loadChildren: './components/sponsorships/sponsorships.module#SponsorshipsModule'},

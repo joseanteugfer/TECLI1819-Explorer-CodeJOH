@@ -30,6 +30,7 @@ import { HttpModule } from '@angular/http';
 import { CoreModule, HttpLoaderFactory } from './core/core.module';
 import { ApiMockService } from './services-mock/api-mock.service';
 import { environment } from 'src/environments';
+import { RegisterManagerComponent } from './components/security/register-manager/register-manager.component';
 
 export const firebaseConfig = {
     apiKey: 'AIzaSyBDPPdxUsnYcPMc4yUs2ZRQfkXXW0wZFKE',
@@ -67,7 +68,8 @@ registerLocaleData(locales, 'es');
     TermsAndConditionsComponent,
     NotFoundComponent,
     DeniedAccessPageComponent,
-    DashboardComponent
+    DashboardComponent,
+    RegisterManagerComponent
   ],
   imports: [
     SharedModule,

@@ -15,16 +15,11 @@ Vistas:
 
 - Ordered Trips:
     - Listar (Done)
-    - Edición
+    - Edición (Done)
 
 - Perfil de usuario:
     - Listar propiedades (Done)
-    - Editar propiedades
-
-- Usuarios:
-    - Listar
-    - Editar
-    - Crear
+    - Editar propiedades (Done)
 
 - Dashboard (Done)
     - Media, mínimo, máximo y desviación estándar del número de trips manejados por Manager. (Done)
@@ -96,8 +91,8 @@ Permisos roles:
 - Administrador:
     - Usuarios:
         - Listar 
-        - Crear nuevos Managers
-        - Banear o desbanear un actor (desactivar o activar cuenta)
+        - Crear nuevos Managers (Done)
+        - (B) Banear o desbanear un actor (desactivar o activar cuenta)
     - Dashboard (Done)
     - (B) Settings
 
