@@ -117,7 +117,8 @@
         "updateStatusDone": "El estado del viaje ha sido actualizado",
         "updateProfileDone": "El perfil ha sido actualizado",
         "createdDone": "¡El viaje ha sido creado!",
-        "deletedDone": "El viaje ha sido eliminado"
+        "deletedDone": "El viaje ha sido eliminado",
+        "manager-created": "New Manager created"
     },
     "errorMessages": {
         "validation": {
@@ -131,6 +132,7 @@
         },
         "api": {
             "500": "Error interno en el servidor",
+            "401": "Correo o contraseña incorrecta",
             "404": "No se ha encontrado el viaje en el servidor",
             "405-1": "No está permitido cancelar un viaje con estado PUBLISHED y que tenga una reserva",
             "405-2": "No está permitido cancelar un viaje con estado PUBLISHED y que ya haya empezado",

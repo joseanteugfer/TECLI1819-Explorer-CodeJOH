@@ -13,10 +13,14 @@
                   <input matInput placeholder="{{ 'actor.email' | translate }}" [(ngModel)]="email" name="email"
                   type="email" formControlName="email" required>
 
-                  <mat-error *ngFor="let validation of account_validation_messages.email">
-                      <mat-error class="error-message" *ngIf="loginForm.get('email').hasError(validation.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)">{{validation.message}}
-                      </mat-error>
-                  </mat-error>
+                  <div *ngIf="loginForm.get('email').errors && (loginForm.get('email').dirty || loginForm.get('email').touched)">
+                    <mat-error class="error-message" *ngIf="loginForm.get('email').errors.required">
+                      {{ 'errorMessages.validation.required' | translate }}
+                    </mat-error>
+                    <mat-error class="error-message" *ngIf="loginForm.get('email').errors.pattern">
+                      {{ 'errorMessages.validation.pattern' | translate }}
+                    </mat-error>
+                  </div>
                 </mat-form-field>
               </td>
             </tr>
@@ -27,23 +31,24 @@
                     <input matInput placeholder="{{ 'actor.password' | translate }}" [(ngModel)]="password" name="password"
                     type="password" formControlName="password" required>
   
-                    <mat-error *ngFor="let validation of account_validation_messages.password">
-                        <mat-error class="error-message" *ngIf="loginForm.get('password').hasError(validation.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">{{validation.message}}
-                        </mat-error>
-                    </mat-error>
+                    <div *ngIf="loginForm.get('password').errors && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+                      <mat-error class="error-message" *ngIf="loginForm.get('password').errors.required">
+                        {{ 'errorMessages.validation.required' | translate }}
+                      </mat-error>
+                    </div>
                   </mat-form-field>
                   </td>
             </tr>
 
-            <tr *ngIf="message">
-                <p *ngIf="!error" class="card__text--ok paragraph">{{ message }}</p>
-                <p *ngIf="error" class="card__text--error paragraph">{{ message }}</p>
-            </tr>
+            <div *ngIf="showMessageError" class="form-group center message-error">
+              <p *ngIf="codeError==500">{{ 'errorMessages.api.500' | translate }}</p>
+              <p *ngIf="codeError==401">{{ 'errorMessages.api.401' | translate }}</p>
+            </div>
 
         </table>
     </form>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button (click)="onLogin()" color="primary">{{ 'shared.login' | translate}}</button>
+    <button mat-raised-button [disabled]="loginForm.invalid || !loginForm.dirty" (click)="onLogin()" color="primary">{{ 'shared.login' | translate}}</button>
   </mat-card-actions>
 </mat-card>

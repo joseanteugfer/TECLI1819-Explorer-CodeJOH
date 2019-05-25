@@ -15,18 +15,10 @@ export class LoginComponent extends TranslatableComponent implements OnInit {
   loginForm: FormGroup;
   password: string;
   email: string;
-  message: string;
-  error: boolean;
   returnUrl: string;
-  account_validation_messages = {
-    'email': [
-      { type: 'required', message: 'Email requerido' }
-    ],
-    'password': [
-      { type: 'required', message: 'Nombre de concepto requerido' },
-      { type: 'pattern', message: 'El nombre de concepto sólo puede conteneres letras' }
-    ]
-  }
+  showMessageCreated = false;
+  showMessageError = false;
+  codeError: number;
 
 
   constructor(private authService: AuthService,
@@ -52,22 +44,35 @@ export class LoginComponent extends TranslatableComponent implements OnInit {
 
   createForm() {
     this.loginForm = this.fb.group({
-      email: [''],
-      password: ['']
+      email: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')
+      ])),
+      password: new FormControl('',
+      Validators.required)
     });
+  }
+
+  public displayMessage(error: boolean, params?: object): void {
+    if (!error) {
+      this.showMessageError = false;
+      this.showMessageCreated = true;
+    } else {
+      this.showMessageCreated = false;
+      this.showMessageError = true;
+      this.codeError = params['code'] ? params['code'] : 500;
+    }
   }
 
   onLogin() {
     this.authService.login(this.loginForm.value.email, this.loginForm.value.password)
       .then(res => {
-        this.error = false;
-        this.message = res.message;
         this.router.navigateByUrl(this.returnUrl);
-      }, err => {
-        if (err.message){
-          this.error = true;
-          this.message = err.statusText;
-        }
+      }, error => {
+        console.log(error);
+        const errorParams = { };
+        errorParams['code'] = error.code ? 422 : error.status;
+        this.displayMessage(true, errorParams);
       });
   }
 

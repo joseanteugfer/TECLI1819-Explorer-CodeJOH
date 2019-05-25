@@ -116,7 +116,8 @@
         "updateStatusDone": "Status trip has been updated",
         "updateProfileDone": "Profile has been updated",
         "createdDone": "Trip has been created!",
-        "deletedDone": "Trip has been deleted!"
+        "deletedDone": "Trip has been deleted!",
+        "manager-created": "Nuevo Manager creado!"
     },
     "errorMessages": {
         "validation": {
@@ -130,6 +131,7 @@
         },
         "api": {
             "500": "Internal error on the server",
+            "401": "Incorrect password or email",
             "404": "Trip not founded in the server",
             "405-1": "Cancel trip with status PUBLISHED and a valid application is not allowed",
             "405-2": "Cancel trip with status PUBLISHED and started is not allowed",
