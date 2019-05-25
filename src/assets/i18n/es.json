@@ -114,6 +114,7 @@
         "applyDone": "La reserva de se ha hecho de forma correcta",
         "updateDone": "El viaje ha sido actualizado de forma correcta",
         "updateStatusDone": "El estado del viaje ha sido actualizado",
+        "updateProfileDone": "El perfil ha sido actualizado",
         "createdDone": "¡El viaje ha sido creado!",
         "deletedDone": "El viaje ha sido eliminado"
     },
@@ -121,7 +122,9 @@
         "validation": {
             "required": "Campo requerido",
             "dateLess": "La fecha debe ser mayor que hoy",
-            "dateEndLessStart": "La fecha de vuelta debe ser mayor que la de ida"
+            "dateEndLessStart": "La fecha de vuelta debe ser mayor que la de ida",
+            "pattern": "Formato incorrecto",
+            "pattern-string": "Sólo caracteres"
         },
         "api": {
             "500": "Error interno en el servidor",
