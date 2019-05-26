@@ -25,7 +25,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
-fdescribe('TripListComponent', () => {
+describe('TripListComponent', () => {
   let component: TripListComponent;
   let fixture: ComponentFixture<TripListComponent>;
   let injector: Injector;

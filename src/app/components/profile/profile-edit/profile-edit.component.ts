@@ -35,6 +35,7 @@ export class ProfileEditComponent extends TranslatableComponent implements OnIni
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
     this.createForm();
+    this.getActor();
   }
 
   public createForm(): void {
@@ -58,6 +59,9 @@ export class ProfileEditComponent extends TranslatableComponent implements OnIni
       ])],
       address: ''
     });
+  }
+
+  public getActor(): void {
     this.apiService.getActor(this.id).subscribe(actor => {
       if (actor) {
         this.actor = actor;

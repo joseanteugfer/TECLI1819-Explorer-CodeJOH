@@ -8,6 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 import { Trip } from 'src/app/models/trip.model';
 import { ApiService } from 'src/app/services/api.service';
+import { dateLessThanNow, dateEndLessStart } from 'src/app/services/custom-validator.service';
 
 @Component({
   selector: 'app-trip-edit',
@@ -39,18 +40,19 @@ export class TripEditComponent extends TranslatableComponent implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
     this.createForm();
+    this.getTrip();
   }
 
   public createForm(): void {
     this.tripGroup = this.formBuilder.group({
       title: ['', Validators.required],
-      date_start: ['', Validators.required],
-      date_end: ['', Validators.required],
+      date_start: ['', [Validators.required,  dateLessThanNow()]],
+      date_end: ['', [Validators.required,  dateLessThanNow()]],
       description: ['', Validators.required],
       price: ['', Validators.required],
       status: ['', Validators.required],
       stages: this.formBuilder.array([ ])
-    });
+    }, { validator: dateEndLessStart });
     this.tripGroup.get('stages').valueChanges.subscribe((stages) => {
       const total = this.updateTotalPrice(stages);
       if (total === 0) {
@@ -59,6 +61,9 @@ export class TripEditComponent extends TranslatableComponent implements OnInit {
         this.tripGroup.get('price').disable();
       }
     });
+  }
+
+  public getTrip() {
     this.apiService.getTrip(this.id)
                    .pipe(map(trips => {
                       trips[0].date_end = this.datePipe.transform(trips[0].date_end, 'yyyy-MM-dd');

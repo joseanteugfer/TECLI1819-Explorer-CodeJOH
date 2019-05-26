@@ -65,19 +65,19 @@ Permisos roles:
         - Buscar trips por keyword (Filtro)
         - El estado de la reserva se muestra en diferente color: (Done)
             - PENDING: Fondo blanco. Si el viaje empieza en menos de un mes -> Fondo rojo
-            - REJECTED: Fondo gris
+            - REJECTED: Fondo grisNuevo Manager creado!
             - DUE: Fondo amarillo
-            - ACCEPTED: Fondo verde
-            - CANCELLED: No aparecen
+            - ACCEPTED: Fondo verdNuevo Manager creado!
+            - CANCELLED: No aparecNuevo Manager creado!
         - (B) Gestionar su finder
-        - (B) Listar la salida del finder
+        - (B) Listar la salida delNuevo Manager creado!
     - Perfil de usuario:
-        - Listar propiedades (Done)
-        - Editar propiedades (Done)
+        - Listar propiedades (DoneNuevo Manager creado!
+        - Editar propiedades (DoneNuevo Manager creado!
 
 - Manager:
     - Trips:
-        - Listar sólo sus trips (Done)
+        - Listar sólo sus trips (DNuevo Manager creado!
         - Crear trips (Done)
         - Publicar trips (Crear trip y cambiar estado a PUBLISHED) (Done)
         - Modificar sólo sus trips (Done)
@@ -103,19 +103,23 @@ Permisos roles:
         - Crear sponsorships
         - Eliminar sólo sus sponsorships
 
-
-Funcionalidades adicionales:
-
-- Los pagos de reserva por Paypal
-
 Tests funcionales: (mínimo 2 por apartado)
 
 - Trips:
     - Lista
     - Detalles
+    - Editar
 
 - Ordered Trips:
     - Lista
+
+- Profile: 
+    - Editar
+
+Test e2e:
+
+- Registrarse en el sistema como un Explorer
+- Reservar un trip publicado y que no ha empezado y no ha sido cancelados
 
 Tareas adicionales:
 

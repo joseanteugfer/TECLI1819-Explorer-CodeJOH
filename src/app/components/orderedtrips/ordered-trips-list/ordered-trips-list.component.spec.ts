@@ -36,7 +36,7 @@ export const firebaseConfig = {
   messagingSenderId: '513136153151'
 };
 
-fdescribe('OrderedTripsListComponent', () => {
+describe('OrderedTripsListComponent', () => {
   let component: OrderedTripsListComponent;
   let fixture: ComponentFixture<OrderedTripsListComponent>;
   let apiService: ApiService;
