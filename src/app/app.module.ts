@@ -31,6 +31,8 @@ import { CoreModule, HttpLoaderFactory } from './core/core.module';
 import { ApiMockService } from './services-mock/api-mock.service';
 import { environment } from 'src/environments';
 import { RegisterManagerComponent } from './components/security/register-manager/register-manager.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 export const firebaseConfig = {
     apiKey: 'AIzaSyBDPPdxUsnYcPMc4yUs2ZRQfkXXW0wZFKE',
@@ -69,7 +71,8 @@ registerLocaleData(locales, 'es');
     NotFoundComponent,
     DeniedAccessPageComponent,
     DashboardComponent,
-    RegisterManagerComponent
+    RegisterManagerComponent,
+    CheckoutComponent
   ],
   imports: [
     SharedModule,
@@ -78,6 +81,7 @@ registerLocaleData(locales, 'es');
     FormsModule,
     ReactiveFormsModule,
     CoreModule,
+    NgxPayPalModule,
     MDBBootstrapModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig),
     TranslateModule.forRoot({

@@ -8,6 +8,7 @@ import { ActorRoleGuard } from './guards/actor-role.guard';
 import { DeniedAccessPageComponent } from './components/denied-access-page/denied-access-page.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RegisterManagerComponent } from './components/security/register-manager/register-manager.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/trips', pathMatch: 'full'},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'settings', loadChildren: './components/settings/settings.module#SettingsModule'},
   {path: 'profile', loadChildren: './components/profile/profile.module#ProfileModule'},
   {path: 'dashboard', component: DashboardComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'ADMINISTRATOR'}},
+  {path: 'checkout', component: CheckoutComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'EXPLORER'}},
   {path: 'terms-and-conditions', component: TermsAndConditionsComponent},
   {path: 'not-found', component: NotFoundComponent},
   {path: 'denied-access', component: DeniedAccessPageComponent},
