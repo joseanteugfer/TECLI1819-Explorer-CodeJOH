@@ -18,6 +18,12 @@ export class RegisterManagerComponent extends TranslatableComponent implements O
   showMessageError = false;
   codeError: number;
 
+  name;
+  surname;
+  email;
+  password;
+  phone;
+
   constructor(private authService: AuthService,
               private translatableService: TranslateService,
               private fb: FormBuilder,
