@@ -34,7 +34,8 @@ export class OrderedTripsListComponent extends TranslatableComponent implements 
       processing: true
     };
     this.activeRole = localStorage.getItem('activeRole');
-    this.idCurrentActor = this.authService.getCurrentActor()._id;
+    let currentActor = this.authService.getCurrentActor();
+    this.idCurrentActor = currentActor._id;
     if (this.activeRole === 'EXPLORER') {
       this.getOrderedTripsForExplorer();
     }
