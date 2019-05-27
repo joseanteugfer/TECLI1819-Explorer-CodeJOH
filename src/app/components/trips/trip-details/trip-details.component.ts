@@ -62,6 +62,7 @@ export class TripDetailsComponent extends TranslatableComponent implements OnIni
       const orderedTrip: string = JSON.stringify({
         ticker: trip.ticker,
         status: 'PENDING',
+        //status: 'DUE',
         date_apply: Date.now(),
         comments: '',
         actor_id: this.currentActor._id

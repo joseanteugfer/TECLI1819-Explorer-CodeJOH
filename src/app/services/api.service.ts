@@ -109,6 +109,11 @@ export class ApiService {
     return this.http.get(url);
   }
 
+  getTripsFromTicker(ticker: string): Observable<any> {
+    const url = `${environment.apiBackendUrl}/v1/trips/fromTicker/${ticker}`;
+    return this.http.get(url);
+  }
+
   getOrderedTripsFromManager(id: string): Observable<any> {
     const url = `${environment.apiBackendUrl}/v1/orderedTrips/fromManager/${id}`;
     return this.http.get(url);

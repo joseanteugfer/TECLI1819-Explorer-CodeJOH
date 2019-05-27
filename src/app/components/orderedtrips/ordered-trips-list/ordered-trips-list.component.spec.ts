@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -22,6 +22,7 @@ import { TermsAndConditionsComponent } from '../../terms-and-conditions/terms-an
 import { NotFoundComponent } from '../../not-found/not-found.component';
 import { DeniedAccessPageComponent } from '../../denied-access-page/denied-access-page.component';
 import { LocalizedDataPipe } from '../../shared/localized-data.pipe';
+import { of } from 'rxjs';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -36,12 +37,11 @@ export const firebaseConfig = {
   messagingSenderId: '513136153151'
 };
 
-describe('OrderedTripsListComponent', () => {
+fdescribe('OrderedTripsListComponent', () => {
   let component: OrderedTripsListComponent;
   let fixture: ComponentFixture<OrderedTripsListComponent>;
   let apiService: ApiService;
   let authService: AuthService;
-  let originalTimeout;
 
   beforeEach(async(() => {
 
@@ -75,42 +75,78 @@ describe('OrderedTripsListComponent', () => {
         MDBBootstrapModule.forRoot(),
         ReactiveFormsModule
       ],
-      providers: [ TranslateService, AngularFireAuth ]
+      providers: [TranslateService, AuthService, AngularFireAuth, ApiService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 100000;
-    fixture = TestBed.createComponent(OrderedTripsListComponent);
-    component = fixture.componentInstance;
+    const actor = [{
+      _id: '5ca23b50f328122c42ebf589',
+    }];
     apiService = TestBed.get(ApiService);
     authService = TestBed.get(AuthService);
-    spyOn(authService, 'getCurrentActor').and.returnValue({ _id: '5c9f5306bb7a48933ee85eb2'});
-    spyOn(localStorage, 'getItem').and.returnValue('MANAGER');
+    fixture = TestBed.createComponent(OrderedTripsListComponent);
+    component = fixture.componentInstance;
+    spyOn(authService, 'getCurrentActor').and.returnValue(of(actor));
+    component.orderedTripsTratadas = [];
+
+
     fixture.detectChanges();
   });
 
   afterEach(() => {
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
+    component.orderedTripsTratadas = [];
   });
+
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  /* it('should have correct number of ordered trips', async (done) => {
+
+  it('should have correct number of ordered trips for manager', fakeAsync((done) => {
     expect(component.orderedTripsTratadas.length).toBe(0);
+
+    const orderedTrips = [{
+      status: 'PENDING',
+      date_apply: '2018-04-12T00:00:00.000Z',
+      _id: '5ca23b51f328122c42ebf926',
+      ticker: '180405-MMTT',
+      actor_id: '5ca23b51f328122c42ebf599',
+      comments: 'Comment3'
+    }];
+    spyOn(apiService, 'getOrderedTripsFromManager').and.returnValue(of(orderedTrips));
+    spyOn(localStorage, 'getItem').and.returnValue(of('MANAGER'));
     component.ngOnInit();
     fixture.detectChanges();
-    spyOn(apiService, 'getOrderedTripsFromManager').and.returnValue(of(true));
-
     fixture.whenStable().then(() => {
-      fixture.detectChanges();
-      expect(component.orderedTripsTratadas.length).toBeGreaterThan(1);
+      expect(component.orderedTripsTratadas.length).toBe(1);
+      expect(apiService.getOrderedTripsFromManager).toHaveBeenCalled();
       done();
     });
-  });
- */
+  }));
+
+  it('should have correct number of ordered trips for explorer', fakeAsync((done) => {
+    expect(component.orderedTripsTratadas.length).toBe(0);
+
+    const orderedTrips = [{
+      status: 'PENDING',
+      date_apply: '2018-04-12T00:00:00.000Z',
+      _id: '5ca23b51f328122c42ebf926',
+      ticker: '180405-MMTT',
+      actor_id: '5ca23b51f328122c42ebf599',
+      comments: 'Comment3'
+    }];
+    spyOn(component, 'getOrderedTripsForExplorer').and.returnValue(of(orderedTrips));
+    spyOn(localStorage, 'getItem').and.returnValue(of('EXPLORER'));
+    component.ngOnInit();
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      expect(component.orderedTripsTratadas.length).toBe(1);
+      expect(component.getOrderedTripsForExplorer).toHaveBeenCalled();
+      done();
+    });
+  }));
+
 });
