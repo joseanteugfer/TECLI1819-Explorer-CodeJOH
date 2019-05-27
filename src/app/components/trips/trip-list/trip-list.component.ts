@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { FilterComponent } from '../../shared/filter/filter.component';
 import { SubSink } from 'subsink';
+import { Trip } from 'src/app/models/trip.model';
 
 @Component({
   selector: 'app-trip',
@@ -26,7 +27,15 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.apiService.getTrips().pipe(map(trips => trips.filter(trip => trip.status === 'PUBLISHED'))).subscribe(
+    this.apiService.getTrips().pipe(
+      map(trips => trips.filter(trip => {
+      if (trip.status === 'PUBLISHED' && this.checkDateStartGreaterNow(trip)) {
+        return true;
+      } else {
+        return false;
+      }
+      })),
+      map(trips => trips.sort(this.compareDates))).subscribe(
       res => {
         this.tripsAvailables = res;
       }
@@ -39,10 +48,35 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
     });
   }
 
+  compareDates(trip1, trip2) {
+    const date_start1 = Date.parse(trip1.date_start);
+    const date_start2 = Date.parse(trip2.date_start);
+    if (date_start1 < date_start2) {
+      return -1;
+    }
+    if (date_start1 > date_start2) {
+      return 1;
+    }
+    return 0;
+  }
+
+  checkDateStartGreaterNow(trip): boolean {
+    const date_start = Date.parse(trip.date_start);
+    const date_now = Date.now();
+    return (date_start > date_now) ? true : false;
+  }
+
   getTripsByKeyword(keyword: string) {
-    this.apiService.getTripsByKeyword(keyword).subscribe(res => {
-      this.tripsAvailables = res.filter(trip => trip.status === 'PUBLISHED');
-      console.log(this.tripsAvailables);
+    this.apiService.getTripsByKeyword(keyword).pipe(
+      map(trips => trips.filter(trip => {
+      if (trip.status === 'PUBLISHED' && this.checkDateStartGreaterNow(trip)) {
+        return true;
+      } else {
+        return false;
+      }
+      })),
+      map(trips => trips.sort(this.compareDates))).subscribe(res => {
+        this.tripsAvailables = res;
     });
   }
 
