@@ -10,7 +10,7 @@
             <tr>
               <td>
                 <mat-form-field class="example-full-width">
-                  <input matInput placeholder="{{ 'actor.email' | translate }}" [(ngModel)]="email" name="email"
+                  <input id="email" matInput placeholder="{{ 'actor.email' | translate }}" [(ngModel)]="email" name="email"
                   type="email" formControlName="email" required>
 
                   <div *ngIf="loginForm.get('email').errors && (loginForm.get('email').dirty || loginForm.get('email').touched)">
@@ -28,7 +28,7 @@
             <tr>
                 <td>
                   <mat-form-field class="example-full-width">
-                    <input matInput placeholder="{{ 'actor.password' | translate }}" [(ngModel)]="password" name="password"
+                    <input id="pwd" matInput placeholder="{{ 'actor.password' | translate }}" [(ngModel)]="password" name="password"
                     type="password" formControlName="password" required>
   
                     <div *ngIf="loginForm.get('password').errors && (loginForm.get('password').dirty || loginForm.get('password').touched)">
@@ -49,6 +49,6 @@
     </form>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button [disabled]="loginForm.invalid || !loginForm.dirty" (click)="onLogin()" color="primary">{{ 'shared.login' | translate}}</button>
+    <button id="btnLogin" mat-raised-button [disabled]="loginForm.invalid || !loginForm.dirty" (click)="onLogin()" color="primary">{{ 'shared.login' | translate}}</button>
   </mat-card-actions>
 </mat-card>

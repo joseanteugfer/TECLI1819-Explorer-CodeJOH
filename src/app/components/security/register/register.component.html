@@ -8,7 +8,7 @@
         <tr>
           <td>
             <mat-form-field class="example-full-width">
-              <input matInput formControlName="name" placeholder="{{ 'actor.name' | translate }}" [(ngModel)]="name" name="name">
+              <input id="name" matInput formControlName="name" placeholder="{{ 'actor.name' | translate }}" [(ngModel)]="name" name="name">
             
               <div *ngIf="registerForm.get('name').errors && (registerForm.get('name').dirty || registerForm.get('name').touched)">
                 <mat-error class="error-message" *ngIf="registerForm.get('name').errors.required">
@@ -24,7 +24,7 @@
         <tr>
           <td>
             <mat-form-field class="example-full-width">
-              <input matInput formControlName="surname" placeholder="{{ 'actor.surname' | translate }}" [(ngModel)]="surname" name="surname">
+              <input id="surname" matInput formControlName="surname" placeholder="{{ 'actor.surname' | translate }}" [(ngModel)]="surname" name="surname">
             
               <div *ngIf="registerForm.get('surname').errors && (registerForm.get('surname').dirty || registerForm.get('surname').touched)">
                 <mat-error class="error-message" *ngIf="registerForm.get('surname').errors.required">
@@ -40,7 +40,7 @@
         <tr>
           <td>
             <mat-form-field class="example-full-width">
-              <input matInput formControlName="email" type="email" placeholder="{{ 'actor.email' | translate }}" [(ngModel)]="email" name="email" required>
+              <input id="email" matInput formControlName="email" type="email" placeholder="{{ 'actor.email' | translate }}" [(ngModel)]="email" name="email" required>
             
               <div *ngIf="registerForm.get('email').errors && (registerForm.get('email').dirty || registerForm.get('email').touched)">
                   <mat-error class="error-message" *ngIf="registerForm.get('email').errors.required">
@@ -56,7 +56,7 @@
         <tr>
           <td>
             <mat-form-field class="example-full-width">
-              <input matInput formControlName="password" type="password" placeholder="{{ 'actor.password' | translate }}" [(ngModel)]="password"type="password" name="password" required>
+              <input id="password" matInput formControlName="password" type="password" placeholder="{{ 'actor.password' | translate }}" [(ngModel)]="password"type="password" name="password" required>
             
               <div *ngIf="registerForm.get('password').errors && (registerForm.get('password').dirty || registerForm.get('password').touched)">
                 <mat-error class="error-message" *ngIf="registerForm.get('password').errors.required">
@@ -69,7 +69,7 @@
         <tr>
           <td>
             <mat-form-field class="example-full-width">
-              <input matInput formControlName="phone" placeholder="{{ 'actor.phone' | translate }}" [(ngModel)]="phone" name="phone">
+              <input id="phone" matInput formControlName="phone" placeholder="{{ 'actor.phone' | translate }}" [(ngModel)]="phone" name="phone">
             
               <div *ngIf="registerForm.get('phone').errors && (registerForm.get('phone').dirty || registerForm.get('phone').touched)">
                 <mat-error class="error-message" *ngIf="registerForm.get('phone').errors.pattern">
@@ -97,10 +97,10 @@
               </td>
           </tr>
         
-          <tr *ngIf="showMessageCreated" class="form-group center message">
-            <p class="card__text--ok paragraph">Se ha creado el manager de forma correcta</p>
+          <tr id="textCorrect" *ngIf="showMessageCreated" class="form-group center message">
+            <p class="card__text--ok paragraph">{{ 'messages.registeredDone' | translate }}</p>
           </tr>
-          <div *ngIf="showMessageError" class="form-group center message-error">
+          <div id="textIncorrect" *ngIf="showMessageError" class="form-group center message-error">
             <p *ngIf="codeError==500">{{ 'errorMessages.api.500' | translate }}</p>
             <p *ngIf="codeError==422">{{ 'errorMessages.api.422-emailExist' | translate }}</p>
           </div>
@@ -108,6 +108,6 @@
     </form>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button [disabled]="registerForm.invalid || !registerForm.dirty" (click)="onRegister()" color="primary">{{ 'shared.register' | translate}}</button>
+    <button id="btnRegister" mat-raised-button [disabled]="registerForm.invalid || !registerForm.dirty" (click)="onRegister()" color="primary">{{ 'shared.register' | translate}}</button>
   </mat-card-actions>
 </mat-card>

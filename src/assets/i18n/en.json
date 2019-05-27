@@ -117,7 +117,8 @@
         "updateProfileDone": "Profile has been updated",
         "createdDone": "Trip has been created!",
         "deletedDone": "Trip has been deleted!",
-        "manager-created": "Nuevo Manager creado!"
+        "manager-created": "Nuevo Manager creado!",
+        "registeredDone": "User registered"
     },
     "errorMessages": {
         "validation": {

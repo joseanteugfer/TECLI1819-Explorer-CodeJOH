@@ -19,6 +19,12 @@ export class RegisterComponent extends TranslatableComponent implements OnInit {
   showMessageError = false;
   codeError: number;
 
+  name;
+  surname;
+  email;
+  password;
+  phone;
+
   constructor(private authService: AuthService,
               private translatableService: TranslateService,
               private fb: FormBuilder,

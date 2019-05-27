@@ -11,8 +11,8 @@ import { RegisterManagerComponent } from './components/security/register-manager
 
 const routes: Routes = [
   {path: '', redirectTo: '/trips', pathMatch: 'full'},
-  {path: 'login', component: LoginComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'anonymous'}},
-  {path: 'register', component: RegisterComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'anonymous'}},
+  {path: 'login', component: LoginComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'anonymous|EXPLORER|MANAGER|SPONSOR|ADMINISTRATOR' }},
+  {path: 'register', component: RegisterComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'anonymous|EXPLORER|MANAGER|SPONSOR|ADMINISTRATOR' }},
   {path: 'register-manager', component: RegisterManagerComponent, canActivate: [ActorRoleGuard], data: { expectedRole: 'ADMINISTRATOR'}},
   {path: 'trips', loadChildren: './components/trips/trips.module#TripsModule'},
   {path: 'ordered-trips', loadChildren: './components/orderedtrips/orderedtrips.module#OrderedTripsModule'},

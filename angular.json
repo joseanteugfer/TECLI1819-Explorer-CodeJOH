@@ -193,6 +193,9 @@
           "configurations": {
             "production": {
               "devServerTarget": "TECLI1819-Explorer-CodeJOH:serve:production"
+            },
+            "mock": {
+              "devServerTarget": "TECLI1819-Explorer-CodeJOH:serve:mock"
             }
           }
         },

@@ -42,6 +42,7 @@ export class ApiService {
     const header = new HttpHeaders();
     header.set('Content-Type', 'application/json');
     header.set('Accept', 'application/json');
+    console.log(trip);
     return this.http.post<Trip>(url, trip, { headers: header });
   }
 

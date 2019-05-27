@@ -118,7 +118,8 @@
         "updateProfileDone": "El perfil ha sido actualizado",
         "createdDone": "¡El viaje ha sido creado!",
         "deletedDone": "El viaje ha sido eliminado",
-        "manager-created": "New Manager created"
+        "manager-created": "New Manager created",
+        "registeredDone": "Usuario registrado"
     },
     "errorMessages": {
         "validation": {

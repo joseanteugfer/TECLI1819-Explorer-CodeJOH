@@ -21,6 +21,9 @@ export class OrderedTripsEditComponent extends TranslatableComponent implements 
   orderedTrip: OrderedTrip;
   status = ['PENDING', 'REJECTED'];
 
+  showMessageStatus;
+  showMessageError;
+
   constructor(private translatableService: TranslateService,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
