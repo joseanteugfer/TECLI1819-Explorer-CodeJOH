@@ -3,10 +3,10 @@ import { browser, element, by } from 'protractor';
 import { TripsPage } from './trips/trips.po';
 import { RegisterPage } from './register/register.po';
 import { LocalStorage } from './wrapper/localStorage';
-import { explorer } from './mocks/explorer';
+import { explorer2 } from './mocks/explorer';
 import { TripsDetailsPage } from './trips/trips-details.po';
 
-describe('Trip application', () => {
+fdescribe('Trip application', () => {
     let register: RegisterPage;
     let login: LoginPage;
     let trips: TripsPage;
@@ -19,7 +19,7 @@ describe('Trip application', () => {
         login = new LoginPage();
         trips = new TripsPage();
         localStorage = new LocalStorage();
-        actorRegistered = explorer;
+        actorRegistered = explorer2;
         tripsDetails = new TripsDetailsPage();
     });
 

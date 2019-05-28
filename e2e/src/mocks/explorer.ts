@@ -6,3 +6,9 @@ export const explorer = {
     phone: '654654654',
     role: 'EXPLORER'
 }
+
+export const explorer2 = {
+    email: 'explorer@gmail.com',
+    password: 'explorerexplorer',
+    role: 'EXPLORER'
+}
