@@ -24,6 +24,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { RegisterManagerComponent } from '../../security/register-manager/register-manager.component';
 import { FilterComponent } from '../../shared/filter/filter.component';
 import { DatePipe } from '@angular/common';
+import { CheckoutComponent } from '../../checkout/checkout.component';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -50,10 +52,12 @@ fdescribe('TripListComponent', () => {
         DeniedAccessPageComponent,
         LocalizedDataPipe,
         RegisterManagerComponent,
-        FilterComponent
+        FilterComponent,
+        CheckoutComponent
       ],
       imports: [
         HttpClientModule,
+        NgxPayPalModule,
         TranslateModule.forRoot({
           loader: {
             provide: TranslateLoader,

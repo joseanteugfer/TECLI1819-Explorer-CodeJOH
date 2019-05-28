@@ -26,6 +26,8 @@ import { ActivatedRoute } from '@angular/router';
 import { RegisterManagerComponent } from '../../security/register-manager/register-manager.component';
 import { tick } from '@angular/core/src/render3';
 import { AuthService } from 'src/app/services/auth.service';
+import { CheckoutComponent } from '../../checkout/checkout.component';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyBDPPdxUsnYcPMc4yUs2ZRQfkXXW0wZFKE',
@@ -62,10 +64,12 @@ fdescribe('TripDetailsComponent', () => {
         TermsAndConditionsComponent,
         NotFoundComponent,
         DeniedAccessPageComponent,
-        LocalizedDataPipe
+        LocalizedDataPipe,
+        CheckoutComponent
       ],
       imports: [
         HttpClientModule,
+        NgxPayPalModule,
         AngularFireModule.initializeApp(firebaseConfig),
         TranslateModule.forRoot({
           loader: {

@@ -14,7 +14,7 @@ import { CONFIG } from 'src/app/app-config';
 })
 export class CheckoutComponent extends TranslatableComponent implements OnInit {
 
-  private payPalConfig: PayPalConfig;
+  payPalConfig: PayPalConfig;
   price: string;
   orderId: string
 
